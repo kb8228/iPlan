@@ -4,8 +4,8 @@ var knex = require('knex')({
   client: process.env.dbClient || 'postgres',
   connection: {
     host     : process.env.dbHost || '127.0.0.1',
-    user     : process.env.dbUser || 'root',
-    password : process.env.dbPassword || '',
+    user     : process.env.dbUser || 'user',
+    password : process.env.dbPassword || 'md5ee11cbb19052e40b07aac0ca060c23ee',
     database : process.env.dbDatabase || 'iplan',
     charset  : 'utf8'
   }
