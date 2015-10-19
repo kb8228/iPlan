@@ -5,6 +5,9 @@ require('./place');
 
 var Event = db.Model.extend({
   tableName: 'events',
+  defaults: {
+    votes: 0
+  },
   places: function(){
     return this.hasMany('Place');
   }
