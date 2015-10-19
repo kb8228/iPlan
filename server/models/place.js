@@ -5,6 +5,9 @@ require('./event');
 
 var Place = db.Model.extend({
   tableName: 'places',
+  defaults: {
+    votes: 0
+  },
   event: function(){
     return this.belongsTo('Event');
   }
