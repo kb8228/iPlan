@@ -1,0 +1,13 @@
+{
+  "name": "iplan",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "50-50"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/50-50/iPlan",
+  "moduleType": [
+    "node"
+  ]
+}
