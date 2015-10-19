@@ -34,6 +34,5 @@ app.post('/api/events', function(req, res, next){
   })
 });
 
-
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');

@@ -4,6 +4,9 @@ angular.module('iplanApp', ['ngRoute'])
   .when('/', {
     templateUrl: 'index.html'
   })
+  .when('/events/:user_id', {
+    templateUrl: 'event.html'
+  })
   .otherwise({
     redirectTo: '/'
   });
@@ -29,6 +32,7 @@ function MainController($http){
       }
     })
     .then(function(response){
+      window.location.pathname = '/events/' + response.data.id
       console.log('success response: ', response.data);
     })
     .catch(function(err){
