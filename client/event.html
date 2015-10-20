@@ -1,5 +1,8 @@
-<html ng-app="iplanApp">
-<body>
-{{2+2}}
-this is event page
-</html>
+<div>
+  <form name="placeForm" ng-submit="eventView.postPlace(eventForm.$valid)" novalidate>
+    <input type="text" ng-model="eventView.eventName" required>
+    <button type="submit" ng-disabled="eventForm.$invalid">Add new place!!!!!</button>
+  </form>
+  //form for adding a place
+  //ng-repeat a list of places
+</div>
