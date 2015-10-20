@@ -4,8 +4,8 @@ angular.module('iplanApp', ['ngRoute'])
   .when('/', {
     templateUrl: 'index.html'
   })
-  .when('/events/:user_id', {
-    templateUrl: 'event.html'
+  .when('/events/:event_id', {
+    templateUrl: './eventView/eventView.html'
   })
   .otherwise({
     redirectTo: '/'
@@ -16,23 +16,17 @@ angular.module('iplanApp', ['ngRoute'])
 angular.module('iplanApp')
 .controller('MainController', MainController);
 
-MainController.inject = ['HttpService'];
+MainController.inject = ['HttpService', '$location'];
 
-function MainController(HttpService){
+function MainController(HttpService, $location){
   var self = this;
 
   self.eventName; // bound to input box
 
-  self.postEvent = function(evtName) {
-    $http({
-      method: 'POST',
-      url: '/api/events',
-      data: {
-        name: self.eventName
-      }
-    })
-    .then(function(response){
-      window.location.pathname = '/events/' + response.data.id
+  self.postEvent = function() {
+    HttpService.postEvent({name: self.eventName })
+      .then(function(response){
+      $location.path('/events/' + response.data.id);
       console.log('success response: ', response.data);
     })
     .catch(function(err){
