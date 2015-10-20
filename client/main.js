@@ -16,9 +16,9 @@ angular.module('iplanApp', ['ngRoute'])
 angular.module('iplanApp')
 .controller('MainController', MainController);
 
-MainController.inject = ['$http'];
+MainController.inject = ['HttpService'];
 
-function MainController($http){
+function MainController(HttpService){
   var self = this;
 
   self.eventName; // bound to input box
