@@ -20,7 +20,7 @@ function EventViewController(HttpService){ // inject http service, EventService 
     .catch(function(err){
       console.log('error in posting place: ', err);
     });
-  self.placeName = '';
+    self.placeName = '';
   };
 };
 
