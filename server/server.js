@@ -34,5 +34,14 @@ app.post('/api/events', function(req, res, next){
   })
 });
 
+app.post('/api/places', function(req, res, next){
+  var placeName = req.body.name;
+  db.model('Place').newPlace({name: placeName}).save()
+  .then(function(place){
+    console.log('place created: ', place);
+    res.json(place);
+  })
+});
+
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');

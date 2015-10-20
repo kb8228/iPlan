@@ -1,26 +1,36 @@
 angular.module('iplanApp')
 .controller('EventViewController', EventViewController)
-.directive('EventViewDir', EventViewDir);
+.directive('eventViewDir', eventViewDir);
 
-EventViewController.inject = ['HttpService', 'EventService'];
+EventViewController.inject = ['HttpService'];
 
-function EventViewController(HttpService, EventService){ // inject http service, EventService factory
+function EventViewController(HttpService){ // inject http service, EventService factory
   var self = this;
   self.placeName; // tied to input box in eventView.html
   // self.event = EventService.currentEvent;
-  // self.places = self.event.places; 
+  // self.places = self.event.places;
+  self.places = [];
 
-  self.postPlace = function(){} // tied to form in eventView.html
-}
+  self.postPlace = function(){ // tied to form in eventView.html
+    HttpService.postPlace({name: self.placeName})
+    .then(function(response){
+      console.log('postPlace success response: ', response.data);
+      self.places.push(response.data);
+    })
+    .catch(function(err){
+      console.log('error in posting place: ', err);
+    });
+  };
+};
 
-function EventViewDir(){
+function eventViewDir(){
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: '/client/eventView/eventView.html',
+    templateUrl: '/eventView/eventView.html',
     replace: true,
-    controller: EventViewController,
-    controllerAs: evtCtrl,
+    controller: 'EventViewController',
+    controllerAs: 'evtCtrl',
     bindToController: true
   }
 }
