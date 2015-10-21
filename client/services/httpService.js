@@ -24,4 +24,5 @@ angular.module('iplanApp')
     getUser: getUser,
     postPlace: postPlace
   };
+
 }]);
