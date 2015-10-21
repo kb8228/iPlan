@@ -33,9 +33,9 @@ function MainController(HttpService, DataService, $location){
   };
 
   self.getEvent = function(){
-    HttpService.getEvent( DataService.getCurrentEvent().id)
+    HttpService.getEvent(DataService.getCurrentEvent().id)
     .then(function(response){
-      console.log('things were made' , response);
+      console.log('things were made' , response.data);
     })
     .catch(function(err){
       console.log('error in get event: ', err);
