@@ -11,17 +11,17 @@ angular.module('iplanApp')
     return _currentEvent;
   };
   var setCurrentUser = function(userData){
-    return $http.post('/api/users', userData);
+    _currentUser = userData;
   };
   var getCurrentUser = function(userId){
-    return $http.get('/api/users/' + userId);
+    return _currentUser;
   };
 
   return {
-    postEvent: postEvent,
-    getEvent: getEvent,
-    postUser: postUser,
-    getUser: getUser
+    setCurrentEvent: setCurrentEvent,
+    getCurrentEvent: getCurrentEvent,
+    setCurrentUser: setCurrentUser,
+    getCurrentUser: getCurrentUser
   };
 
 });
