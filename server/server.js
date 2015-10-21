@@ -26,16 +26,14 @@ app.get('/api/events/:id', function(req, res, next){
 });
 
 app.post('/api/events', function(req, res, next){
-  var eventName = req.body.name;
-  db.model('Event').newEvent({name: eventName}).save()
+  db.model('Event').newEvent(req.body).save()
   .then(function(evt){
     res.json(evt);
   })
 });
 
 app.post('/api/places', function(req, res, next){
-  var placeName = req.body.name;
-  db.model('Place').newPlace({name: placeName}).save()
+  db.model('Place').newPlace(req.body).save()
   .then(function(place){
     res.json(place);
   })
