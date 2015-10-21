@@ -18,6 +18,7 @@ angular.module('iplanApp')
 
 function MainController(HttpService, DataService, $location){
   var self = this; // bound to input box
+  self.currentEvent = DataService.currentEvent;
 
   self.postEvent = function(){
     HttpService.postEvent({name: self.eventName})
@@ -33,13 +34,7 @@ function MainController(HttpService, DataService, $location){
   };
 
   self.getEvent = function(){
-    HttpService.getEvent(DataService.getCurrentEvent().id)
-    .then(function(response){
-      console.log('things were made' , response.data);
-    })
-    .catch(function(err){
-      console.log('error in get event: ', err);
-    });
-
+    console.log('fetching curr evt fr DataService: ', self.currentEvent);
+    return self.currentEvent;
   }
 }

@@ -1,24 +1,27 @@
 angular.module('iplanApp')
 .factory('DataService', function(){
 
-  var _currentEvent;
-  var _currentUser;
+  var currentEvent = {};
+  var currentUser = {};
 
   var setCurrentEvent = function(eventData){
-    _currentEvent = eventData;
-    console.log("this is the current event ", _currentEvent);
+    for(var key in eventData){
+      currentEvent[key] = eventData[key];
+    }
+    console.log("this is the current event ", currentEvent);
   };
   var getCurrentEvent = function(){
-    return _currentEvent;
+    return currentEvent;
   };
   var setCurrentUser = function(userData){
-    _currentUser = userData;
+    currentUser = userData;
   };
   var getCurrentUser = function(userId){
-    return _currentUser;
+    return currentUser;
   };
 
   return {
+    currentEvent: currentEvent,
     setCurrentEvent: setCurrentEvent,
     getCurrentEvent: getCurrentEvent,
     setCurrentUser: setCurrentUser,
