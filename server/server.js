@@ -19,7 +19,7 @@ app.get('/api/events', function(req, res){
 
 app.get('/api/events/:id', function(req, res, next){
   var eventId = req.params.id;
-  db.model('Event').fetchById(eventId)
+  db.model('Event').fetchById({id: eventId})
   .then(function(data){
     res.json(data.toJSON());
   });
@@ -29,7 +29,6 @@ app.post('/api/events', function(req, res, next){
   var eventName = req.body.name;
   db.model('Event').newEvent({name: eventName}).save()
   .then(function(evt){
-    console.log('event created: ', evt);
     res.json(evt);
   })
 });
@@ -38,7 +37,6 @@ app.post('/api/places', function(req, res, next){
   var placeName = req.body.name;
   db.model('Place').newPlace({name: placeName}).save()
   .then(function(place){
-    console.log('place created: ', place);
     res.json(place);
   })
 });
