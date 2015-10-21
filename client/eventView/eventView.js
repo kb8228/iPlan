@@ -6,7 +6,7 @@ EventViewController.inject = ['HttpService'];
 
 function EventViewController(HttpService){ // inject http service, EventService factory
   var self = this;
-  self.placeName; // tied to input box in eventView.html
+  self.placeName;   // tied to input box in eventView.html
   // self.event = EventService.currentEvent;
   // self.places = self.event.places;
   self.places = [];
@@ -20,6 +20,7 @@ function EventViewController(HttpService){ // inject http service, EventService 
     .catch(function(err){
       console.log('error in posting place: ', err);
     });
+  self.placeName = '';
   };
 };
 

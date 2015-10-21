@@ -20,12 +20,12 @@ MainController.inject = ['HttpService', '$location'];
 
 function MainController(HttpService, $location){
   var self = this;
-
   self.eventName; // bound to input box
 
   self.postEvent = function() {
-    HttpService.postEvent({name: self.eventName })
-      .then(function(response){
+    HttpService.postEvent({name: self.eventName}) 
+    .then(function(response){
+      // set currentEvent to response.data in the eventService
       $location.path('/events/' + response.data.id);
       console.log('success response: ', response.data);
     })
