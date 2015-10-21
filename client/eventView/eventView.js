@@ -1,21 +1,30 @@
 angular.module('iplanApp')
-.controller('EventViewController', EventViewController)
+.controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', EventViewController])
 .directive('eventViewDir', eventViewDir);
 
-EventViewController.inject = ['HttpService'];
-
-function EventViewController(HttpService){ // inject http service, EventService factory
+function EventViewController(HttpService, DataService, $location, $route, $routeParams){ // inject http service, EventService factory
   var self = this;
   self.placeName;   // tied to input box in eventView.html
-  // self.event = EventService.currentEvent;
-  // self.places = self.event.places;
-  self.places = [];
+  self.currentEvent = DataService.currentEvent;
+
+  self.setEvent = function(){
+    var evtId = $location.$$path.replace('/events/', '');
+    HttpService.getEvent(evtId)
+    .then(function(response){
+      DataService.setCurrentEvent(response.data);
+      return response.data;
+    })
+    .catch(function(err){
+      console.log('err in evtCtrl setEvent: ', err);
+    });
+  }
 
   self.postPlace = function(){ // tied to form in eventView.html
-    HttpService.postPlace({name: self.placeName})
+    var evtId = $location.$$path.replace('/events/', '');
+    HttpService.postPlace({name: self.placeName, event_id: evtId})
     .then(function(response){
       console.log('postPlace success response: ', response.data);
-      self.places.push(response.data);
+      self.setEvent();
     })
     .catch(function(err){
       console.log('error in posting place: ', err);
