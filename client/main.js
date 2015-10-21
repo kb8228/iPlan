@@ -14,18 +14,16 @@ angular.module('iplanApp', ['ngRoute'])
 .run();
 
 angular.module('iplanApp')
-.controller('MainController', MainController);
+.controller('MainController', ['HttpService', 'DataService', '$location', MainController]);
 
-MainController.inject = ['HttpService', '$location'];
-
-function MainController(HttpService, $location){
+function MainController(HttpService, DataService, $location){
   var self = this;
   self.eventName; // bound to input box
 
   self.postEvent = function() {
     HttpService.postEvent({name: self.eventName}) 
     .then(function(response){
-      // set currentEvent to response.data in the eventService
+      DataService.setCurrentEvent(response.data);
       $location.path('/events/' + response.data.id);
       console.log('success response: ', response.data);
     })
