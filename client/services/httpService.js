@@ -16,14 +16,13 @@ angular.module('iplanApp')
   var postPlace = function(placeData){
     return $http.post('/api/places', placeData);
   };
-
+  
   return {
     postEvent: postEvent,
     getEvent: getEvent,
     postUser: postUser,
     getUser: getUser,
     postPlace: postPlace
-
   };
 
 }]);
