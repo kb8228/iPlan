@@ -40,7 +40,6 @@ var events = buildTable('events', function(table){
   table.increments('id').primary();
   table.string('name').notNullable();
   table.date('date');
-
 });
 
 var places = buildTable('places', function(table){

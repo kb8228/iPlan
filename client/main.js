@@ -17,11 +17,10 @@ angular.module('iplanApp')
 .controller('MainController', ['HttpService', 'DataService', '$location', MainController]);
 
 function MainController(HttpService, DataService, $location){
-  var self = this;
-  self.eventName; // bound to input box
+  var self = this; // bound to input box
 
-  self.postEvent = function() {
-    HttpService.postEvent({name: self.eventName}) 
+  self.postEvent = function(){
+    HttpService.postEvent({name: self.eventName})
     .then(function(response){
       DataService.setCurrentEvent(response.data);
       $location.path('/events/' + response.data.id);
@@ -32,4 +31,15 @@ function MainController(HttpService, DataService, $location){
     });
     self.eventName = '';
   };
+
+  self.getEvent = function(){
+    HttpService.getEvent( DataService.getCurrentEvent().id)
+    .then(function(response){
+      console.log('things were made' , response);
+    })
+    .catch(function(err){
+      console.log('error in get event: ', err);
+    });
+
+  }
 }

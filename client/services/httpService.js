@@ -2,6 +2,8 @@ angular.module('iplanApp')
 .factory('HttpService', ['$http', function($http){
 
   var postEvent = function(eventData){
+    console.log('this is the httpservice postevent', eventData);
+
     return $http.post('/api/events', eventData);
   };
   var getEvent = function(eventId){
@@ -16,7 +18,7 @@ angular.module('iplanApp')
   var postPlace = function(placeData){
     return $http.post('/api/places', placeData);
   };
-  
+
   return {
     postEvent: postEvent,
     getEvent: getEvent,

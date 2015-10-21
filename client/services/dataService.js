@@ -6,6 +6,7 @@ angular.module('iplanApp')
 
   var setCurrentEvent = function(eventData){
     _currentEvent = eventData;
+    console.log("this is the current event ", _currentEvent);
   };
   var getCurrentEvent = function(){
     return _currentEvent;
