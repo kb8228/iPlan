@@ -9,6 +9,8 @@
     <input type="text" ng-model="mainCtrl.eventName" required>
     <button type="submit" ng-disabled="eventForm.$invalid">Add new event!!!</button>
   </form>
+
+  <button ng-click="mainCtrl.getEvent()"> DONT CLICK </button>
   <h2>{{mainCtrl.eventName}}</h2>
 </div>
 <event-view-dir></event-view-dir>
@@ -18,6 +20,7 @@
 
 <script src="./main.js"></script>
 <script src="./services/httpService.js"></script>
+<script src="./services/dataService.js"></script>
 <script src="./eventView/eventView.js"></script>
 </body>
 </html>
