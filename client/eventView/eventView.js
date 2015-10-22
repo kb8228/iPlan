@@ -31,6 +31,11 @@ function EventViewController(HttpService, DataService, $location, $route, $route
     });
     self.placeName = '';
   };
+
+  self.upVote = function(place) {
+    place.votes++;
+    HttpService.postPlace(place);
+  }
 };
 
 function eventViewDir(){
