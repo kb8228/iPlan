@@ -6,6 +6,10 @@
     </form>
   </div>
   <ul ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'"> <!-- ng-repeat on event's places -->
-    <li>{{place.name}} | <i class="fa fa-thumbs-o-up" ng-click="evtCtrl.upVote(place)"></i>{{place.votes}}</li>
+    <li>{{place.name}}
+      <button ng-click="evtCtrl.upVote(place)">
+        <i class="fa fa-thumbs-o-up"></i>{{place.votes}}
+      </button>
+    </li>
   </ul>
 </div>
