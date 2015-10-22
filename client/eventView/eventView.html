@@ -1,10 +1,11 @@
 <div ng-init="evtCtrl.setEvent()">
-  <form name="placeForm" ng-submit="evtCtrl.postPlace(placeForm.$valid)" novalidate>
-    <input type="text" ng-model="evtCtrl.placeName" required>
-    <button type="submit" ng-disabled="placeForm.$invalid">Add new place!!!!!</button>
-  </form>
-
+  <div ng-if="evtCtrl.currentEvent.name">
+    <form name="placeForm" ng-submit="evtCtrl.postPlace(placeForm.$valid)" novalidate>
+      <input type="text" ng-model="evtCtrl.placeName" required>
+      <button type="submit" ng-disabled="placeForm.$invalid">Add new place!</button>
+    </form>
+  </div>
   <ul ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'"> <!-- ng-repeat on event's places -->
-    <li>{{place.name}} | {{place.votes}}</li> <button ng-click="evtCtrl.upVote(place)">upvote</button>
+    <li>{{place.name}} | <i class="fa fa-thumbs-o-up" ng-click="evtCtrl.upVote(place)"></i>{{place.votes}}</li>
   </ul>
 </div>

@@ -2,16 +2,14 @@
 <html ng-app="iplanApp">
 <head>
   <title>iPlan</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 <div ng-controller="MainController as mainCtrl">
   <form name="eventForm" ng-submit="mainCtrl.postEvent(eventForm.$valid)" novalidate>
     <input type="text" ng-model="mainCtrl.eventName" required>
-    <button type="submit" ng-disabled="eventForm.$invalid">Add new event!!!</button>
+    <button type="submit" ng-disabled="eventForm.$invalid">Add new event!</button>
   </form>
-
-  <button ng-click="mainCtrl.getEvent()"> DONT CLICK </button>
-  <h2>{{mainCtrl.eventName}}</h2>
 </div>
 <event-view-dir></event-view-dir>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>

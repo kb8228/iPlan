@@ -14,9 +14,9 @@ angular.module('iplanApp', ['ngRoute'])
 .run();
 
 angular.module('iplanApp')
-.controller('MainController', ['HttpService', 'DataService', '$location', MainController]);
+.controller('MainController', ['HttpService', 'DataService', '$location', '$window', MainController]);
 
-function MainController(HttpService, DataService, $location){
+function MainController(HttpService, DataService, $location, $window){
   var self = this; // bound to input box
   self.currentEvent = DataService.currentEvent;
 
@@ -25,6 +25,7 @@ function MainController(HttpService, DataService, $location){
     .then(function(response){
       DataService.setCurrentEvent(response.data);
       $location.path('/events/' + response.data.id);
+      $window.location.reload();
       console.log('success response: ', response.data);
     })
     .catch(function(err){
