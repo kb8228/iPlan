@@ -3,7 +3,6 @@ angular.module('iplanApp')
 
   var postEvent = function(eventData){
     console.log('this is the httpservice postevent', eventData);
-
     return $http.post('/api/events', eventData);
   };
   var getEvent = function(eventId){

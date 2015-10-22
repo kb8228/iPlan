@@ -5,6 +5,6 @@
   </form>
 
   <ul ng-repeat="place in evtCtrl.currentEvent.places"> <!-- ng-repeat on event's places -->
-    <li>{{place.name}} | {{place.votes}}</li> <button ng-click="">upvote</button>
+    <li>{{place.name}} | {{place.votes}}</li> <button ng-click="evtCtrl.upVote(place)">upvote</button>
   </ul>
 </div>
