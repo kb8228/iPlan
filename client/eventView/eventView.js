@@ -4,6 +4,7 @@ angular.module('iplanApp')
 
 function EventViewController(HttpService, DataService, $location, $route, $routeParams){ // inject http service, EventService factory
   var self = this;
+  self.toggle = false;
   self.placeName;   // tied to input box in eventView.html
   self.currentEvent = DataService.currentEvent;
 
@@ -33,8 +34,17 @@ function EventViewController(HttpService, DataService, $location, $route, $route
   };
 
   self.upVote = function(place) {
-    place.votes++;
-    HttpService.postPlace(place);
+    if(!self.toggle) {
+      self.toggle = true;
+      place.votes++;
+      HttpService.postPlace(place);
+      return;
+    } else if (self.toggle){
+      self.toggle = false;
+      place.votes--;
+      HttpService.postPlace(place);
+      return;
+    }
   }
 };
 
