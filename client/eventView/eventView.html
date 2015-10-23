@@ -8,7 +8,7 @@
   <ul> <!-- ng-repeat on event's places -->
     <li id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">{{place.name}}
       <button ng-click="evtCtrl.upVote(place)">
-        <i ng-class="{'fa fa-thumbs-o-down': !evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': evtCtrl.toggle[place.id]}"></i>
+        <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
         {{place.votes}}
       </button>
     </li>
