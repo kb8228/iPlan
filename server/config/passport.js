@@ -15,10 +15,13 @@ module.exports = function(passport) {
 
   // used to deserialize the user
   passport.deserializeUser(function(id, done) {
-    db.model('User').findById({ facebook_id: id })
+    db.model('User').fetchById({ facebook_id: id })
     .then(function(user) {
       done(null, user);
     })
+    // User.fetchById(id, function(err, user) {
+    //   done(err, user);
+    // });
   });
 
   // =========================================================================
@@ -40,7 +43,8 @@ module.exports = function(passport) {
     process.nextTick(function() {
 
       // find the user in the database based on their facebook id
-      db.model('User').findOne({'facebook_id' : profile.id}, function(err, user) {
+      db.model('User').fetchById({'facebook_id' : profile.id}, function(err, user) {
+      // User.fetchById({'facebook_id' : profile.id}, function(err, user) {
 
         // if there is an error, stop everything and return that
         // ie an error connecting to the database
