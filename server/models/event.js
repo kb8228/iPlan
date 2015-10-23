@@ -1,4 +1,4 @@
-var db = require('../config.js');
+var db = require('../config/database');
 var Promise = require('bluebird');
 
 require('./place');
