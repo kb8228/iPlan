@@ -5,7 +5,7 @@ var knex = require('knex')({
   connection: {
     host     : process.env.dbHost || '127.0.0.1',
     user     : process.env.dbUser || 'root',
-    password : process.env.dbPassword || '',
+    password : process.env.dbPassword || 'ok',
     database : process.env.dbDatabase || 'iplan',
     charset  : 'utf8'
   }
@@ -49,7 +49,15 @@ var places = buildTable('places', function(table){
   table.integer('event_id');
 });
 
-var tables = [events, places];
+var users = buildTable('users', function(table){
+  table.increments('id').primary();
+  table.integer('facebook_id').notNullable();
+  table.string('first_name').notNullable();
+  table.string('last_name').notNullable();
+  table.string('email');
+});
+
+var tables = [events, places, users];
 
 Promise.all(tables)
 .then(function(tables){

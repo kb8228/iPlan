@@ -34,13 +34,13 @@ function EventViewController(HttpService, DataService, $location, $route, $route
   };
 
   self.upVote = function(place) {
-    if(!self.toggle) {
-      self.toggle = true;
+    if(!place.toggle) {
+      place.toggle = true;
       place.votes++;
       HttpService.postPlace(place);
       return;
-    } else if (self.toggle){
-      self.toggle = false;
+    } else if (place.toggle){
+      place.toggle = false;
       place.votes--;
       HttpService.postPlace(place);
       return;
