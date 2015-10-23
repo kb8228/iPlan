@@ -46,6 +46,7 @@ function EventViewController(HttpService, DataService, $location, $route, $route
       return;
     }
   }
+  self.setEvent();
 };
 
 function eventViewDir(){

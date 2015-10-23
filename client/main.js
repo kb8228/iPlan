@@ -5,7 +5,8 @@ angular.module('iplanApp', ['ngRoute'])
     templateUrl: 'index.html'
   })
   .when('/events/:event_id', {
-    templateUrl: './eventView/eventView.html'
+    templateUrl: './eventView/eventView.html',
+    controller: 'EventViewController'
   })
   .otherwise({
     redirectTo: '/'
