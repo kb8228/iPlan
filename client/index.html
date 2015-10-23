@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="iplanApp">
+<head>
+  <title>iPlan</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1><span class="fa fa-lock"></span>iPlan</h1>
+  <p>Login or Register with:</p>
+  <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+</div>
+
+<div ng-controller="MainController as mainCtrl">
+  <form name="eventForm" ng-submit="mainCtrl.postEvent(eventForm.$valid)" novalidate>
+    <input type="text" ng-model="mainCtrl.eventName" required>
+    <button type="submit" ng-disabled="eventForm.$invalid">Add new event!</button>
+  </form>
+</div>
+<event-view-dir></event-view-dir>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
+
+<script src="./main.js"></script>
+<script src="./services/httpService.js"></script>
+<script src="./services/dataService.js"></script>
+<script src="./eventView/eventView.js"></script>
+</body>
+</html>

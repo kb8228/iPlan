@@ -1,0 +1,35 @@
+{
+  "name": "iplan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/50-50/iPlan.git"
+  },
+  "author": "50-50",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/50-50/iPlan/issues"
+  },
+  "homepage": "https://github.com/50-50/iPlan#readme",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "body-parser": "^1.14.1",
+    "bookshelf": "^0.8.2",
+    "connect-flash": "^0.1.1",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "knex": "^0.8.6",
+    "passport": "^0.3.0",
+    "passport-facebook": "^2.0.0",
+    "pg": "^4.4.3"
+  },
+  "devDependencies": {
+    "jasmine": "^2.3.2",
+    "request": "^2.65.0"
+  }
+}
