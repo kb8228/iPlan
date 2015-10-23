@@ -14,7 +14,7 @@ function EventViewController(HttpService, DataService, $location, $route, $route
     .then(function(response){
       DataService.setCurrentEvent(response.data);
       angular.forEach(response.data.places, function(val, key){
-        self.toggle[val.id] = false;
+        self.toggle[val.id] = self.toggle[val.id] || false;
       });
       return response.data;
     })
