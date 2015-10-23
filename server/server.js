@@ -1,17 +1,31 @@
 var express = require('express');
-var db = require('./config');
+var db = require('./config/database');
+require('./config/passport');
 var http = require('http');
 var Promise = require('bluebird');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 require('./models/event');
 require('./models/place');
 
 var app = express();
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../client'));
+
+// required for passport
+app.use(session({secret: 'anysecretisok'})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// routes ======================================================================
+require('./routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 app.get('/api/events', function(req, res){
   // here we will eventually fetch events by user

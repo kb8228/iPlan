@@ -1,4 +1,4 @@
-var db = require('../config');
+var db = require('../config/database');
 var Promise = require('bluebird');
 
 require('../models/place');
