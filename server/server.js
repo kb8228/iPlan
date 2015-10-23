@@ -1,6 +1,5 @@
 var express = require('express');
 var db = require('./config/database');
-require('./config/passport');
 var http = require('http');
 var Promise = require('bluebird');
 var bodyParser = require('body-parser');
@@ -10,6 +9,7 @@ var flash = require('connect-flash');
 
 require('./models/event');
 require('./models/place');
+require('./config/passport')(passport);
 
 var app = express();
 
