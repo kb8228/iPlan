@@ -19,7 +19,6 @@ module.exports = function(passport) {
     .then(function(user) {
       done(null, user);
     })
-    });
   });
 
   // =========================================================================
