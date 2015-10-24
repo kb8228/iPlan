@@ -64,5 +64,12 @@ app.post('/api/places', function(req, res, next){
   })
 });
 
+app.post('/api/users', function(req, res, next){
+  db.model('User').newUser(req.body).save()
+  .then(function(user){
+    res.json(user);
+  })
+})
+
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');
