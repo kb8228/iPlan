@@ -4,7 +4,7 @@ var Promise = require('bluebird');
 require('../models/place');
 
 var Places = db.Collection.extend({
-  model: db.model('Place');
+  model: db.model('Place')
 }, {
   fetchByEvent: function(eventId){
     return db.collection('Places')
