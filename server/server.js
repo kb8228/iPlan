@@ -68,8 +68,16 @@ app.post('/api/users', function(req, res, next){
   db.model('User').newUser(req.body).save()
   .then(function(user){
     res.json(user);
-  })
-})
+  });
+});
+
+app.get('/api/users/:id', function(req, res, next){
+  var userId = req.params.id;
+  db.model('User').fetchById({id: userId})
+  .then(function(user){
+    res.json(user.toJSON());
+  });
+});
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');
