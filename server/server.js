@@ -6,12 +6,25 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
+var app = express();
 
 require('./models/event');
 require('./models/place');
-require('./config/passport')(passport);
+require('./models/user');
+require('./collections/events');
+require('./collections/places');
 
-var app = express();
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+require('./routes')(app, passport); // load our routes and pass in our app and fully configured passport
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -19,13 +32,11 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
 // required for passport
-app.use(session({secret: 'anysecretisok'})); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-
-// routes ======================================================================
-require('./routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+app.use(session({
+  secret: 'anysecretisok',
+  resave: false,
+  saveUninitialized: true
+})); // session secret
 
 app.get('/api/events', function(req, res){
   // here we will eventually fetch events by user

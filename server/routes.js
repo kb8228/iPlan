@@ -7,14 +7,22 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
   // handle the callback after facebook has authenticated the user
+  // app.get('/auth/facebook/callback',
+  //   passport.authenticate('facebook', {
+  //     successRedirect : '/events/1',
+  //     failureRedirect : '/'
+  //   }));
+  //Redirect Back to Home Page upon Authentication
   app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', {
-      successRedirect : '/profile',
+  passport.authenticate('facebook', {
+      successRedirect : '/events/1',
       failureRedirect : '/'
-    }));
+  }));
+
 
   // route for logging out
-  app.get('/logout', function(req, res) {
+  app.get('api/logout', function(req, res) {
+    req.session.destroy();
     req.logout();
     res.redirect('/');
   });
