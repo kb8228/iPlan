@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
+
 <div ng-controller="LoginController as loginCtrl">
-  <input type="submit" ng-click="loginCtrl.login()" />
-  <input type="submit" ng-click="loginCtrl.logout()" value="Log out" />
+  <input ng-hide="loginCtrl.hasToken" type="submit" ng-click="loginCtrl.login()" />
+  <input ng-show="loginCtrl.hasToken" type="submit" ng-click="loginCtrl.logout()" value="Log out" />
 </div>
 
 <div ng-controller="MainController as mainCtrl">

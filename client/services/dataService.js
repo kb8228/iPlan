@@ -14,7 +14,9 @@ angular.module('iplanApp')
     return currentEvent;
   };
   var setCurrentUser = function(userData){
-    currentUser = userData;
+    for(var key in userData){
+      currentUser[key] = userData[key];
+    }
   };
   var getCurrentUser = function(userId){
     return currentUser;

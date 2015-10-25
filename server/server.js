@@ -63,11 +63,11 @@ app.post('/api/users', function(req, res, next){
   });
 });
 
-app.get('/api/users/:id', function(req, res, next){
-  var userId = req.params.id;
-  db.model('User').fetchById({id: userId})
+app.get('/api/users/:facebook_id', function(req, res, next){
+  var userId = req.params.facebook_id;
+  db.model('User').fetchById({facebook_id: userId})
   .then(function(user){
-    res.json(user.toJSON());
+    res.json(user);
   });
 });
 
