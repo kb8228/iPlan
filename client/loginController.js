@@ -29,6 +29,7 @@ function LoginController($http, auth, store, $location, DataService, HttpService
       })
 
       $location.path('/');
+      $window.location.reload();
     });
   };
 

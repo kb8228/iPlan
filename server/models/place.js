@@ -9,7 +9,7 @@ var Place = db.Model.extend({
     votes: 0
   },
   event: function(){
-    return this.belongsTo('Event');
+    return this.belongsTo(Event, 'event_id');
   }
 }, {
   fetchById: function(options){
