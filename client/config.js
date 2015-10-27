@@ -1,4 +1,4 @@
-(function(){
+// (function(){
   angular.module('iplanApp', ['ngRoute', 'auth0', 'angular-storage', 'angular-jwt'])
   .config(function(authProvider, $routeProvider, $httpProvider, jwtInterceptorProvider){
     authProvider.init({
@@ -42,4 +42,4 @@
       }
     });
   });
-})();
+// })();

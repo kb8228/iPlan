@@ -1,4 +1,4 @@
-(function(){
+// (function(){
   angular.module('iplanApp')
   .factory('HttpService', ['$http', function($http){
 
@@ -27,4 +27,4 @@
       postPlace: postPlace
     };
   }]);
-})();
+// })();

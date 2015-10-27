@@ -1,18 +1,20 @@
-(function(){
+// (function(){
   angular.module('iplanApp')
     .controller('NewEventController', ['HttpService', 'DataService', '$window', '$location', '$route', '$routeParams', NewEventController])
     .directive('newEventDir', newEventDir);
 
     function NewEventController(HttpService, DataService, $window, $location, $route, $routeParams){
       var self = this;
-      self.eventName;
+      self.eventName; // tied to input box
       self.currentUser = DataService.currentUser;
+
       self.postEvent = function(){
         // if(store.get('profile')){
           HttpService.postEvent({name: self.eventName, user_id: self.currentUser.id})
           .then(function(response){
             DataService.setCurrentEvent(response.data);
             $location.path('/events/' + response.data.id);
+            $window.location.reload();
             console.log('success response: ', response.data);
           })
           .catch(function(err){
@@ -34,4 +36,4 @@
         bindToController: true
       }
     }
-})();
+// })();

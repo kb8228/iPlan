@@ -1,4 +1,4 @@
-(function(){
+// (function(){
   angular.module('iplanApp')
   .controller('UserController', ['auth', UserController]);
 
@@ -6,4 +6,4 @@
     var self = this;
     self.auth = auth;
   }
-})();
+// })();

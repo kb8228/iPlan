@@ -1,4 +1,4 @@
-(function(){
+// (function(){
   angular.module('iplanApp')
   .factory('DataService', function(){
 
@@ -33,4 +33,4 @@
       getCurrentUser: getCurrentUser
     };
   });
-})();
+// })();
