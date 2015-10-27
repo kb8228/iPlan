@@ -5,7 +5,6 @@ function LoginController($http, auth, store, $location, DataService, HttpService
   var self = this;
   self.hasToken = false;
 
-
   self.login = function () {
     auth.signin({}, function (profile, token) {
       // success callback
@@ -31,7 +30,9 @@ function LoginController($http, auth, store, $location, DataService, HttpService
       });
 
       $location.path('/');
-
+      $window.setTimeout(function(){
+        $window.location.reload();
+      }, 1000)
     });
 
   };
