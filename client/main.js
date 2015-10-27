@@ -1,4 +1,4 @@
-// (function(){
+(function(){
   angular.module('iplanApp')
   .controller('MainController', ['HttpService', 'DataService', '$location', '$window', 'store', MainController]);
 
@@ -27,4 +27,4 @@
     //   return self.currentEvent;
     // }
   }
-// })();
+})();

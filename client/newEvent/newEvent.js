@@ -1,4 +1,4 @@
-// (function(){
+(function(){
   angular.module('iplanApp')
     .controller('NewEventController', ['HttpService', 'DataService', '$window', '$location', '$route', '$routeParams', NewEventController])
     .directive('newEventDir', newEventDir);
@@ -36,4 +36,4 @@
         bindToController: true
       }
     }
-// })();
+})();
