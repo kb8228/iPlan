@@ -4,43 +4,54 @@
 
   function LoginController($http, auth, store, $location, DataService, HttpService, $window) {
     var self = this;
+    self.user = DataService.currentUser;
     self.hasToken = false;
 
     self.login = function () {
       auth.signin({}, function (profile, token) {
+        store.set('profile', profile);
+        store.set('token', token);
+        self.hasToken = true;
         // success callback
         HttpService.getUser(profile.identities[0].user_id)
         .then(function(response){
           if(!response.data){
             console.log(response);
-            HttpService.postUser({
+            var user = {
               facebook_id: profile.identities[0].user_id,
               name: profile.name,
               email: profile.email
-            })
-            store.set('profile', profile);
-            store.set('token', token);
-          } else {
-            store.set('profile', profile);
-            store.set('token', token);
+            }
+            return HttpService.postUser(user);
           }
-        }).catch(function(err){
+          return response.data;
+        })
+        .then(function(user){
+          DataService.setCurrentUser(user);
+        })
+        .catch(function(err){
           if(err){
             console.log('error: ', err);
           }
         });
 
         $location.path('/');
-        $window.setTimeout(function(){
-          $window.location.reload();
-        }, 1000)
+        $location.replace();
+        // $window.setTimeout(function(){
+        //   $window.location.reload();
+        // }, 1000)
       });
 
     };
 
     self.checkLogin = function(){
-      if(store.get('profile')){
+      var profile = store.get('profile');
+      if(profile){
         self.hasToken = true;
+        HttpService.getUser(profile.identities[0].user_id)
+        .then(function(response){
+          DataService.setCurrentUser(response.data);
+        });
       }
     };
 

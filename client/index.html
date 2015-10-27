@@ -9,20 +9,16 @@
 <body>
 
 <div ng-controller="LoginController as loginCtrl">
-  <input ng-hide="loginCtrl.hasToken" type="submit" ng-click="loginCtrl.login()" />
+  <span ng-show="loginCtrl.hasToken" ng-cloak>Hello, {{loginCtrl.user.name}}</span>
+  <input ng-hide="loginCtrl.hasToken" type="submit" ng-click="loginCtrl.login()" value="Log in"/>
   <input ng-show="loginCtrl.hasToken" type="submit" ng-click="loginCtrl.logout()" value="Log out" />
 </div>
 
-<div ng-controller="MainController as mainCtrl">
-  <form name="eventForm" ng-submit="mainCtrl.postEvent(eventForm.$valid)" novalidate>
-    <input type="text" ng-model="mainCtrl.eventName" required>
-    <button type="submit" ng-disabled="eventForm.$invalid">Add new event!</button>
-  </form>
-</div>
-
+<new-event-dir></new-event-dir>
 <event-view-dir></event-view-dir>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
 
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
 <!-- ANGULAR -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
@@ -44,6 +40,6 @@
 <script src="./loginController.js"></script>
 <script src="./services/httpService.js"></script>
 <script src="./services/dataService.js"></script>
-<script src="./eventView/eventView.js"></script>
+<script src="./newEvent/newEvent.js"></script>
 </body>
 </html>

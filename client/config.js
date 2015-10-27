@@ -17,18 +17,15 @@
     .when('/', {
       templateUrl: 'index.html'
     })
-    .when('/events/:event_id', {
-      templateUrl: './eventView/eventView.html',
-    })
-    .when('auth/facebook', {
-      templateUrl: 'index.html',
-      redirect: false
+    .when('/events/:id', {
+      // templateUrl: './eventView/eventView.html'
+      templateUrl: 'index.html'
     })
     .otherwise({
       redirectTo: '/'
     });
   })
-  .run(function($rootScope, auth, store, jwtHelper, $location){
+  .run(function($rootScope, DataService, auth, store, jwtHelper, $location){
     auth.hookEvents();
 
     $rootScope.$on('$locationChangeStart', function() {

@@ -3,8 +3,8 @@
   .controller('MainController', ['HttpService', 'DataService', '$location', '$window', 'store', MainController]);
 
     function MainController(HttpService, DataService, $location, $window, store){
-      var self = this; // bound to input box
-      self.currentEvent = DataService.currentEvent;
+      var self = this;
+      // self.currentEvent = DataService.currentEvent;
       self.userId;
 
       var profile = store.get('profile');
@@ -22,25 +22,9 @@
         console.log('Please Login!');
       }
 
-    self.postEvent = function(){
-      if(store.get('profile')){
-        HttpService.postEvent({name: self.eventName, user_id: self.userId})
-        .then(function(response){
-          DataService.setCurrentEvent(response.data);
-          $location.path('/events/' + response.data.id);
-          $window.location.reload();
-          console.log('success response: ', response.data);
-        })
-        .catch(function(err){
-          console.log('error in posting event: ', err);
-        });
-        self.eventName = '';
-      }
-    };
-
-    self.getEvent = function(){
-      console.log('fetching curr evt fr DataService: ', self.currentEvent);
-      return self.currentEvent;
-    }
+    // self.getEvent = function(){
+    //   console.log('fetching curr evt fr DataService: ', self.currentEvent);
+    //   return self.currentEvent;
+    // }
   }
 })();

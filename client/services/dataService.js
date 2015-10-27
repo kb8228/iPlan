@@ -15,7 +15,10 @@
       return currentEvent;
     };
     var setCurrentUser = function(userData){
-      currentUser = userData;
+      for(var key in userData){
+        currentUser[key] = userData[key];
+      }
+      console.log('DataService setCurrentUser: ', currentUser);
     };
     var getCurrentUser = function(userId){
       return currentUser;
@@ -23,6 +26,7 @@
 
     return {
       currentEvent: currentEvent,
+      currentUser: currentUser,
       setCurrentEvent: setCurrentEvent,
       getCurrentEvent: getCurrentEvent,
       setCurrentUser: setCurrentUser,
