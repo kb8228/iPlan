@@ -25,12 +25,15 @@ function LoginController($http, auth, store, $location, DataService, HttpService
           store.set('token', token);
         }
       }).catch(function(err){
-        console.log('error: ', err);
-      })
+        if(err){
+          console.log('error: ', err);
+        }
+      });
 
       $location.path('/');
-      $window.location.reload();
+
     });
+
   };
 
   self.checkLogin = function(){
@@ -44,6 +47,7 @@ function LoginController($http, auth, store, $location, DataService, HttpService
     store.remove('profile');
     store.remove('token');
     self.hasToken = false;
+    $location.path('/');
     $window.location.reload();
   };
 
