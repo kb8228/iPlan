@@ -13,73 +13,64 @@
     </div>
   </div>
   
-  <!-- ADD PLACE FORM -->
-
-<!--   <div class="yelp-container">
+  <div class="event-container">
     <div class="container-padding">
+      <!-- ADD PLACE FORM -->
       <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
-      <input type="text" class="input-yelp-place" ng-model="evtCtrl.placeName" placeholder="Search Yelp" required>
+        <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
       </form>
-    </div>
-  </div> -->
-  <!-- END ADD PLACE FORM -->
-<!--     <div ng-if="evtCtrl.choices[0]">
-      <ul>
-        <li ng-repeat="choice in evtCtrl.choices">
-          <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img src="{{choice.rating_img_url}}"></span></p>
-          <button ng-click="evtCtrl.postPlace(choice)">Select</button>
-        </li>
-      </ul>
-    </div> -->
-  <!-- LIST OF PLACES -->
-  
-<div class="event-container">
-  <div class="container-padding">
-    <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
-      <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
-    </form>
+      <!-- END ADD PLACE FORM -->
 
-     <span id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
-        <div class="places-choices">
-          <span class="place-name">
-            {{place.name}}
+      <!-- LIST OF CHOICES -->
+      <div ng-if="evtCtrl.choices[0]">
+        <ul>
+          <li ng-repeat="choice in evtCtrl.choices">
+            <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img src="{{choice.rating_img_url}}"></span></p>
+            <button ng-click="evtCtrl.postPlace(choice)">Select</button>
+          </li>
+        </ul>
+      </div>
+      <!-- END LIST OF CHOICES -->
+
+      <!-- LIST OF ADDED PLACES -->
+      <div>
+        <ul class="places-choices"> <!-- ng-repeat on event's places -->
+          <li  class="place-name" id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">{{place.name}}
             <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
               <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
-                {{place.votes}}
+              {{place.votes}}
             </button>
-          </span>
-        </div>
-     </span>
+          </li>
+        </ul>
+      </div>
+      <!-- END LIST OF PLACES -->
+    </div>
+    <!-- END container-padding -->
   </div>
-</div>
+  <!-- END event-container -->
 
-<div class="email-container">
-  <div class="container-padding">
-    <div class="email-header">Invite Friends</div>
-    <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
-      <input ng-model="evtCtrl.to" class="email-to" placeholder="Email to" >
-      <textarea ng-model="evtCtrl.message" class="email-message" placeholder="Message"></textarea>
-      <button class="email-button" ng-click="evtCtrl.sendMail()">Send Email!</button>
-    </form>
+  <div class="email-container">
+    <div class="container-padding">
+      <div class="email-header">Invite Friends</div>
+      <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
+        <input ng-model="evtCtrl.to" class="email-to" placeholder="Email to" >
+        <textarea ng-model="evtCtrl.message" class="email-message" placeholder="Message"></textarea>
+        <button class="email-button" ng-click="evtCtrl.sendMail()">Send Email!</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<div class="attendee-container">
-  <div class="container-padding">
-    <div class="attend-title">Invited</div>
-    <center>
-      <div class="attend-divider"></div>
-        <div class="invited-text">Nate Lee</div>
-        <div class="invited-text">Ksenia Smith</div>
-        <div class="invited-text">Jackie Wung</div>
-        <div class="invited-text">Jeff Harrison</div>
-    </center>
+  <div class="attendee-container">
+    <div class="container-padding">
+      <div class="attend-title">Invited</div>
+      <center>
+        <div class="attend-divider"></div>
+          <div class="invited-text">Nate Lee</div>
+          <div class="invited-text">Ksenia Smith</div>
+          <div class="invited-text">Jackie Wung</div>
+          <div class="invited-text">Jeff Harrison</div>
+      </center>
+    </div>
   </div>
+
 </div>
-
-  <!-- END LIST OF PLACES -->
-
-  <!-- attendee box !-->
-
-
-<!-- </div> -->

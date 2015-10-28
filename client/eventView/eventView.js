@@ -28,31 +28,39 @@
     }
 
     self.searchYelp = function(){
-      // var nameQuery = '?term=' + self.placeName.split(' ').join('+');
-      // var locationQuery = '&location=' + self.currentEvent.location.split(' ').join('+');
-      // var limit = '&limit=5';
-      // HttpService.callYelp(nameQuery, locationQuery, limit)
-      // .then(function(response){
-      //   response.data.forEach(function(choice){
-      //     self.choices.push(choice);
-      //   });
-      // })
-      // .catch(function(err){console.log(err)});
+      var term = self.placeName.split(' ').join('+');
+      var location = self.currentEvent.location.split(' ').join('+');
+      var limit = 5;
+      HttpService.callYelp({
+        term: term,
+        location: location, 
+        limit: limit
+      })
+      .then(function(response){
+        response.data.forEach(function(choice){
+          self.choices.push(choice);
+        });
+        console.log('fr ng searchYelp: ', response.data);
+      })
+      .catch(function(err){console.log(err)});
     }
 
-    //// REWORK TO PARSE YELP RESULTS
-    // self.postPlace = function(){ // tied to form in eventView.html
-    //   var evtId = $location.path().replace('/events/', '');
-    //   HttpService.postPlace({name: self.placeName, event_id: evtId})
-    //   .then(function(response){
-    //     console.log('postPlace success response: ', response.data);
-    //     self.setEvent();
-    //   })
-    //   .catch(function(err){
-    //     console.log('error in posting place: ', err);
-    //   });
-    //   self.placeName = '';
-    // };
+    self.postPlace = function(choice){
+      HttpService.postPlace({
+        name: choice.name,
+        address: choice.location.display_address[0] + ", " + choice.location.display_address[1],
+        rating_img: choice.rating_img_url,
+        event_id: self.currentEvent.id
+      })
+      .then(function(response){
+        self.setEvent();
+      })
+      .catch(function(err){
+        console.log('error in posting place: ', err);
+      });
+      self.placeName = '';
+      self.choices = [];
+    };
 
     self.upVote = function(place) {
       if(!self.toggle[place.id]) {
