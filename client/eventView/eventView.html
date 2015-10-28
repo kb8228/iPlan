@@ -25,7 +25,7 @@
       <div ng-if="evtCtrl.choices[0]">
         <ul>
           <li ng-repeat="choice in evtCtrl.choices">
-            <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img src="{{choice.rating_img_url}}"></span></p>
+            <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img ng-src="{{choice.rating_img_url}}"></span></p>
             <button ng-click="evtCtrl.postPlace(choice)">Select</button>
           </li>
         </ul>

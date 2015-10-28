@@ -43,10 +43,6 @@
       .catch(function(err){console.log(err)});
     }
 
-<<<<<<< HEAD
-=======
-    //// REWORK TO PARSE YELP RESULTS
->>>>>>> [feat] add save place from yelp results
     self.postPlace = function(choice){
       HttpService.postPlace({
         name: choice.name,
