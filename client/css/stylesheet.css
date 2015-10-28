@@ -19,7 +19,7 @@ body {
 }
 
 .section-one{
-  background-image:url('./img/purpledesktop.png');
+  background-image:url('./img/section1.png');
   background-size:cover;
   height:600px;
   width:100%;
@@ -62,7 +62,7 @@ body {
 }
 
 .section-three-container {
-  background-image:url('./img/tables.png');
+  background-image:url('./img/section3.png');
   background-size:cover;
   height:400px;
   width:100%;
