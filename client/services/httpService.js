@@ -25,13 +25,18 @@
       return $http.post('/api/places', placeData);
     };
 
+    var sendMail = function(options){
+      return $http.post('/sendmail', options);
+    }
+
     return {
       postEvent: postEvent,
       getEvent: getEvent,
       postUser: postUser,
       getUser: getUser,
       callYelp: callYelp,
-      postPlace: postPlace
+      postPlace: postPlace,
+      sendMail: sendMail
     };
   }]);
 })();
