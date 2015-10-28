@@ -30,4 +30,11 @@
     </ul>
   </div>
   <!-- END LIST OF PLACES -->
+
+    <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
+      <input ng-model="evtCtrl.to" placeholder="Email to" >
+      <textarea ng-model="evtCtrl.message" placeholder="Message"></textarea>
+      <button ng-click="evtCtrl.sendMail()">Click me!</button>
+    </form>
+
 </div>

@@ -1,13 +1,13 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', EventViewController])
+  .controller('EventViewController', ['HttpService', 'DataService', '$http', '$location', '$route', '$routeParams', EventViewController])
   .directive('eventViewDir', eventViewDir);
 
-  function EventViewController(HttpService, DataService, $location, $route, $routeParams){ // inject http service, EventService factory
+  function EventViewController(HttpService, DataService, $http, $location, $route, $routeParams){ // inject http service, EventService factory
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
-    self.choices = []; // 
+    self.choices = []; //
     self.currentEvent = DataService.currentEvent;
     console.log('currentEvent fr eventCtrl: ', self.currentEvent);
 
@@ -68,6 +68,21 @@
       }
       self.setEvent();
     }
+
+    self.sendMail = function(){
+      var newMail = {
+        to: self.to,
+        subject: 'You got an invite from iPlan',
+        message: self.message
+      };
+
+      $http.post('/sendmail', newMail)
+        .success(function(newMail, status, headers, config){
+          console.log('this is new mail from eventview ', newMail);
+          console.log('clicked');
+        });
+    };
+
     self.setEvent();
   };
 
