@@ -24,20 +24,22 @@
 
       <!-- LIST OF CHOICES -->
       <div ng-if="evtCtrl.choices[0]">
-        <div ng-repeat="choice in evtCtrl.choices">
-          <div class="yelp-results">
-              <span class="yelp-float-left">
-                <B>{{choice.name}}</B>
+        <div class="yelp-div">
+           <div ng-repeat="choice in evtCtrl.choices">
+            <button class="yelp-results" ng-click="evtCtrl.postPlace(choice)">
+              <ul class="yelp-float-left">
+                <B>{{choice.name}}</B><BR>
                 {{choice.location.display_address[0]}}
                 {{choice.location.display_address[1]}} 
-              </span>
-              <span class="yelp-float-right">
-                <button ng-click="evtCtrl.postPlace(choice)">Select</button>
+              </ul>
+              <ul class="yelp-float-right">
                 <span><img ng-src="{{choice.rating_img_url}}"></span>
-              </span>
+              </ul>
+             </button>
           </div>
         </div>
-      </div>
+      </div> 
+
       <!-- END LIST OF CHOICES -->
 
       <!-- LIST OF ADDED PLACES -->

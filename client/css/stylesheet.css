@@ -157,6 +157,15 @@ body {
   z-index:2;
 }
 
+.yelp-button {
+  background-color:#00cbb5;
+  color: white;
+  margin-bottom:2%;
+  padding: 4px 7px 4px 7px;
+  border:none;
+  float:right;
+}
+
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
@@ -413,16 +422,32 @@ body {
 }
 
 .yelp-float-left {
+  float:left;
   text-align:left;
-  display:inline-block;
 }
 
 .yelp-float-right {
+  float:right;
   text-align:right;
-  display:inline-block;
 }
 
 .yelp-results {
   display:inline-block;
   width:100%;
+  margin:0;
+  background-color:#eee;
+  position:relative;
+  border:none;
+}
+
+.yelp-results:hover {
+  background-color:#bbc3df;
+}
+
+.yelp-div {
+  width:90%;
+  position:absolute;
+  background-color:#eee;
+  z-index:1;
+  margin-top:-14px;
 }
