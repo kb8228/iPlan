@@ -320,3 +320,7 @@ body {
   display:inline-block;
   width:8%;
 }
+
+.event-info {
+  padding-bottom: 1%;
+}

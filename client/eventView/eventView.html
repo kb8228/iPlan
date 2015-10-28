@@ -1,15 +1,20 @@
 <div ng-if="evtCtrl.currentEvent.name">
-
   <!-- CURRENT EVENT INFO -->
-  <div>{{evtCtrl.currentEvent.name}} - {{evtCtrl.currentEvent.date | date:'mediumDate'}} - {{evtCtrl.currentEvent.location}}</div>
+  <div class="event-info">{{evtCtrl.currentEvent.name}} - {{evtCtrl.currentEvent.date | date:'mediumDate'}} - {{evtCtrl.currentEvent.location}}</div>
+  
+  <div class="event-container">
+    <div class="container-padding">
 
   <!-- ADD PLACE FORM -->
+
   <div>
     <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
       <input type="text" ng-model="evtCtrl.placeName" required>
       <button type="submit" ng-disabled="placeForm.$invalid">Find places!</button>
     </form>
   </div>
+
+
   <!-- END ADD PLACE FORM -->
   <div ng-if="evtCtrl.choices[0]">
     <ul>
@@ -37,5 +42,10 @@
       <textarea ng-model="evtCtrl.message" placeholder="Message"></textarea>
       <button ng-click="evtCtrl.sendMail()">Click me!</button>
     </form>
+
+    </div>
+  </div>
+  <!-- attendee box !-->
+
 
 </div>
