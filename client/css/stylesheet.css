@@ -285,6 +285,15 @@ body {
   z-index:1;
 }
 
+.input-yelp-place {
+  background-color: #eee;
+  height:2.5em;
+  width:100%;
+  border-radius:0px;
+  border:none;
+  z-index:1;
+}
+
 ::-webkit-input-placeholder {
   padding-left:10px;
   color:#829f9b;
@@ -292,6 +301,10 @@ body {
 
 :-ms-input-placeholder {  
    color:#829f9b; 
+}
+
+.container-space {
+  padding-bottom:3%;
 }
 
 .places-choices{

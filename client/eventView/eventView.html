@@ -13,34 +13,46 @@
   </div>
   
   <!-- ADD PLACE FORM -->
-  <div class="yelp-container">
+
+<!--   <div class="yelp-container">
     <div class="container-padding">
       <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
-      <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="Search Yelp" required>
+      <input type="text" class="input-yelp-place" ng-model="evtCtrl.placeName" placeholder="Search Yelp" required>
       </form>
     </div>
-  </div>
+  </div> -->
+
 
   <!-- END ADD PLACE FORM -->
-  <!-- <div ng-if="evtCtrl.choices[0]">
-    <ul>
-      <li ng-repeat="choice in evtCtrl.choices">
-        <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img src="{{choice.rating_img_url}}"></span></p>
-        <button ng-click="evtCtrl.postPlace(choice)">Select</button>
-      </li>
-    </ul>
-  </div> -->
+<!--     <div ng-if="evtCtrl.choices[0]">
+      <ul>
+        <li ng-repeat="choice in evtCtrl.choices">
+          <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img src="{{choice.rating_img_url}}"></span></p>
+          <button ng-click="evtCtrl.postPlace(choice)">Select</button>
+        </li>
+      </ul>
+    </div> -->
   <!-- LIST OF PLACES -->
-  <!-- <div>
-    <ul> 
-      <li id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">{{place.name}}
-        <button ng-click="evtCtrl.upVote(place)">
-          <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
-          {{place.votes}}
-        </button>
-      </li>
-    </ul>
-  </div> -->
+
+<div class="event-container">
+  <div class="container-padding">
+    <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
+      <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
+    </form>
+
+     <span id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
+        <div class="places-choices">
+          <span class="place-name">
+          {{place.name}}
+            <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
+              <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
+            {{place.votes}}
+            </button>
+          </span>
+        </div>
+     </span>
+  </div>
+</div>
 
   <!-- END LIST OF PLACES -->
 <!-- 
@@ -55,4 +67,4 @@
   <!-- attendee box !-->
 
 
-</div>
+<!-- </div> -->
