@@ -241,9 +241,10 @@ body {
 }
 
 .attendee-container {
+  margin-top:25.5%;
   background-color:#fff;
   width:29.6%;
-  height:500px;
+  height:350px;
   display:inline-block;
   position:absolute;
 }
@@ -394,6 +395,7 @@ body {
 }
 
 .email-button {
+  margin-top:2%;
   width:100%;
   border:none;
   height:2em;
