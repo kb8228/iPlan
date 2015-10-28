@@ -48,6 +48,8 @@ var events = buildTable('events', function(table){
 var places = buildTable('places', function(table){
   table.increments('id').primary();
   table.string('name').notNullable();
+  table.string('address').notNullable();
+  table.string('rating_img');
   table.integer('votes');
   table.integer('event_id').references('events.id');
 });

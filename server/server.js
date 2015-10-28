@@ -78,7 +78,6 @@ app.post('/api/yelp', function(req, res, next){
     if(error){
       console.log('error in fetching yelp data: ', error);
     }
-    console.log('data fr yelp: ', data);
     res.json(data.businesses);
   });
 })
