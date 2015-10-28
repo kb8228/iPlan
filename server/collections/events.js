@@ -12,7 +12,7 @@ var Events = db.Collection.extend({
     .query(function(qb){
       qb.where('user_id', '=', userId);
     })
-    .fetch({require: false, withRelated: ['users']});
+    .fetch();
   }
 });
 
