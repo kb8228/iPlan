@@ -4,15 +4,6 @@ var http = require('http');
 var Promise = require('bluebird');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport('SMTP', {
-  service: 'Gmail',
-  auth: {
-    user: 'testingiplan@gmail.com',
-    pass: 'this is a test'
-  }
-  });
-
 var app = express();
 
 require('./models/event');
@@ -79,20 +70,6 @@ app.get('/api/users/:facebook_id', function(req, res, next){
     res.json(user);
   });
 });
-
-var newMail = {
-        from: 'billy.so.silly@gmail.com',
-        to: 'billy.so.silly@gmail.com',
-        subject: 'hello',
-        text: 'test test test test test test'
-      };
-
-app.post('/sendmail', function(req, res, next){
-  transporter.sendMail(newMail, function(err){
-    console.log(err);
-  });
-  res.json(newMail);
-})
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');
