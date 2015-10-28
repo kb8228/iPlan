@@ -9,7 +9,6 @@
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
-    console.log('currentEvent fr eventCtrl: ', self.currentEvent);
 
     self.setEvent = function(){
       var evtId = $location.path().replace('/events/', '');
@@ -40,11 +39,14 @@
         response.data.forEach(function(choice){
           self.choices.push(choice);
         });
-        console.log('fr ng searchYelp: ', response.data);
       })
       .catch(function(err){console.log(err)});
     }
 
+<<<<<<< HEAD
+=======
+    //// REWORK TO PARSE YELP RESULTS
+>>>>>>> [feat] add save place from yelp results
     self.postPlace = function(choice){
       HttpService.postPlace({
         name: choice.name,
