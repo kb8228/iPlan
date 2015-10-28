@@ -83,11 +83,9 @@ app.get('/api/events/user/:userId', function(req, res, next){
   var userId = req.params.userId;
   db.collection('Events').fetchByUser(userId)
   .then(function(events){
-    console.log(events.models[0].attributes);
+    res.json(events);
   })
-  .then(function(event){
-    res.json(event);
-  });
+
 });
 
 app.post('/sendmail', function(req, res, next){
