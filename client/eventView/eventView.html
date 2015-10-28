@@ -1,6 +1,16 @@
 <div ng-if="evtCtrl.currentEvent.name">
   <!-- CURRENT EVENT INFO -->
-  <div class="event-info">{{evtCtrl.currentEvent.name}} - {{evtCtrl.currentEvent.date | date:'mediumDate'}} - {{evtCtrl.currentEvent.location}}</div>
+  <div class="event-info">
+    <div class="event-name">
+      {{evtCtrl.currentEvent.name}}
+    </div>
+    <div class="event-location">
+      <i class="fa fa-map-pin"></i>
+        {{evtCtrl.currentEvent.location}}
+      <span class="location-time-space"></span>
+      {{evtCtrl.currentEvent.date | date:'mediumDate'}} 
+    </div>
+  </div>
   
   <div class="event-container">
     <div class="container-padding">

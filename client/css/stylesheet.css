@@ -324,3 +324,16 @@ body {
 .event-info {
   padding-bottom: 1%;
 }
+
+.event-name {
+  font-size:25pt;
+}
+
+.event-location {
+  color:#666;
+  font-size:11pt;
+}
+
+.location-time-space {
+  padding-right:0.5%;
+}
