@@ -11,10 +11,10 @@
 </head>
 <body>
 
-<div ng-controller="LoginController as loginCtrl">
-  <div ng-if="!loginCtrl.hasToken">
-   <div class="absolute-top">
-      <div class="section-one">
+<div ng-controller="LoginController as loginCtrl" ng-cloak>
+  <div ng-if="!loginCtrl.hasToken" ng-cloak>
+   <div class="absolute-top" ng-cloak>
+      <div class="section-one" ng-cloak>
           <div class="top-space"></div>
           <div class="logo-header">
             <div class="logo-green-i">i</div>Plan
@@ -28,7 +28,7 @@
 
     <div class="section-two-one"></div>
 
-    <div class="section-two">
+    <div class="section-two" ng-cloak>
       <div class="section-two-container">
         <div class="section-two-main-text">
           Create. Find. Share.
@@ -41,7 +41,7 @@
 
     <div class="section-two-three"></div>
 
-    <div class="section-three-container">
+    <div class="section-three-container" ng-cloak>
       <div class="section-three-top">
         <div class="section-three-main-text">
         </div>
@@ -50,13 +50,13 @@
   </div>
 </div>
 
- <div ng-controller="LoginController as loginCtrl">
-  <div ng-if="loginCtrl.hasToken">
 
-<div class="body">
+<!-- if user has a token, display a different view !-->
+ <div ng-controller="LoginController as loginCtrl" ng-cloak>
+  <div ng-if="loginCtrl.hasToken" ng-cloak>
+      <div class="body">
   <div class="row">
     <div class="leftbar">
-    <!-- will need an ng-repeat of the events !-->
       <div class="left-title"><div class="green-i">i</div>Plan</div>
       <div class="left-links">Ksenia Party </div>
       <div class="left-links"> Nate Party </div>
@@ -65,26 +65,27 @@
       <div class="left-links"> BABABASDSAD </div>
     </div>
 
-    <div class="left-padding">
-      <div class="main-container">
-        <div class="top-header">
-            <div class="header-message" ng-cloak>
-              Hello, {{loginCtrl.user.name}}!
-            </div>
-              <button class="nav-button" ng-click="loginCtrl.logout()" type="submit"> Log Out </button>
-              <button class="nav-button"> New Event </button> 
+<div class="left-padding">
+  <div class="main-container">
+    <div class="top-header">
+        <div class="header-message">
+          Welcome Friends!
         </div>
-      </div>
+          <button class="nav-button"> Log Out </button>
+          <button class="nav-button"> New Event </button> 
     </div>
-  </div>
 
-  <div class="bottom-container">
-<!--     <new-event-dir></new-event-dir> -->
+    <div class="bottom-container">
+
     <event-view-dir></event-view-dir>
-  </div>
-  </div>
+    <new-event-dir></new-event-dir>
+
 </div>
 </div>
+
+</div>
+
+
 
 
 <!-- SCRIPTS -->
