@@ -127,12 +127,11 @@ body {
   background-color:#02dac3;
 }
 
-
 .welcome {
   color:black;
   font-size:25px;
   padding-left:25px;
-  position:relative;
+/*  position:relative;*/
 }
 
 .header {
@@ -201,13 +200,12 @@ body {
   height:7%;
   width:100%;
   z-index:-2;
-  position:relative;
+/*  position:relative;*/
 }
 
 .main-container{
   height:100%;
   width:100%;
-  z-index:-2;
   position:relative;
 }
 
