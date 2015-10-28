@@ -52,11 +52,24 @@
 
  <div ng-controller="LoginController as loginCtrl">
   <div ng-if="loginCtrl.hasToken">
+
+<div class="body">
+  <div class="row">
+    <div class="leftbar">
+    <!-- will need an ng-repeat of the events !-->
+      <div class="left-title"><div class="green-i">i</div>Plan</div>
+      <div class="left-links">Ksenia Party </div>
+      <div class="left-links"> Nate Party </div>
+      <div class="left-links"> Jeff Party </div>
+      <div class="left-links"> Jackie Party </div>
+      <div class="left-links"> BABABASDSAD </div>
+    </div>
+
     <div class="left-padding">
       <div class="main-container">
         <div class="top-header">
             <div class="header-message" ng-cloak>
-              Hello, {{loginCtrl.user.name}}
+              Hello, {{loginCtrl.user.name}}!
             </div>
               <button class="nav-button" ng-click="loginCtrl.logout()" type="submit"> Log Out </button>
               <button class="nav-button"> New Event </button> 
@@ -64,10 +77,13 @@
       </div>
     </div>
   </div>
-  
-    <new-event-dir></new-event-dir>
+
+  <div class="bottom-container">
+<!--     <new-event-dir></new-event-dir> -->
     <event-view-dir></event-view-dir>
   </div>
+  </div>
+</div>
 </div>
 
 
