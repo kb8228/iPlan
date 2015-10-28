@@ -83,10 +83,7 @@ app.get('/api/events/user/:userId', function(req, res, next){
   var userId = req.params.userId;
   db.collection('Events').fetchByUser(userId)
   .then(function(events){
-    console.log(events.models[0].attributes);
-  })
-  .then(function(event){
-    res.json(event);
+    res.json(events);
   });
 });
 
