@@ -1,5 +1,6 @@
 var express = require('express');
 var db = require('./config/database');
+var yelp = require('./config/yelpSearch');
 var http = require('http');
 var Promise = require('bluebird');
 var bodyParser = require('body-parser');
@@ -78,7 +79,6 @@ app.get('/api/users/:facebook_id', function(req, res, next){
   });
 });
 
-
 app.post('/sendmail', function(req, res, next){
   var data = req.body;
   console.log(req);
@@ -91,7 +91,16 @@ app.post('/sendmail', function(req, res, next){
     console.log(err);
   });
   res.json(data);
-})
+});
+
+app.post('/api/yelp', function(req, res, next){
+  yelp.search(req.body, function(error, data) {
+    if(error){
+      console.log('error in fetching yelp data: ', error);
+    }
+    res.json(data.businesses);
+  });
+});
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');

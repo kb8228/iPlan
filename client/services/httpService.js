@@ -16,8 +16,9 @@
       return $http.get('/api/users/' + userId);
     };
 
-    var callYelp = function(term, location, limit){
+    var callYelp = function(options){
       // return results.businesses
+      return $http.post('/api/yelp', options);
     }
 
     var postPlace = function(placeData){
