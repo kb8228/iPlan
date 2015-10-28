@@ -401,3 +401,17 @@ body {
   background-color:#00cab4;
   color:#fff;
 }
+
+.new-input {
+  background-color:#fff;
+  height:2.3em;
+  border:none;
+}
+
+.add-event {
+  margin:0 auto;
+  background-color:#00cab4;
+  color:#fff;
+  border:none;
+  padding: 5px 10px 5px 10px;
+}
