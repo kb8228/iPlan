@@ -28,16 +28,21 @@
     }
 
     self.searchYelp = function(){
-      // var nameQuery = '?term=' + self.placeName.split(' ').join('+');
-      // var locationQuery = '&location=' + self.currentEvent.location.split(' ').join('+');
-      // var limit = '&limit=5';
-      // HttpService.callYelp(nameQuery, locationQuery, limit)
-      // .then(function(response){
-      //   response.data.forEach(function(choice){
-      //     self.choices.push(choice);
-      //   });
-      // })
-      // .catch(function(err){console.log(err)});
+      var term = self.placeName.split(' ').join('+');
+      var location = self.currentEvent.location.split(' ').join('+');
+      var limit = 5;
+      HttpService.callYelp({
+        term: term,
+        location: location, 
+        limit: limit
+      })
+      .then(function(response){
+        response.data.forEach(function(choice){
+          self.choices.push(choice);
+        });
+        console.log('fr ng searchYelp: ', response.data);
+      })
+      .catch(function(err){console.log(err)});
     }
 
     //// REWORK TO PARSE YELP RESULTS
