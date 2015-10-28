@@ -71,5 +71,20 @@ app.get('/api/users/:facebook_id', function(req, res, next){
   });
 });
 
+
+app.post('/sendmail', function(req, res, next){
+  var data = req.body;
+  console.log(data);
+  transporter.sendMail({
+    from: data.from,
+    to: 'testingiplan@gmail.com',
+    subject: 'You got an invite from iPlan!',
+    text: data.message
+  }, function(err){
+    console.log(err);
+  });
+  res.json(newMail);
+})
+
 app.listen(process.env.PORT || 3000);
 console.log('Listening...');
