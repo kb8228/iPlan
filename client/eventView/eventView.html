@@ -4,8 +4,6 @@
   <div>{{evtCtrl.currentEvent.name}} - {{evtCtrl.currentEvent.date | date:'mediumDate'}} - {{evtCtrl.currentEvent.location}}</div>
 
   <!-- ADD PLACE FORM -->
-
-hello
   <div>
     <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
       <input type="text" ng-model="evtCtrl.placeName" required>

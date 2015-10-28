@@ -76,11 +76,13 @@
         </div>
 
     <div class="bottom-container">
+      <!-- hide the current event if newEvent is not clicked !-->
       <div ng-show="loginCtrl.getEvent">
-        <event-view-dir></event-view-dir>
-       </div>
-      <div ng-hide="loginCtrl.getEvent">
         <new-event-dir></new-event-dir>
+      </div>
+      <!-- display the newEvent page when newEvent is clicked !-->
+      <div ng-hide="loginCtrl.getEvent">
+        <event-view-dir></event-view-dir>
       </div>
     </div>
     
