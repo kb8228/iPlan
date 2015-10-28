@@ -40,6 +40,7 @@ var events = buildTable('events', function(table){
   table.increments('id').primary();
   table.string('name').notNullable();
   table.date('date');
+  table.string('location');
   table.integer('user_id').references('users.id');
 });
 
