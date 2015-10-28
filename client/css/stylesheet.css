@@ -245,7 +245,7 @@ body {
 }
 
 .header-message{
-  font-size:18pt;
+  font-size:15pt;
   display:inline-block;
   padding-top:1%;
   padding-left:2%;
@@ -322,7 +322,7 @@ body {
 }
 
 .event-info {
-  padding-bottom: 1%;
+  padding-bottom: 2%;
 }
 
 .event-name {
