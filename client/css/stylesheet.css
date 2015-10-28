@@ -220,9 +220,8 @@ body {
   padding-right:3%;
   height:100%;
   width:100%;
-  position:relative;
-  z-index:2;
   display:inline-block;
+  z-index:-2;
 }
 
 .refined-container{

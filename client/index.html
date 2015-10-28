@@ -54,31 +54,32 @@
 <!-- if user has a token, display a different view !-->
  <div ng-controller="LoginController as loginCtrl" ng-cloak>
   <div ng-if="loginCtrl.hasToken" ng-cloak>
-  <div class="body">
-    <div class="row">
-      <div class="leftbar">
-        <div class="left-title"><div class="green-i">i</div>Plan</div>
-        <div class="left-links">Ksenia Party </div>
-        <div class="left-links"> Nate Party </div>
-        <div class="left-links"> Jeff Party </div>
-        <div class="left-links"> Jackie Party </div>
-        <div class="left-links"> BABABASDSAD </div>
-      </div>
-
-  <div class="left-padding">
-    <div class="main-container">
-      <div class="top-header">
-        <div class="header-message">
-          Hello, {{loginCtrl.user.name}}!
+    <div class="body">
+      <div class="row">
+        <div class="leftbar">
+          <div class="left-title"><div class="green-i">i</div>Plan</div>
+          <div class="left-links">Ksenia Party </div>
+          <div class="left-links"> Nate Party </div>
+          <div class="left-links"> Jeff Party </div>
+          <div class="left-links"> Jackie Party </div>
+          <div class="left-links"> BABABASDSAD </div>
         </div>
-          <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
-          <button class="nav-button"> New Event </button> 
-      </div>
+
+    <div class="left-padding">
+      <div class="main-container">
+        <div class="top-header">
+          <div class="header-message">
+            Hello, {{loginCtrl.user.name}}!
+          </div>
+            <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
+            <button class="nav-button"> New Event </button> 
+        </div>
 
     <div class="bottom-container">
       <event-view-dir></event-view-dir>
       <new-event-dir></new-event-dir>
     </div>
+    
   </div>
 </div>
 
