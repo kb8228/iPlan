@@ -79,6 +79,17 @@ app.get('/api/users/:facebook_id', function(req, res, next){
   });
 });
 
+app.get('/api/events/user/:userId', function(req, res, next){
+  var userId = req.params.userId;
+  db.collection('Events').fetchByUser({user_id: userId})
+  .forge(function(events){
+
+  })
+  .then(function(event){
+    res.json(events);
+  });
+});
+
 app.post('/sendmail', function(req, res, next){
   var data = req.body;
   console.log(req);
