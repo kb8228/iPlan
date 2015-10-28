@@ -411,3 +411,18 @@ body {
   border:none;
   padding: 5px 10px 5px 10px;
 }
+
+.yelp-float-left {
+  text-align:left;
+  display:inline-block;
+}
+
+.yelp-float-right {
+  text-align:right;
+  display:inline-block;
+}
+
+.yelp-results {
+  display:inline-block;
+  width:100%;
+}
