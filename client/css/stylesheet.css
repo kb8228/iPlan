@@ -337,3 +337,14 @@ body {
 .location-time-space {
   padding-right:0.5%;
 }
+
+.yelp-container {
+  height:100px;
+  background-color:#fff;
+  width:65%;
+  display:inline-block;
+}
+
+.yelp-padding {
+  padding: 5% 5% 5% 5%;
+}

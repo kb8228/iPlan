@@ -12,31 +12,27 @@
     </div>
   </div>
   
-  <div class="event-container">
-    <div class="container-padding">
-
   <!-- ADD PLACE FORM -->
-
-  <div>
-    <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
-      <input type="text" ng-model="evtCtrl.placeName" required>
-      <button type="submit" ng-disabled="placeForm.$invalid">Find places!</button>
-    </form>
+  <div class="yelp-container">
+    <div class="container-padding">
+      <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
+      <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="Search Yelp" required>
+      </form>
+    </div>
   </div>
 
-
   <!-- END ADD PLACE FORM -->
-  <div ng-if="evtCtrl.choices[0]">
+  <!-- <div ng-if="evtCtrl.choices[0]">
     <ul>
       <li ng-repeat="choice in evtCtrl.choices">
         <p>{{choice.name}} - {{choice.location.display_address[0]}}, {{choice.location.display_address[1]}} <span><img src="{{choice.rating_img_url}}"></span></p>
         <button ng-click="evtCtrl.postPlace(choice)">Select</button>
       </li>
     </ul>
-  </div>
+  </div> -->
   <!-- LIST OF PLACES -->
-  <div>
-    <ul> <!-- ng-repeat on event's places -->
+  <!-- <div>
+    <ul> 
       <li id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">{{place.name}}
         <button ng-click="evtCtrl.upVote(place)">
           <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
@@ -44,9 +40,10 @@
         </button>
       </li>
     </ul>
-  </div>
-  <!-- END LIST OF PLACES -->
+  </div> -->
 
+  <!-- END LIST OF PLACES -->
+<!-- 
     <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
       <input ng-model="evtCtrl.to" placeholder="Email to" >
       <textarea ng-model="evtCtrl.message" placeholder="Message"></textarea>
@@ -54,7 +51,7 @@
     </form>
 
     </div>
-  </div>
+  </div> -->
   <!-- attendee box !-->
 
 
