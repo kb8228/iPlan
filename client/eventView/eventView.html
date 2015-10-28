@@ -1,5 +1,7 @@
 <div ng-if="evtCtrl.currentEvent.name">
   <!-- CURRENT EVENT INFO -->
+
+
   <div class="event-info">
     <div class="event-name">
       {{evtCtrl.currentEvent.name}}
@@ -21,8 +23,6 @@
       </form>
     </div>
   </div> -->
-
-
   <!-- END ADD PLACE FORM -->
 <!--     <div ng-if="evtCtrl.choices[0]">
       <ul>
@@ -33,7 +33,6 @@
       </ul>
     </div> -->
   <!-- LIST OF PLACES -->
-
 <div class="event-container">
   <div class="container-padding">
     <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
@@ -43,10 +42,10 @@
      <span id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
         <div class="places-choices">
           <span class="place-name">
-          {{place.name}}
+            {{place.name}}
             <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
               <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
-            {{place.votes}}
+                {{place.votes}}
             </button>
           </span>
         </div>
@@ -54,16 +53,19 @@
   </div>
 </div>
 
-  <!-- END LIST OF PLACES -->
-<!-- 
+<div class="email-container">
+  <div class="container-padding">
+    <div class="email-header">Invite Friends</div>
     <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
-      <input ng-model="evtCtrl.to" placeholder="Email to" >
-      <textarea ng-model="evtCtrl.message" placeholder="Message"></textarea>
-      <button ng-click="evtCtrl.sendMail()">Click me!</button>
+      <input ng-model="evtCtrl.to" class="email-to" placeholder="Email to" >
+      <textarea ng-model="evtCtrl.message" class="email-message" placeholder="Message"></textarea>
+      <button class="email-button" ng-click="evtCtrl.sendMail()">Send Email!</button>
     </form>
+  </div>
+</div>
 
-    </div>
-  </div> -->
+  <!-- END LIST OF PLACES -->
+
   <!-- attendee box !-->
 
 
