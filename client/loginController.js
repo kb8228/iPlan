@@ -6,6 +6,7 @@
     var self = this;
     self.user = DataService.currentUser;
     self.hasToken = false;
+    self.getEvent = false;
 
     self.login = function () {
       auth.signin({}, function (profile, token) {
@@ -63,6 +64,14 @@
       $location.path('/');
       $window.location.reload();
     };
+
+    self.showEvent = function() {
+      if(!self.getEvent) {
+        self.getEvent = true;
+      } else {
+        self.getEvent = false;
+      }
+    }
 
     self.checkLogin();
   }

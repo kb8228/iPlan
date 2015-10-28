@@ -72,12 +72,16 @@
             Hello, {{loginCtrl.user.name}}!
           </div>
             <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
-            <button class="nav-button"> New Event </button> 
+            <button class="nav-button" ng-click="loginCtrl.showEvent()"> New Event </button> 
         </div>
 
     <div class="bottom-container">
-      <event-view-dir></event-view-dir>
-      <new-event-dir></new-event-dir>
+      <div ng-show="loginCtrl.getEvent">
+        <event-view-dir></event-view-dir>
+       </div>
+      <div ng-hide="loginCtrl.getEvent">
+        <new-event-dir></new-event-dir>
+      </div>
     </div>
     
   </div>
