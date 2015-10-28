@@ -2,7 +2,7 @@ var Promise = require('bluebird');
 
 var knex = require('knex')({
   client: process.env.dbClient || 'postgres',
-  connection: {
+  connection: process.env.DATABASE_URL {
     host     : process.env.dbHost || 'localhost',
     user     : process.env.dbUser || 'root',
     password : process.env.dbPassword || '',
