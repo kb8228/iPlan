@@ -15,6 +15,11 @@
     var getUser = function(userId){
       return $http.get('/api/users/' + userId);
     };
+
+    var callYelp = function(term, location, limit){
+      // return results.businesses
+    }
+
     var postPlace = function(placeData){
       return $http.post('/api/places', placeData);
     };
@@ -24,6 +29,7 @@
       getEvent: getEvent,
       postUser: postUser,
       getUser: getUser,
+      callYelp: callYelp,
       postPlace: postPlace
     };
   }]);

@@ -7,6 +7,7 @@
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
+    self.choices = []; // 
     self.currentEvent = DataService.currentEvent;
     console.log('currentEvent fr eventCtrl: ', self.currentEvent);
 
@@ -26,18 +27,32 @@
       });
     }
 
-    self.postPlace = function(){ // tied to form in eventView.html
-      var evtId = $location.path().replace('/events/', '');
-      HttpService.postPlace({name: self.placeName, event_id: evtId})
-      .then(function(response){
-        console.log('postPlace success response: ', response.data);
-        self.setEvent();
-      })
-      .catch(function(err){
-        console.log('error in posting place: ', err);
-      });
-      self.placeName = '';
-    };
+    self.searchYelp = function(){
+      // var nameQuery = '?term=' + self.placeName.split(' ').join('+');
+      // var locationQuery = '&location=' + self.currentEvent.location.split(' ').join('+');
+      // var limit = '&limit=5';
+      // HttpService.callYelp(nameQuery, locationQuery, limit)
+      // .then(function(response){
+      //   response.data.forEach(function(choice){
+      //     self.choices.push(choice);
+      //   });
+      // })
+      // .catch(function(err){console.log(err)});
+    }
+
+    //// REWORK TO PARSE YELP RESULTS
+    // self.postPlace = function(){ // tied to form in eventView.html
+    //   var evtId = $location.path().replace('/events/', '');
+    //   HttpService.postPlace({name: self.placeName, event_id: evtId})
+    //   .then(function(response){
+    //     console.log('postPlace success response: ', response.data);
+    //     self.setEvent();
+    //   })
+    //   .catch(function(err){
+    //     console.log('error in posting place: ', err);
+    //   });
+    //   self.placeName = '';
+    // };
 
     self.upVote = function(place) {
       if(!self.toggle[place.id]) {
