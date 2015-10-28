@@ -1,4 +1,5 @@
 <div ng-if="evtCtrl.currentEvent.name">
+  <div>{{evtCtrl.currentEvent.name}} - {{evtCtrl.currentEvent.date | date:'mediumDate'}} - {{evtCtrl.currentEvent.location}}</div>
   <div>
     <form name="placeForm" ng-submit="evtCtrl.postPlace(placeForm.$valid)" novalidate>
       <input type="text" ng-model="evtCtrl.placeName" required>

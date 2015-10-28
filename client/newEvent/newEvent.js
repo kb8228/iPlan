@@ -6,11 +6,18 @@
     function NewEventController(HttpService, DataService, $window, $location, $route, $routeParams){
       var self = this;
       self.eventName; // tied to input box
+      self.date; // tied to input box
+      self.location; // tied to input box
       self.currentUser = DataService.currentUser;
 
       self.postEvent = function(){
         // if(store.get('profile')){
-          HttpService.postEvent({name: self.eventName, user_id: self.currentUser.id})
+          HttpService.postEvent({
+            name: self.eventName,
+            date: self.date,
+            location: self.location,
+            user_id: self.currentUser.id
+          })
           .then(function(response){
             DataService.setCurrentEvent(response.data);
             $location.path('/events/' + response.data.id);
