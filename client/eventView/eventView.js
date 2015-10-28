@@ -81,8 +81,9 @@
           console.log('this is new mail from eventview ', newMail);
           console.log('clicked');
         });
+    self.message = ''
+    self.to = ''
     };
-
     self.setEvent();
   };
 

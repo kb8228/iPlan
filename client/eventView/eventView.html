@@ -1,7 +1,6 @@
 <div ng-if="evtCtrl.currentEvent.name">
   <!-- CURRENT EVENT INFO -->
 
-
   <div class="event-info">
     <div class="event-name">
       {{evtCtrl.currentEvent.name}}
@@ -33,6 +32,7 @@
       </ul>
     </div> -->
   <!-- LIST OF PLACES -->
+  
 <div class="event-container">
   <div class="container-padding">
     <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
