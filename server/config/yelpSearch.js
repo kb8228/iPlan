@@ -5,7 +5,4 @@ var yelp = require("yelp").createClient({
   token_secret: "k9yVitpk7H0_JvQI1gYyuts6XT4"
 });
 
-// See http://www.yelp.com/developers/documentation/v2/search_api 
-
-
 module.exports = yelp;
