@@ -1,4 +1,4 @@
-(function(){  
+(function(){
   angular.module('iplanApp')
   .controller('LoginController', ['$http', 'auth', 'store', '$location', 'DataService', 'HttpService', '$window', LoginController]);
 
@@ -37,7 +37,7 @@
         });
 
         $location.path('/');
-        $location.replace();
+        $window.location.reload();
         // $window.setTimeout(function(){
         //   $window.location.reload();
         // }, 1000)
