@@ -12,6 +12,24 @@
     self.currentUser = DataService.currentUser;
     self.currentGuest = DataService.currentGuest;
     self.evtId = $location.path().replace('/events/', '');
+    self.hidePlace = false;
+
+    self.showPlace = function(place) {
+      if(self.lastChosen === place) {
+        if(!self.hidePlace) {
+          self.hidePlace = true;
+        } else {
+          self.hidePlace = false;
+        }
+      } else {
+        self.hidePlace = true;
+      }
+
+      self.selectedAddress = place.address;
+      self.selectedRating = place.rating_img
+      self.lastChosen = place;
+      console.log(place, ' is the place you selected')
+    }
 
     self.setEvent = function(){
       HttpService.getEvent(self.evtId)

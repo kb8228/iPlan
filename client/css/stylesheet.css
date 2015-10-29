@@ -11,7 +11,7 @@ button:hover {
 .body {
   height:100%;
   width:100%;
-  z-index:-1;
+  position:absolute;
 }
 
 .absolute-top {
@@ -19,6 +19,19 @@ button:hover {
   top:0;
   height:100%;
   width:100%;
+}
+
+.sign-up {
+  float:right;
+  color:#fff;
+  top:0;
+  border-radius:10px;
+  border-color:#fff;
+  background-color:transparent;
+  border-width:1px;
+  margin-top:1%;
+  margin-right:1%;
+  padding:5px 18px 5px 18px;
 }
 
 .section-one{
@@ -173,7 +186,7 @@ button:hover {
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
-  height:100%;
+  height:800px;
   width:15%;
   left:0;
   z-index: 1;
@@ -274,9 +287,10 @@ button:hover {
 
 .attendee-container {
   margin-top:330px;
+  margin-bottom:50px;
   background-color:#fff;
   width:29.6%;
-  height:350px;
+  height:270px;
   display:inline-block;
   position:absolute;
 }
@@ -352,6 +366,11 @@ button:hover {
   padding-bottom:3%;
 }
 
+.place-details {
+  margin-left:5px;
+  color:#999;
+}
+
 .places-choices{
   background-color:#f5f6f5;
   height:2.5em;
@@ -362,6 +381,7 @@ button:hover {
   padding-top:8px;
   padding-left:8px;
   margin-bottom:2.5%;
+  z-index:0;
 }
 
 .upvote-button{
@@ -472,9 +492,11 @@ button:hover {
   display:inline-block;
   width:100%;
   margin:0;
-  background-color:#eee;
+  color:#fff;
+  background-color:#666;
   position:relative;
   border:none;
+  z-index:2;
 }
 
 .yelp-results:hover {
@@ -484,7 +506,7 @@ button:hover {
 .yelp-div {
   width:90%;
   position:absolute;
-  background-color:#eee;
+  background-color:#ccc;
   z-index:1;
   margin-top:-14px;
 }
