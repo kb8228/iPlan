@@ -14,6 +14,14 @@ button:hover {
   position:absolute;
 }
 
+.mac-mock {
+  height: 55%;
+  width:55%;
+  position:relative;
+  z-index:1;
+  top:375px;
+}
+
 .absolute-top {
   position:absolute;
   top:0;
@@ -37,7 +45,7 @@ button:hover {
 .section-one{
   background-image:url('./img/section1.png');
   background-size:cover;
-  height:600px;
+  height:800px;
   width:100%;
   background-position: 60% 40%;
   top:0;
@@ -47,7 +55,7 @@ button:hover {
 }
 
 .section-two-one {
-  padding-bottom:600px;
+  padding-bottom:200px;
   position:relative;
   z-index:-1;
 }
@@ -57,24 +65,26 @@ button:hover {
   height:400px;
   width:100%;
   position:relative;
-  background-color:#fff;
+  background-color:#f7f8fc;
   background-position:90% 90%;
 }
 
 .section-two-container {
   margin-left:15%;
   margin-right:15%;
-  padding-top:5%;
+  padding-top:15%;
   padding-bottom:5%;
 }
 
 .section-two-main-text{
-  font-size:26pt;
+  padding-top:2%;
+  font-size:20pt;
+  font-weight:100;
 }
 
 .section-two-description{
   font-size:23pt;
-  text-decoration:underline;
+  font-weight:100;
 }
 
 .section-three-container {
@@ -106,9 +116,9 @@ button:hover {
 }
 
 .logo-header {
-  font-size:80pt;
+  font-size:50pt;
+  font-weight:100;
   color:#fff;
-  font-weight:800;
   text-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 }
 
@@ -125,7 +135,7 @@ button:hover {
   font-size:17pt;
   color:#fff;
   margin-bottom:2%;
-  font-weight:100;
+  font-weight:50;
   letter-spacing:0.5pt;
   text-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 }
@@ -186,7 +196,7 @@ button:hover {
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
-  height:800px;
+  height:100%;
   width:15%;
   left:0;
   z-index: 1;
@@ -310,7 +320,7 @@ button:hover {
   font-size:18pt;
   color: #636ba1;
   text-align:center;
-  padding: 5% 5% 3% 5%;
+  padding: 2% 2% 2% 2%;
 }
 
 .attend-divider{
