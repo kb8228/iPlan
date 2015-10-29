@@ -45,16 +45,22 @@
       <!-- LIST OF ADDED PLACES -->
       <div>
         <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
-          <div class="places-choices"> <!-- ng-repeat on event's places -->
+          <div class="places-choices" ng-click="evtCtrl.showPlace(place)"> 
+          <!-- ng-repeat on event's places -->
           {{place.name}}
           <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
             <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
             {{place.votes}}
           </button>
+
           </div>
         </div>
+        <div ng-if="evtCtrl.hidePlace">
+          {{evtCtrl.selectedAddress}}<BR>
+        <span><img ng-src="{{evtCtrl.selectedRating}}"></span>
       </div>
       <!-- END LIST OF PLACES -->
+      </div>
     </div>
     <!-- END container-padding -->
   </div>
