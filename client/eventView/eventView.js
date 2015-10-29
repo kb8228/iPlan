@@ -1,13 +1,14 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventViewController', ['HttpService', 'DataService', '$http', '$location', '$route', '$routeParams', EventViewController])
+  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', EventViewController])
   .directive('eventViewDir', eventViewDir);
 
-  function EventViewController(HttpService, DataService, $http, $location, $route, $routeParams){ // inject http service, EventService factory
+  function EventViewController(HttpService, DataService, $location, $route, $routeParams){ // inject http service, EventService factory
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
+    self.guests = [];
     self.currentEvent = DataService.currentEvent;
     self.currentUser = DataService.currentUser;
     self.evtId = $location.path().replace('/events/', '');
@@ -39,7 +40,7 @@
         var limit = 5;
         HttpService.callYelp({
           term: term,
-          location: location, 
+          location: location,
           limit: limit
         })
         .then(function(response){
@@ -49,7 +50,7 @@
         })
         .catch(function(err){console.log(err)});
       } else {
-        self.choices = []; 
+        self.choices = [];
       }
         self.placeName = ''
     }
@@ -84,7 +85,7 @@
         return;
       }
       self.setEvent();
-    }
+    };
 
     self.sendMail = function(){
       var newMail = {
@@ -93,13 +94,25 @@
         message: self.message
       };
 
+      var temp = self.to.replace(/ /g, '').split(',');
+
+      temp.forEach(function(val, index){
+        HttpService.postGuest({email: val, event_id: self.evtId})
+        .then(function(guest){
+          self.refresh(guest.evtId);
+        })
+        .catch(function(err){
+          console.log('Error in post guest ', err);
+        });
+      });
+
       HttpService.sendMail(newMail)
         .success(function(newMail, status, headers, config){
           console.log('this is new mail from event view ', newMail);
           console.log('clicked');
         });
-    self.message = ''
-    self.to = ''
+    self.message = '';
+    self.to = '';
     };
     self.setEvent();
   };

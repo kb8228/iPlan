@@ -16,12 +16,15 @@ var Event = db.Model.extend({
   places: function(){
     return this.hasMany('Place');
   },
+  guests: function(){
+    return this.hasMany('Guest');
+  },
   user: function(){
     return this.belongsTo(User, 'users_id');
   }
 }, {
   fetchById: function(options){
-    return new this(options).fetch({withRelated: ['places']});
+    return new this(options).fetch({withRelated: ['places', 'guests']});
   },
   newEvent: function(options){
     options.code = createSha(options.name + options.id);

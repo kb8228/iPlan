@@ -90,7 +90,7 @@ app.get('/api/events/user/:userId', function(req, res, next){
 });
 
 app.post('api/guests/', function(req, res, next){
-  db.models('Guest').newGuest(req.body).save()
+  db.model('Guest').newGuest(req.body).save()
   .then(function(guest){
     res.json(guest);
   });
@@ -98,11 +98,19 @@ app.post('api/guests/', function(req, res, next){
 
 app.get('/api/guests/:id', function(req, res, next){
   var guestId = req.params.id;
-  db.models('Guest').fetchById(guestId)
+  db.model('Guest').fetchById(guestId)
   .then(function(guest){
     res.json(guest);
   })
 });
+
+app.get('/api/guests', function(req, res, next){
+  var eventId = req.params.event_id;
+  db.collection('Guests').fetchByEvent(eventId)
+  .then(function(guests){
+    res.json(guests);
+  })
+})
 
 app.post('/sendmail', function(req, res, next){
   var data = req.body;
