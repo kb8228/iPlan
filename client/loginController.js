@@ -36,7 +36,7 @@
           }
         });
 
-        $location.path('/');
+        $location.path('/events/1');
         $window.location.reload();
         // $window.setTimeout(function(){
         //   $window.location.reload();
