@@ -32,7 +32,7 @@
       var limit = 5;
       HttpService.callYelp({
         term: term,
-        location: location, 
+        location: location,
         limit: limit
       })
       .then(function(response){
@@ -82,9 +82,9 @@
         message: self.message
       };
 
-      $http.post('/sendmail', newMail)
+      HttpService.sendMail(newMail)
         .success(function(newMail, status, headers, config){
-          console.log('this is new mail from eventview ', newMail);
+          console.log('this is new mail from event view ', newMail);
           console.log('clicked');
         });
     self.message = ''
