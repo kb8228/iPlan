@@ -9,10 +9,11 @@
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
+    self.currentUser = DataService.currentUser;
+    self.evtId = $location.path().replace('/events/', '');
 
     self.setEvent = function(){
-      var evtId = $location.path().replace('/events/', '');
-      HttpService.getEvent(evtId)
+      HttpService.getEvent(self.evtId)
       .then(function(response){
         console.log('setEvent success: ', response.data);
         DataService.setCurrentEvent(response.data);
@@ -24,6 +25,11 @@
       .catch(function(err){
         console.log('err in evtCtrl setEvent: ', err);
       });
+    }
+
+    self.refresh = function(eventId){
+      self.evtId = eventId;
+      self.setEvent();
     }
 
     self.searchYelp = function(){
