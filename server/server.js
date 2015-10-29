@@ -89,6 +89,13 @@ app.get('/api/events/user/:userId', function(req, res, next){
   });
 });
 
+app.get('/api/code/:code', function(req, res, next){
+  var code = req.params.code;
+  db.model('Event').fetchById({code: code})
+  .then(function(event){
+    res.json(event);
+  })
+})
 app.post('/api/guests', function(req, res, next){
   db.model('Guest').newGuest(req.body).save()
   .then(function(guest){
@@ -103,6 +110,7 @@ app.get('/api/guests/:id', function(req, res, next){
     res.json(guest);
   })
 });
+
 
 app.get('/api/guests', function(req, res, next){
   var eventId = req.params.event_id;

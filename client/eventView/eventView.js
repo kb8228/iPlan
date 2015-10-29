@@ -10,6 +10,7 @@
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
     self.currentUser = DataService.currentUser;
+    self.currentGuest = DataService.currentGuest;
     self.evtId = $location.path().replace('/events/', '');
 
     self.setEvent = function(){
@@ -96,15 +97,18 @@
       var temp = self.to.replace(/ /g, '').split(',');
 
       temp.forEach(function(val, index){
-        console.log(val, self.currentEvent.id);
-
-        HttpService.postGuest({email: val, event_id: self.currentEvent.id})
+        HttpService.getGuest({email: val, event_id: self.currentEvent.id})
         .then(function(guest){
-          self.refresh(guest.data.event_id);
+          console.log(guest.data);
+          if(!guest.data){
+            var guest = {
+              email: val,
+              event_id: self.currentEvent.id
+            }
+            return HttpService.postGuest(guest)
+          }
+          return guest.data;
         })
-        .catch(function(err){
-          console.log('Error in post guest ', err);
-        });
       });
 
       HttpService.sendMail(newMail)
