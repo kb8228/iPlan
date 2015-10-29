@@ -11,7 +11,7 @@ button:hover {
 .body {
   height:100%;
   width:100%;
-  position:relative;
+  position:absolute;
 }
 
 .absolute-top {
@@ -186,7 +186,7 @@ button:hover {
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
-  height:100%;
+  height:800px;
   width:15%;
   left:0;
   z-index: 1;
@@ -368,12 +368,13 @@ button:hover {
 
 .place-details {
   position:relative;
-  height:20px;
+  color:#999;
+  height:40px;
   background-color:#fff;
   top:8px;
   margin-bottom:8px;
+  padding-top:3px;
   z-index:1;
-  padding-bottom:50px;
 }
 
 .places-choices{
