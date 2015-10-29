@@ -19,7 +19,7 @@
     var callYelp = function(options){
       // return results.businesses
       return $http.post('/api/yelp', options);
-    }
+    };
 
     var postPlace = function(placeData){
       return $http.post('/api/places', placeData);
@@ -27,6 +27,14 @@
 
     var sendMail = function(options){
       return $http.post('/sendmail', options);
+    };
+
+    var postGuest = function(data){
+      return $http.post('/api/guests', data);
+    };
+
+    var getGuest = function(guestId){
+      return $http.get('/api/guests' + guestId);
     }
 
     return {
