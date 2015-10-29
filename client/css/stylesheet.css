@@ -92,17 +92,6 @@ button:hover {
   position:absolute;
 }
 
-.welcome-text {
-  margin-top:100px;
-  font-size:40pt;
-  text-align:center;
-}
-
-.welcome-description {
-  font-size:20pt;
-  text-align:center;
-}
-
 .logo-header {
   font-size:80pt;
   color:#fff;
