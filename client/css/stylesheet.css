@@ -1,8 +1,8 @@
 body {
   font-family: avenir;
   font-size:10pt;
-  /*background-color: #EEEEEE;*/
-  background-color: #FFFFFF;
+  background-color: #EEEEEE;
+  /*background-color: #FFFFFF;*/
 }
 
 button:hover {
@@ -17,7 +17,7 @@ button:hover {
   height: 100%;
   background-image: url('./img/geometric_tile.jpg');
   background-attachment: fixed;
-  opacity: 0.15;
+  opacity: 0.075;
   z-index: -10;
 }
 
@@ -521,21 +521,23 @@ button:hover {
   display:inline-block;
   width:100%;
   margin:0;
-  color:#fff;
-  background-color:#666;
+  color:#000;
+  background-color:#c5cbe2;
   position:relative;
   border:none;
+  font-weight:100;
   z-index:2;
 }
 
 .yelp-results:hover {
-  background-color:#c5cbe2;
+  background-color:#999;
+  color:#fff;
 }
 
 .yelp-div {
   width:90%;
   position:absolute;
-  background-color:#ccc;
+  background-color:#eee;
   z-index:1;
   margin-top:-14px;
 }
