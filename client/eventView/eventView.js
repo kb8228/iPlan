@@ -113,29 +113,22 @@
       };
 
       var temp = self.to.replace(/ /g, '').split(',');
-      var found = false;
-      temp.forEach(function(val, index){
-        self.currentEvent.guest.forEach(guest, index){
-          if(guest === value){
-            found = true;
-          }
-        }
-      });
 
-      if(!found){
-        var guest = {
+      temp.forEach(function(val, index){
+        var found = false;
+        var newGuest = {
           email: val,
           event_id: self.currentEvent.id
-        }
-        return HttpService.postGuest(guest);
-      HttpService.sendMail(newMail)
-        .success(function(newMail, status, headers, config){
+        };
+        HttpService.sendMail(newMail)
+          .success(function(newMail, status, headers, config){
+        });
+        return HttpService.postGuest(newGuest);
       });
-      }
 
     self.message = '';
     self.to = '';
-
+    self.refresh(response.data.event_id);
     };
 
     self.setEvent();

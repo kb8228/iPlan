@@ -10,7 +10,7 @@
         {{evtCtrl.currentEvent.location}}
       <span class="location-time-space"></span>
         <i class="fa fa-calendar"></i>
-        {{evtCtrl.currentEvent.date | date:'mediumDate'}} 
+        {{evtCtrl.currentEvent.date | date:'mediumDate'}}
     </div>
   </div>
 
@@ -30,7 +30,7 @@
               <ul class="yelp-float-left">
                 <B>{{choice.name}}</B><BR>
                 {{choice.location.display_address[0]}}
-                {{choice.location.display_address[1]}} 
+                {{choice.location.display_address[1]}}
               </ul>
               <ul class="yelp-float-right">
                 <span><img ng-src="{{choice.rating_img_url}}"></span>
@@ -38,14 +38,14 @@
              </button>
           </div>
         </div>
-      </div> 
+      </div>
 
       <!-- END LIST OF CHOICES -->
 
       <!-- LIST OF ADDED PLACES -->
       <div>
         <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places track by $index| orderBy: '-votes'">
-          <div class="places-choices" ng-click="evtCtrl.showPlace(place)"> 
+          <div class="places-choices" ng-click="evtCtrl.showPlace(place)">
           <!-- ng-repeat on event's places -->
           {{place.name}}
           <span ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address" class="place-details">
@@ -83,10 +83,13 @@
       <div class="attend-title">Invited</div>
       <center>
         <div class="attend-divider"></div>
-          <div class="invited-text">Nate Lee</div>
+        <ul>
+        <li class="invited-text" ng-repeat="guest in evtCtrl.currentEvent.guests">{{guest.email}}</li>
+        </ul>
+ <!--          <div class="invited-text">Nate Lee</div>
           <div class="invited-text">Ksenia Smith</div>
           <div class="invited-text">Jackie Wung</div>
-          <div class="invited-text">Jeff Harrison</div>
+          <div class="invited-text">Jeff Harrison</div> -->
       </center>
     </div>
   </div>
