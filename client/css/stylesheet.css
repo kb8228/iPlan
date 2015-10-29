@@ -38,13 +38,15 @@ button:hover {
   float:right;
   color:#fff;
   top:0;
-  border-radius:10px;
-  border-color:#fff;
+  border: 1px solid white;
   background-color:transparent;
-  border-width:1px;
   margin-top:1%;
   margin-right:1%;
   padding:5px 18px 5px 18px;
+}
+
+.sign-up:hover {
+  border-color: #02dac3;
 }
 
 .section-one{
