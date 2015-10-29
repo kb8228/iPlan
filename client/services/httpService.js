@@ -44,7 +44,9 @@
       getUser: getUser,
       callYelp: callYelp,
       postPlace: postPlace,
-      sendMail: sendMail
+      sendMail: sendMail,
+      postGuest: postGuest,
+      getGuest: getGuest
     };
   }]);
 })();
