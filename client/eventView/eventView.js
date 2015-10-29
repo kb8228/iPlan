@@ -113,20 +113,26 @@
       };
 
       var temp = self.to.replace(/ /g, '').split(',');
-
+      var found = false;
       temp.forEach(function(val, index){
-        HttpService.postGuest({email: val, event_id: self.currentEvent.id})
-        .then(function(guest){
-          console.log(guest.data);
-        })
-        .catch(function(err){
-          console.log(err);
-        })
+        self.currentEvent.guest.forEach(guest, index){
+          if(guest === value){
+            found = true;
+          }
+        }
       });
 
+      if(!found){
+        var guest = {
+          email: val,
+          event_id: self.currentEvent.id
+        }
+        return HttpService.postGuest(guest);
       HttpService.sendMail(newMail)
         .success(function(newMail, status, headers, config){
-        });
+      });
+      }
+
     self.message = '';
     self.to = '';
 

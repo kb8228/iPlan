@@ -21,6 +21,9 @@
       // templateUrl: './eventView/eventView.html'
       templateUrl: 'index.html'
     })
+    .when('/code/:code', {
+      templateUrl: 'index.html'
+    })
     .otherwise({
       redirectTo: '/'
     });
