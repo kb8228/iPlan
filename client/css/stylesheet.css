@@ -21,6 +21,19 @@ button:hover {
   width:100%;
 }
 
+.sign-up {
+  float:right;
+  color:#fff;
+  top:0;
+  border-radius:10px;
+  border-color:#fff;
+  background-color:transparent;
+  border-width:1px;
+  margin-top:1%;
+  margin-right:1%;
+  padding:5px 18px 5px 18px;
+}
+
 .section-one{
   background-image:url('./img/section1.png');
   background-size:cover;

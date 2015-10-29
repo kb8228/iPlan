@@ -15,6 +15,8 @@
   <div ng-if="!loginCtrl.hasToken" ng-cloak>
     <div class="absolute-top" ng-cloak>
       <div class="section-one" ng-cloak>
+        <button class="sign-up" ng-click="loginCtrl.login()">Log In</button>
+
           <div class="top-space"></div>
           <div class="logo-header">
             <div class="logo-green-i">i</div>Plan
@@ -22,7 +24,7 @@
           <div class="description-header">
             change how you plan for events
           </div>
-          <input class="login-button" type="submit" ng-click="loginCtrl.login()" value="Log In"/>
+          <input class="login-button" type="submit" ng-click="loginCtrl.login()" value="Sign Up"/>
       </div>
     </div>
 
