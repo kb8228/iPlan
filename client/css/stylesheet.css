@@ -222,6 +222,10 @@ button:hover {
   border-left: solid #0eb7ab;
 }
 
+.event-links:hover {
+  color:#c9cfe6;
+}
+
 .top-header {
   background-color: #fff;
   display: inline-block;
