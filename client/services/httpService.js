@@ -51,7 +51,7 @@
       sendMail: sendMail,
       postGuest: postGuest,
       getGuest: getGuest,
-      getCode; getCode
+      getCode: getCode
     };
   }]);
 })();

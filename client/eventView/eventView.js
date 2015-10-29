@@ -97,18 +97,13 @@
       var temp = self.to.replace(/ /g, '').split(',');
 
       temp.forEach(function(val, index){
-        HttpService.getGuest({email: val, event_id: self.currentEvent.id})
+        HttpService.postGuest({email: val, event_id: self.currentEvent.id})
         .then(function(guest){
           console.log(guest.data);
-          if(!guest.data){
-            var guest = {
-              email: val,
-              event_id: self.currentEvent.id
-            };
-            return HttpService.postGuest(guest);
-          }
-          return guest.data;
-        });
+        })
+        .catch(function(err){
+          console.log(err);
+        })
       });
 
       HttpService.sendMail(newMail)
@@ -131,6 +126,6 @@
       controller: 'EventViewController',
       controllerAs: 'evtCtrl',
       bindToController: true
-    };
-  };
+    }
+  }
 })();

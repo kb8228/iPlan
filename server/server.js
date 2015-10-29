@@ -106,14 +106,13 @@ app.post('/api/guests', function(req, res, next){
 
 app.get('/api/guests/:id', function(req, res, next){
   var guestId = req.params.id;
-  db.model('Guest').fetchById(guestId)
+  db.model('Guest').fetchById({id: guestId})
   .then(function(guest){
     res.json(guest);
   });
 });
 
-
-app.get('/api/guests', function(req, res, next){
+app.get('/api/guests/', function(req, res, next){
   var eventId = req.params.event_id;
   db.collection('Guests').fetchByEvent(eventId)
   .then(function(guests){
