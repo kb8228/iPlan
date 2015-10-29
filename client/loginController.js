@@ -7,6 +7,7 @@
     self.user = DataService.currentUser;
     self.hasToken = false;
     self.getEvent = false;
+    self.userPicture = '';
 
     self.login = function () {
       auth.signin({}, function (profile, token) {
@@ -16,6 +17,7 @@
         // success callback
         HttpService.getUser(profile.identities[0].user_id)
         .then(function(response){
+          console.log(response, 'response!')
           if(!response.data){
             console.log(response);
             var user = {
