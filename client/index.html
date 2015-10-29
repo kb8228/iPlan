@@ -55,7 +55,6 @@
  <div ng-controller="LoginController as loginCtrl" ng-cloak>
   <div ng-if="loginCtrl.hasToken" ng-cloak>
     <div class="body">
-      <div class="row">
         <div class="leftbar">
           <div class="left-title"><div class="green-i">i</div>Plan</div>
           <!-- TODO: pull event names from current user -->
@@ -64,13 +63,7 @@
               <li class="left-links" ng-repeat="event in evtCtrl.currentUser.events" ng-click="evtCtrl.refresh(event.id)"><a href="/#/events/{{event.id}}">{{event.name}}</a></li>
             </ul>
           </div>
-          <!-- <div class="left-links">Ksenia Party </div>
-          <div class="left-links"> Nate Party </div>
-          <div class="left-links"> Jeff Party </div>
-          <div class="left-links"> Jackie Party </div>
-          <div class="left-links"> BABABASDSAD </div> -->
         </div> <!-- END leftbar -->
-      </div> <!-- END row -->
 
       <div class="left-padding">
         <div class="main-container">
@@ -81,8 +74,6 @@
               <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
               <button class="nav-button" ng-click="loginCtrl.showEvent()"> New Event </button> 
           </div> <!-- END top-header -->
-        </div> <!-- END main-container -->
-      </div> <!-- END left-padding -->
 
       <div class="bottom-container">
         <!-- hide the current event if newEvent is not clicked !-->
@@ -93,9 +84,12 @@
         <div ng-hide="loginCtrl.getEvent">
           <event-view-dir></event-view-dir>
         </div>
+
       </div> <!-- END bottom-container -->
     </div> <!-- END body -->
   </div> <!-- END ng-if hasToken -->
+  </div> <!-- END main-container -->
+</div> <!-- END left-padding -->
 </div>
 
 

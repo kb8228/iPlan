@@ -33,20 +33,25 @@
     }
 
     self.searchYelp = function(){
-      var term = self.placeName.split(' ').join('+');
-      var location = self.currentEvent.location.split(' ').join('+');
-      var limit = 5;
-      HttpService.callYelp({
-        term: term,
-        location: location,
-        limit: limit
-      })
-      .then(function(response){
-        response.data.forEach(function(choice){
-          self.choices.push(choice);
-        });
-      })
-      .catch(function(err){console.log(err)});
+      if(self.placeName.length > 2) {
+        var term = self.placeName.split(' ').join('+');
+        var location = self.currentEvent.location.split(' ').join('+');
+        var limit = 5;
+        HttpService.callYelp({
+          term: term,
+          location: location, 
+          limit: limit
+        })
+        .then(function(response){
+          response.data.forEach(function(choice){
+            self.choices.push(choice);
+          });
+        })
+        .catch(function(err){console.log(err)});
+      } else {
+        self.choices = []; 
+      }
+        self.placeName = ''
     }
 
     self.postPlace = function(choice){
@@ -57,7 +62,7 @@
         event_id: self.currentEvent.id
       })
       .then(function(response){
-        self.setEvent();
+        self.refresh(response.data.event_id);
       })
       .catch(function(err){
         console.log('error in posting place: ', err);
