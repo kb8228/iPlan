@@ -62,7 +62,7 @@
         event_id: self.currentEvent.id
       })
       .then(function(response){
-        self.setEvent();
+        self.refresh(response.data.event_id);
       })
       .catch(function(err){
         console.log('error in posting place: ', err);
