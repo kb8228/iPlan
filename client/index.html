@@ -75,8 +75,6 @@
               <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
               <button class="nav-button" ng-click="loginCtrl.showEvent()"> New Event </button> 
           </div> <!-- END top-header -->
-        </div> <!-- END main-container -->
-      </div> <!-- END left-padding -->
 
       <div class="bottom-container">
         <!-- hide the current event if newEvent is not clicked !-->
@@ -87,9 +85,12 @@
         <div ng-hide="loginCtrl.getEvent">
           <event-view-dir></event-view-dir>
         </div>
+
       </div> <!-- END bottom-container -->
     </div> <!-- END body -->
   </div> <!-- END ng-if hasToken -->
+  </div> <!-- END main-container -->
+</div> <!-- END left-padding -->
 </div>
 
 
