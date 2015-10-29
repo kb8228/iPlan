@@ -8,7 +8,6 @@
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
-    self.guests = [];
     self.currentEvent = DataService.currentEvent;
     self.currentUser = DataService.currentUser;
     self.evtId = $location.path().replace('/events/', '');
@@ -113,7 +112,11 @@
         });
     self.message = '';
     self.to = '';
+    console.log(self.evtId);
+    console.log('im the temp', temp);
+    console.log('im the dataservice', self.currentUser)
     };
+
     self.setEvent();
   };
 

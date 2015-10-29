@@ -89,7 +89,7 @@ app.get('/api/events/user/:userId', function(req, res, next){
   });
 });
 
-app.post('api/guests/', function(req, res, next){
+app.post('api/guests', function(req, res, next){
   db.model('Guest').newGuest(req.body).save()
   .then(function(guest){
     res.json(guest);
