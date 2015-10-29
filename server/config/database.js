@@ -65,7 +65,7 @@ var users = buildTable('users', function(table){
 
 var guests = buildTable('guests', function(table){
   table.increments('id').primary();
-  table.string('email').notNullable();
+  table.string('email').unique().notNullable();
   table.string('name');
   table.integer('event_id');
 });

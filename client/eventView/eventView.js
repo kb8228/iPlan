@@ -109,27 +109,27 @@
       var newMail = {
         to: self.to,
         subject: 'You got an invite from iPlan',
-        message: self.message
+        message: self.message,
+        event_id: self.evtId
       };
 
       var temp = self.to.replace(/ /g, '').split(',');
 
       temp.forEach(function(val, index){
-        HttpService.postGuest({email: val, event_id: self.currentEvent.id})
-        .then(function(guest){
-          console.log(guest.data);
-        })
-        .catch(function(err){
-          console.log(err);
-        })
+        var found = false;
+        var newGuest = {
+          email: val,
+          event_id: self.currentEvent.id
+        };
+        HttpService.sendMail(newMail)
+        .then(function(response){
+          self.refresh(response.data.event_id);
+        });
+        return HttpService.postGuest(newGuest);
       });
 
-      HttpService.sendMail(newMail)
-        .success(function(newMail, status, headers, config){
-        });
     self.message = '';
     self.to = '';
-
     };
 
     self.setEvent();
