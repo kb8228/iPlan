@@ -44,7 +44,7 @@
 
       <!-- LIST OF ADDED PLACES -->
       <div>
-        <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places track by $index| orderBy: '-votes'">
+        <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
           <div class="places-choices" ng-click="evtCtrl.showPlace(place)">
           <!-- ng-repeat on event's places -->
           {{place.name}}

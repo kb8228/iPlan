@@ -123,7 +123,7 @@
         };
         HttpService.sendMail(newMail)
         .then(function(response){
-          self.refresh(response.data.event_id);
+          self.refresh(self.evtId);
         });
         return HttpService.postGuest(newGuest);
       });
