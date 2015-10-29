@@ -366,6 +366,16 @@ button:hover {
   padding-bottom:3%;
 }
 
+.place-details {
+  position:relative;
+  height:20px;
+  background-color:#fff;
+  top:8px;
+  margin-bottom:8px;
+  z-index:1;
+  padding-bottom:50px;
+}
+
 .places-choices{
   background-color:#f5f6f5;
   height:2.5em;
