@@ -11,7 +11,7 @@ button:hover {
 .body {
   height:100%;
   width:100%;
-  z-index:-1;
+  position:relative;
 }
 
 .absolute-top {
@@ -287,9 +287,10 @@ button:hover {
 
 .attendee-container {
   margin-top:330px;
+  margin-bottom:50px;
   background-color:#fff;
   width:29.6%;
-  height:350px;
+  height:280px;
   display:inline-block;
   position:absolute;
 }
