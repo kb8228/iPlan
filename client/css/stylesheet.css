@@ -4,6 +4,10 @@ body {
   background-color: #EEEEEE
 }
 
+button:hover {
+  background-color:#01d6bf
+}
+
 .body {
   height:100%;
   width:100%;
@@ -303,6 +307,10 @@ body {
   z-index:1;
 }
 
+.input-add-place:hover {
+  background-color:#d1efea;
+}
+
 .input-yelp-place {
   background-color: #eee;
   height:2.5em;
@@ -390,6 +398,10 @@ body {
   margin-bottom:2.5%;
 }
 
+.email-to:hover {
+  background-color:#e9e9e9;
+}
+
 .email-message {
   width:100%;
   background-color:#eee;
@@ -397,6 +409,10 @@ body {
   display:block;
   margin-bottom:2.5%;
   height:80px;
+}
+
+.email-message:hover {
+  background-color:#e9e9e9;
 }
 
 .email-button {
