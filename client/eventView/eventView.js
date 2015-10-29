@@ -26,12 +26,12 @@
       .catch(function(err){
         console.log('err in evtCtrl setEvent: ', err);
       });
-    }
+    };
 
     self.refresh = function(eventId){
       self.evtId = eventId;
       self.setEvent();
-    }
+    };
 
     self.searchYelp = function(){
       if(self.placeName.length > 2) {
@@ -52,8 +52,8 @@
       } else {
         self.choices = [];
       }
-        self.placeName = ''
-    }
+        self.placeName = '';
+    };
 
     self.postPlace = function(choice){
       HttpService.postPlace({
@@ -104,11 +104,11 @@
             var guest = {
               email: val,
               event_id: self.currentEvent.id
-            }
-            return HttpService.postGuest(guest)
+            };
+            return HttpService.postGuest(guest);
           }
           return guest.data;
-        })
+        });
       });
 
       HttpService.sendMail(newMail)
@@ -131,6 +131,6 @@
       controller: 'EventViewController',
       controllerAs: 'evtCtrl',
       bindToController: true
-    }
-  }
+    };
+  };
 })();
