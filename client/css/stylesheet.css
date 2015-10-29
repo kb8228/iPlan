@@ -157,6 +157,15 @@ body {
   z-index:2;
 }
 
+.yelp-button {
+  background-color:#00cbb5;
+  color: white;
+  margin-bottom:2%;
+  padding: 4px 7px 4px 7px;
+  border:none;
+  float:right;
+}
+
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
@@ -200,7 +209,7 @@ body {
   height:7%;
   width:100%;
   z-index:-2;
-/*  position:relative;*/
+  padding-right:1.8%;
 }
 
 .main-container{
@@ -232,14 +241,15 @@ body {
 .event-container{
   background-color:#fff;
   width:65%;
-  height:500px;
+  height:600px;
   display:inline-block;
   margin-right:3.7%;
   position:relative;
+  float:left;
 }
 
 .attendee-container {
-  margin-top:25.5%;
+  margin-top:340px;
   background-color:#fff;
   width:29.6%;
   height:350px;
@@ -326,10 +336,6 @@ body {
   margin-bottom:2.5%;
 }
 
-.place-name {
-  text-align:center;
-}
-
 .upvote-button{
   background-color:#00cab4;
   border:none;
@@ -414,4 +420,35 @@ body {
   color:#fff;
   border:none;
   padding: 5px 10px 5px 10px;
+}
+
+.yelp-float-left {
+  float:left;
+  text-align:left;
+}
+
+.yelp-float-right {
+  float:right;
+  text-align:right;
+}
+
+.yelp-results {
+  display:inline-block;
+  width:100%;
+  margin:0;
+  background-color:#eee;
+  position:relative;
+  border:none;
+}
+
+.yelp-results:hover {
+  background-color:#c5cbe2;
+}
+
+.yelp-div {
+  width:90%;
+  position:absolute;
+  background-color:#eee;
+  z-index:1;
+  margin-top:-14px;
 }
