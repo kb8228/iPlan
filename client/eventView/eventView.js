@@ -109,8 +109,7 @@
       var newMail = {
         to: self.to,
         subject: 'You got an invite from iPlan',
-        message: self.message,
-        event_id: self.evtId
+        message: self.message
       };
 
       var temp = self.to.replace(/ /g, '').split(',');
@@ -121,11 +120,11 @@
           email: val,
           event_id: self.currentEvent.id
         };
-        HttpService.sendMail(newMail)
+        HttpService.sendMail(newMail);
+        HttpService.postGuest(newGuest)
         .then(function(response){
-          self.refresh(self.evtId);
+          self.refresh(response.data.event_id);
         });
-        return HttpService.postGuest(newGuest);
       });
 
     self.message = '';
