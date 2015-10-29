@@ -4,6 +4,7 @@
 
     var currentEvent = {};
     var currentUser = {};
+    var currentGuest = [];
 
     var setCurrentEvent = function(eventData){
       for(var key in eventData){
@@ -20,17 +21,28 @@
       }
       console.log('DataService setCurrentUser: ', currentUser);
     };
-    var getCurrentUser = function(userId){
+    var getCurrentUser = function(){
       return currentUser;
+    };
+
+    var setCurrentGuest = function(guestData){
+        currentGuest.push(guestData);
+    };
+
+    var getCurrentGuest = function(){
+      return currentGuest;
     };
 
     return {
       currentEvent: currentEvent,
       currentUser: currentUser,
+      currentGuest: currentGuest,
       setCurrentEvent: setCurrentEvent,
       getCurrentEvent: getCurrentEvent,
       setCurrentUser: setCurrentUser,
-      getCurrentUser: getCurrentUser
+      getCurrentUser: getCurrentUser,
+      setCurrentGuest: setCurrentGuest,
+      getCurrentGuest: getCurrentGuest
     };
   });
 })();

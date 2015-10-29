@@ -10,6 +10,7 @@
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
     self.currentUser = DataService.currentUser;
+    self.currentGuest = DataService.currentGuest;
     self.evtId = $location.path().replace('/events/', '');
 
     self.setEvent = function(){
@@ -25,12 +26,12 @@
       .catch(function(err){
         console.log('err in evtCtrl setEvent: ', err);
       });
-    }
+    };
 
     self.refresh = function(eventId){
       self.evtId = eventId;
       self.setEvent();
-    }
+    };
 
     self.searchYelp = function(){
       if(self.placeName.length > 2) {
@@ -51,8 +52,8 @@
       } else {
         self.choices = [];
       }
-        self.placeName = ''
-    }
+        self.placeName = '';
+    };
 
     self.postPlace = function(choice){
       HttpService.postPlace({
@@ -96,25 +97,21 @@
       var temp = self.to.replace(/ /g, '').split(',');
 
       temp.forEach(function(val, index){
-        HttpService.postGuest({email: val, event_id: self.evtId})
+        HttpService.postGuest({email: val, event_id: self.currentEvent.id})
         .then(function(guest){
-          self.refresh(guest.evtId);
+          console.log(guest.data);
         })
         .catch(function(err){
-          console.log('Error in post guest ', err);
-        });
+          console.log(err);
+        })
       });
 
       HttpService.sendMail(newMail)
         .success(function(newMail, status, headers, config){
-          console.log('this is new mail from event view ', newMail);
-          console.log('clicked');
         });
     self.message = '';
     self.to = '';
-    console.log(self.evtId);
-    console.log('im the temp', temp);
-    console.log('im the dataservice', self.currentUser)
+
     };
 
     self.setEvent();

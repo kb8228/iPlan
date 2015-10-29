@@ -56,14 +56,14 @@ app.post('/api/events', function(req, res, next){
   db.model('Event').newEvent(req.body).save()
   .then(function(evt){
     res.json(evt);
-  })
+  });
 });
 
 app.post('/api/places', function(req, res, next){
   db.model('Place').newPlace(req.body).save()
   .then(function(place){
     res.json(place);
-  })
+  });
 });
 
 app.post('/api/users', function(req, res, next){
@@ -89,7 +89,15 @@ app.get('/api/events/user/:userId', function(req, res, next){
   });
 });
 
-app.post('api/guests', function(req, res, next){
+app.get('/api/code/:code', function(req, res, next){
+  var code = req.params.code;
+  db.model('Event').fetchById({code: code})
+  .then(function(event){
+    res.json(event);
+  });
+});
+
+app.post('/api/guests', function(req, res, next){
   db.model('Guest').newGuest(req.body).save()
   .then(function(guest){
     res.json(guest);
@@ -98,19 +106,19 @@ app.post('api/guests', function(req, res, next){
 
 app.get('/api/guests/:id', function(req, res, next){
   var guestId = req.params.id;
-  db.model('Guest').fetchById(guestId)
+  db.model('Guest').fetchById({id: guestId})
   .then(function(guest){
     res.json(guest);
-  })
+  });
 });
 
-app.get('/api/guests', function(req, res, next){
+app.get('/api/guests/', function(req, res, next){
   var eventId = req.params.event_id;
   db.collection('Guests').fetchByEvent(eventId)
   .then(function(guests){
     res.json(guests);
-  })
-})
+  });
+});
 
 app.post('/sendmail', function(req, res, next){
   var data = req.body;

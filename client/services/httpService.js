@@ -34,8 +34,12 @@
     };
 
     var getGuest = function(guestId){
-      return $http.get('/api/guests' + guestId);
-    }
+      return $http.get('/api/guests/' + guestId);
+    };
+
+    var getCode = function(code){
+      return $http.get('/api/code/' + code);
+    };
 
     return {
       postEvent: postEvent,
@@ -46,7 +50,8 @@
       postPlace: postPlace,
       sendMail: sendMail,
       postGuest: postGuest,
-      getGuest: getGuest
+      getGuest: getGuest,
+      getCode: getCode
     };
   }]);
 })();
