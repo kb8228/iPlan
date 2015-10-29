@@ -44,6 +44,7 @@ var events = buildTable('events', function(table){
   table.string('location');
   table.string('code').notNullable;
   table.integer('user_id').references('users.id');
+  table.integer('guests_id').references('guests.id')
 });
 
 var places = buildTable('places', function(table){
@@ -61,6 +62,11 @@ var users = buildTable('users', function(table){
   table.string('name').notNullable();
   table.string('email').notNullable();
   table.string('token');
+});
+
+var guests = buildTable('guests', function(table){
+  table.increments('id').primary();
+  table.string('email').notNullable();
 });
 
 var tables = [events, places, users];
