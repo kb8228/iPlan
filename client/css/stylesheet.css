@@ -241,14 +241,13 @@ body {
 .event-container{
   background-color:#fff;
   width:65%;
-  height:500px;
+  height:600px;
   display:inline-block;
   margin-right:3.7%;
   position:relative;
 }
 
 .attendee-container {
-  margin-top:25.5%;
   background-color:#fff;
   width:29.6%;
   height:350px;
@@ -369,6 +368,7 @@ body {
   height:300px;
   display:inline-block;
   position:absolute;
+  margin-bottom:3.7%;
 }
 
 .email-header {
