@@ -96,9 +96,11 @@
       var temp = self.to.replace(/ /g, '').split(',');
 
       temp.forEach(function(val, index){
-        HttpService.postGuest({email: val, event_id: self.evtId})
+        console.log(val, self.currentEvent.id);
+
+        HttpService.postGuest({email: val, event_id: self.currentEvent.id})
         .then(function(guest){
-          self.refresh(guest.evtId);
+          self.refresh(guest.data.event_id);
         })
         .catch(function(err){
           console.log('Error in post guest ', err);
@@ -107,14 +109,10 @@
 
       HttpService.sendMail(newMail)
         .success(function(newMail, status, headers, config){
-          console.log('this is new mail from event view ', newMail);
-          console.log('clicked');
         });
     self.message = '';
     self.to = '';
-    console.log(self.evtId);
-    console.log('im the temp', temp);
-    console.log('im the dataservice', self.currentUser)
+
     };
 
     self.setEvent();
