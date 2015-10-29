@@ -87,6 +87,11 @@ app.get('/api/events/user/:userId', function(req, res, next){
   });
 });
 
+app.post
+app.get('/api/guests', function(req, res, next){
+
+})
+
 app.post('/sendmail', function(req, res, next){
   var data = req.body;
   console.log(req);
