@@ -58,11 +58,17 @@
       <div class="row">
         <div class="leftbar">
           <div class="left-title"><div class="green-i">i</div>Plan</div>
-          <div class="left-links">Ksenia Party </div>
+          <!-- TODO: pull event names from current user -->
+          <div ng-controller="EventViewController as evtCtrl">
+            <ul>
+              <li class="left-links" ng-repeat="event in evtCtrl.currentUser.events" ng-click="evtCtrl.refresh(event.id)"><a href="/#/events/{{event.id}}">{{event.name}}</a></li>
+            </ul>
+          </div>
+          <!-- <div class="left-links">Ksenia Party </div>
           <div class="left-links"> Nate Party </div>
           <div class="left-links"> Jeff Party </div>
           <div class="left-links"> Jackie Party </div>
-          <div class="left-links"> BABABASDSAD </div>
+          <div class="left-links"> BABABASDSAD </div> -->
         </div> <!-- END leftbar -->
       </div> <!-- END row -->
 
