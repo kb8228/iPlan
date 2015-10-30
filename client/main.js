@@ -1,6 +1,6 @@
 (function(){
   angular.module('iplanApp')
-  .controller('MainController', ['HttpService', 'DataService', '$location', '$window', 'store', MainController]);
+  .controller('MainController', ['HttpService', 'DataService', '$location', '$window', 'store', 'ngAnimate', MainController]);
 
     function MainController(HttpService, DataService, $location, $window, store){
       var self = this;

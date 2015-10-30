@@ -298,7 +298,7 @@ button:hover {
 
 .refined-container{
   font-size:18pt;
-} 
+}
 
 .event-container{
   background-color:#fff;
@@ -383,8 +383,8 @@ button:hover {
   color:#829f9b;
 }
 
-:-ms-input-placeholder {  
-   color:#829f9b; 
+:-ms-input-placeholder {
+   color:#829f9b;
 }
 
 .container-space {
@@ -592,3 +592,51 @@ button:hover {
   z-index:1;
   margin-top:-14px;
 }
+
+
+<<<<<<< HEAD
+=======
+.slideDown.ng-show {
+  height:0;
+  transition:height 0.35s ease;
+  overflow:hidden;
+  position:relative;
+}
+
+.slideDown {
+  height:141px;
+  transition:height 0.35s ease;
+  overflow:hidden;
+  position:relative;
+}
+
+.slideDown.ng-show-remove,
+.slideDown.ng-show-add {
+  display:block;
+}
+
+
+.slideDown.ng-show-add {
+  animation-name: hide;
+  -webkit-animation-name: hide;
+
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+
+  animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+}
+
+
+
+.slideDown.ng-show-remove {
+  animation-name: show;
+  -webkit-animation-name: show;
+
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+
+  animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+}
+>>>>>>> 93f4b161137448273029a8672af1e1de73024adb
