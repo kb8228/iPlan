@@ -16,8 +16,11 @@
           <span class="location-time-space"></span>
             <i class="fa fa-clock-o"></i>
             {{evtCtrl.currentEvent.time | date:'shortTime'}}
-          <span class="event-right" ng-if="!evtCtrl.voteTimer">
-            <button class="vote-timer">Create a Vote Timer</button>
+          <span class="event-right">
+            <span ng-show="evtCtrl.getTimer" class="width-date">
+              <input type="datetime-local" class="timer-date">
+            </span>
+              <button class="vote-timer" ng-click="evtCtrl.createTimer()">Create a Vote Timer</button>
           </span>
         </div>
       </div>

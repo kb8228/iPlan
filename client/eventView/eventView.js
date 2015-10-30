@@ -14,6 +14,16 @@
     self.evtId = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.voteTimer = false;
+    self.getTimer = false;
+
+    self.createTimer = function() {
+      if(!self.getTimer) {
+        self.getTimer = true;
+      } else {
+        self.getTimer = false;
+      }
+      console.log(self.getTimer)
+    }
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
