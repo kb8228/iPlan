@@ -16,6 +16,8 @@
     self.voteTimer = false;
     self.getTimer = false;
     self.timerInfo;
+    self.timerNotMade = false;
+    self.timer;
 
     self.submitTimer = function() {
       console.log(self.timerInfo);
@@ -29,7 +31,8 @@
           self.getTimer = false;
         }
       } else {
-        console.log(self.timerInfo)
+        self.timer = self.timerInfo;
+        self.timerNotMade = true;
         self.timerInfo = ''
       }
     }
