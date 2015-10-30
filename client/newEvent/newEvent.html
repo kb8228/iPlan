@@ -1,9 +1,22 @@
 <div ng-if="newEvt.currentUser.id">
   <form name="eventForm" ng-submit="newEvt.postEvent(eventForm.$valid)" novalidate>
-    <input type="text" class="new-input" ng-model="newEvt.eventName" required placeholder="name for your event">
-    <input type="text" class="new-input" ng-model="newEvt.location" required placeholder="city or neighborhood">
-    <input type="date" class="new-input" ng-model="newEvt.date" required>
-    <input type="time" class="new-input" ng-model="newEvt.time" required>
+  <table>
+    <tr>
+      <td>Event Name</td>
+      <td><input type="text" class="new-input" ng-model="newEvt.eventName" required placeholder="name for your event"></td>
+    <tr>
+      <td>Event Location</td>
+      <td> <input type="text" class="new-input" ng-model="newEvt.location" required placeholder="city or neighborhood"></td>
+    </tr>
+    <tr>
+      <td>Event Date</td>
+      <td><input type="date" class="new-input" ng-model="newEvt.date" required></td>
+    </tr>
+    <tr>
+      <td>Event Time</td>
+      <td><input type="time" class="new-input" ng-model="newEvt.time" required></td>
+    </tr>
+  </table>
     <button type="submit" class="add-event" ng-disabled="eventForm.$invalid">Add new event!</button>
   </form>
 </div>
