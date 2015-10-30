@@ -73,50 +73,19 @@ app.post('/api/users', function(req, res, next){
   });
 });
 
-app.get('/api/users/:facebook_id', function(req, res, next){
-  var userId = req.params.facebook_id;
-  db.model('User').fetchById({facebook_id: userId})
+app.get('/api/users/:email', function(req, res, next){
+  var userId = req.params.email;
+  db.model('User').fetchById({email: userId})
   .then(function(user){
     res.json(user);
   });
 });
 
-app.get('/api/events/user/:userId', function(req, res, next){
-  var userId = req.params.userId;
-  db.collection('Events').fetchByUser(userId)
-  .then(function(events){
-    res.json(events);
-  });
-});
-
-app.get('/api/code/:code', function(req, res, next){
+app.get('/api/events/:code', function(req, res, next){
   var code = req.params.code;
   db.model('Event').fetchById({code: code})
-  .then(function(event){
-    res.json(event);
-  });
-});
-
-app.post('/api/guests', function(req, res, next){
-  db.model('Guest').newGuest(req.body).save()
-  .then(function(guest){
-    res.json(guest);
-  });
-});
-
-app.get('/api/guests/:id', function(req, res, next){
-  var guestId = req.params.id;
-  db.model('Guest').fetchById({id: guestId})
-  .then(function(guest){
-    res.json(guest);
-  });
-});
-
-app.get('/api/guests/', function(req, res, next){
-  var eventId = req.params.event_id;
-  db.collection('Guests').fetchByEvent(eventId)
-  .then(function(guests){
-    res.json(guests);
+  .then(function(evt){
+    res.json(evt);
   });
 });
 
