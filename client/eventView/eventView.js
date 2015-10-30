@@ -13,15 +13,9 @@
     self.currentGuest = DataService.currentGuest;
     self.evtId = $location.path().replace('/events/', '');
     self.hidePlace = false;
-    self.voteTimer = false;
     self.getTimer = false;
     self.timerInfo;
-    self.timerNotMade = false;
-    self.timer;
-
-    self.submitTimer = function() {
-      console.log(self.timerInfo);
-    }
+    self.isThereTime = false;
 
     self.createTimer = function() {
       if(!self.timerInfo) {
@@ -31,9 +25,15 @@
           self.getTimer = false;
         }
       } else {
-        self.timer = self.timerInfo;
-        self.timerNotMade = true;
-        self.timerInfo = ''
+        var timerInfo = self.timerInfo
+        HttpService.postEvent({
+          cutoff: timerInfo
+        }).then(function(response){
+          console.log(response, 'is the timer response')
+          console.log(self.currentEvent, ' current event data')
+          self.isThereTime = true;
+          self.timerInfo = ''
+        })
       }
     }
 

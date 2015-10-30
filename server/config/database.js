@@ -39,13 +39,14 @@ var buildTable = function(name, callback){
 
 var events = buildTable('events', function(table){
   table.increments('id').primary();
-  table.string('name').notNullable();
+  table.string('name');
   table.date('date');
   table.timestamp('created_at');
   table.timestamp('updated_at');
   table.timestamp('time');
+  table.date('cutoff');
   table.string('location');
-  table.string('code').notNullable();
+  table.string('code');
   table.integer('user_id');
 });
 
