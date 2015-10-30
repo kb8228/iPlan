@@ -48,7 +48,6 @@ app.get('/api/events/:id', function(req, res, next){
   var eventId = req.params.id;
   db.model('Event').fetchById({id: eventId})
   .then(function(data){
-    console.log(data, 'izzzz data')
     res.json(data.toJSON());
   });
 });
