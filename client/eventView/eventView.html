@@ -15,9 +15,9 @@
             {{evtCtrl.currentEvent.date | date:'mediumDate'}}
           <span class="location-time-space"></span>
             <i class="fa fa-clock-o"></i>
-            {{evtCtrl.currentEvent.time}}
+            {{evtCtrl.currentEvent.time | time}}
           <span class="event-right" ng-if="!evtCtrl.voteTimer">
-            <button class="vote-timer">Create a Vote Timer</button>
+            <button class="vote-timer" ng-click="evtCtrl.setTimer">Create a Vote Timer</button>
           </span>
         </div>
       </div>

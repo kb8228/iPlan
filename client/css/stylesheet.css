@@ -4,9 +4,9 @@ body {
   background-color: #EEEEEE;
 }
 
-button:hover {
+/*button:hover {
   background-color:#01d6bf
-}
+}*/
 
 .background {
   position: fixed;
@@ -450,9 +450,14 @@ button:hover {
   background-color:transparent;
   border: 1px solid;
   border-radius:10px;
-  font-size:0.8em;
+  font-size:0.85em;
   padding-left:12px;
   padding-right:12px;
+}
+
+.vote-timer:hover  {
+  background-color: #7482b5;
+  color:white;
 }
 
 .event-location {

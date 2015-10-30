@@ -41,7 +41,7 @@ var events = buildTable('events', function(table){
   table.increments('id').primary();
   table.string('name').notNullable();
   table.date('date');
-  table.time('time');
+  table.timestamp('time');
   table.string('location');
   table.string('code').notNullable();
   table.integer('user_id');

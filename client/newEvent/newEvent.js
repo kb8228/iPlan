@@ -12,11 +12,10 @@
       self.time;
 
       self.postEvent = function(){
-        // if(store.get('profile')){
           HttpService.postEvent({
             name: self.eventName,
             date: self.date,
-            time: ((self.time).toString()).slice(16,self.time.length),
+            time: self.time,
             location: self.location,
             user_id: self.currentUser.id
           })
@@ -30,7 +29,6 @@
             console.log('error in posting event: ', err);
           });
           self.eventName = '';
-        // }
       };   
     }
 
