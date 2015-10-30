@@ -61,19 +61,20 @@ var places = buildTable('places', function(table){
 var users = buildTable('users', function(table){
   table.increments('id').primary();
   table.string('facebook_id');
-  table.string('name').notNullable();
-  table.string('email').notNullable();
+  table.string('name');
+  table.string('email').unique().notNullable();
   table.string('token');
 });
 
-var guests = buildTable('guests', function(table){
+var eventsUsers = buildTable('events_users', function(table){
   table.increments('id').primary();
-  table.string('email').unique().notNullable();
-  table.string('name');
-  table.integer('event_id');
+  table.integer('event_id').notNullable();
+  table.integer('user_id').notNullable();
+  table.string('user_role').notNullable();
+  table.boolean('voted');
 });
 
-var tables = [events, places, users, guests];
+var tables = [events, places, users, eventsUsers];
 
 Promise.all(tables)
 .then(function(tables){
