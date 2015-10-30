@@ -45,9 +45,9 @@
       <!-- LIST OF ADDED PLACES -->
       <div>
         <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
-          <div class="places-choices" ng-click="evtCtrl.showPlace(place)">
+          <div class="places-choices">
           <!-- ng-repeat on event's places -->
-          {{place.name}}
+          <span  ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
           <span ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address" class="place-details">
               {{evtCtrl.selectedAddress}}
               <img ng-src="{{evtCtrl.selectedRating}}">

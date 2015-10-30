@@ -29,6 +29,8 @@
         })
         .then(function(user){
           DataService.setCurrentUser(user);
+          $location.path('/events/' + self.user.events[0].id);
+          $window.location.reload();
         })
         .catch(function(err){
           if(err){
@@ -36,8 +38,6 @@
           }
         });
 
-        $location.path('/events/1');
-        $window.location.reload();
         // $window.setTimeout(function(){
         //   $window.location.reload();
         // }, 1000)
