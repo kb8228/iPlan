@@ -499,6 +499,7 @@ button:hover {
 }
 
 .add-event {
+  text-align:center;
   margin:0 auto;
   background-color:#00cab4;
   color:#fff;
