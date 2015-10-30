@@ -2,7 +2,6 @@
   <!-- CURRENT EVENT INFO -->
 
   <div class="event-info">
-<<<<<<< HEAD
     <div class="event-details">
       <div class="event-left">
         <div class="event-name">
@@ -16,13 +15,12 @@
             {{evtCtrl.currentEvent.date | date:'mediumDate'}}
           <span class="location-time-space"></span>
             <i class="fa fa-clock-o"></i>
-            {{evtCtrl.currentEvent.time | time}}
+            {{evtCtrl.currentEvent.time | date:'shortTime'}}
           <span class="event-right" ng-if="!evtCtrl.voteTimer">
             <button class="vote-timer" ng-click="evtCtrl.setTimer">Create a Vote Timer</button>
           </span>
         </div>
       </div>
-=======
     <div class="event-name">
       {{evtCtrl.currentEvent.name}}
     </div>
@@ -36,6 +34,14 @@
         <i class="fa fa-clock-o"></i>
         {{evtCtrl.currentEvent.time | date:'shortTime'}}
 >>>>>>> [feat] add timestamps to events
+=======
+            {{evtCtrl.currentEvent.time | date:'shortTime'}}
+          <span class="event-right" ng-if="!evtCtrl.voteTimer">
+            <button class="vote-timer">Create a Vote Timer</button>
+          </span>
+        </div>
+      </div>
+>>>>>>> [feat] create vote timer button
     </div>
   </div>
 
