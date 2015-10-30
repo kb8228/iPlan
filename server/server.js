@@ -17,10 +17,10 @@ var app = express();
 require('./models/event');
 require('./models/place');
 require('./models/user');
-require('./models/guest');
+require('./models/eventUser');
 require('./collections/events');
 require('./collections/places');
-require('./collections/guests');
+require('./collections/eventsUsers');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
