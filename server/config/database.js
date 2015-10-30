@@ -41,11 +41,8 @@ var events = buildTable('events', function(table){
   table.increments('id').primary();
   table.string('name').notNullable();
   table.date('date');
-<<<<<<< HEAD
-=======
   table.timestamp('created_at');
   table.timestamp('updated_at');
->>>>>>> [feat] add timestamps to events
   table.timestamp('time');
   table.string('location');
   table.string('code').notNullable();
