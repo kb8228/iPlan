@@ -10,7 +10,7 @@ var User = db.Model.extend({
   }
 }, {
   fetchById: function(options){
-    return new this(options).fetch({withRelated: ['EventsUsers']});
+    return new this(options).fetch({withRelated: ['events_users']});
   },
   newUser: function(options){
     return new this(options);
