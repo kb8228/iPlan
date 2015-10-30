@@ -15,14 +15,23 @@
     self.hidePlace = false;
     self.voteTimer = false;
     self.getTimer = false;
+    self.timerInfo;
+
+    self.submitTimer = function() {
+      console.log(self.timerInfo);
+    }
 
     self.createTimer = function() {
-      if(!self.getTimer) {
-        self.getTimer = true;
+      if(!self.timerInfo) {
+          if(!self.getTimer) {
+          self.getTimer = true;
+        } else {
+          self.getTimer = false;
+        }
       } else {
-        self.getTimer = false;
+        console.log(self.timerInfo)
+        self.timerInfo = ''
       }
-      console.log(self.getTimer)
     }
 
     self.showPlace = function(place) {

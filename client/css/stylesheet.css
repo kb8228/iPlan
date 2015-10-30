@@ -430,17 +430,18 @@ button:hover {
 }
 
 .timer-date {
-  width:50%;
+  width:51%;
   display:inline;
   border:1px solid;
   border-radius:10px;
   background-color:transparent;
-  font-size:0.85em;
+  font-size:0.80em;
   margin-right:5%;
+  padding-left:7px;
 }
 
 .width-date {
-  width:40%;
+  width:100%;
 }
 
 .event-right {
