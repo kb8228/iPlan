@@ -12,7 +12,7 @@
     self.currentUser = DataService.currentUser;
     self.currentGuest = DataService.currentGuest;
     self.evtId = $location.path().replace('/events/', '');
-    self.hidePlace = true;
+    self.hidePlace = false;
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {

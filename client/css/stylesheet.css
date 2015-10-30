@@ -542,7 +542,7 @@ button:hover {
 }
 
 
-.slideDown.ng-hide {
+.slideDown.ng-show {
   height:0;
   transition:height 0.35s ease;
   overflow:hidden;
@@ -556,13 +556,13 @@ button:hover {
   position:relative;
 }
 
-.slideDown.ng-hide-remove,
-.slideDown.ng-hide-add {
+.slideDown.ng-show-remove,
+.slideDown.ng-show-add {
   display:block;
 }
 
 
-.slideDown.ng-hide-add {
+.slideDown.ng-show-add {
   animation-name: hide;
   -webkit-animation-name: hide;
 
@@ -575,7 +575,7 @@ button:hover {
 
 
 
-.slideDown.ng-hide-remove {
+.slideDown.ng-show-remove {
   animation-name: show;
   -webkit-animation-name: show;
 

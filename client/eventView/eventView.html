@@ -57,7 +57,7 @@
             {{place.votes}}
           </button>
           </div>
-          <div class="slideDown" ng-hide="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
+          <div class="slideDown" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
             <div class="place-details">
               {{evtCtrl.selectedAddress}}
               <img ng-src="{{evtCtrl.selectedRating}}">
