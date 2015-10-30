@@ -12,7 +12,6 @@
       self.time;
 
       self.postEvent = function(){
-        // if(store.get('profile')){
           HttpService.postEvent({
             name: self.eventName,
             date: self.date,
@@ -30,7 +29,6 @@
             console.log('error in posting event: ', err);
           });
           self.eventName = '';
-        // }
       };   
     }
 
