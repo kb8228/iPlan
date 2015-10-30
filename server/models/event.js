@@ -13,6 +13,7 @@ var createSha = function(text) {
 
 var Event = db.Model.extend({
   tableName: 'events',
+  hasTimestamps: true,
   places: function(){
     return this.hasMany('Place');
   },
