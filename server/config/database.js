@@ -46,7 +46,6 @@ var events = buildTable('events', function(table){
   table.timestamp('time');
   table.string('location');
   table.string('code').notNullable();
-  table.integer('user_id');
 });
 
 var places = buildTable('places', function(table){
@@ -63,7 +62,6 @@ var users = buildTable('users', function(table){
   table.string('facebook_id');
   table.string('name');
   table.string('email').unique().notNullable();
-  table.string('token');
 });
 
 var eventsUsers = buildTable('events_users', function(table){
