@@ -425,10 +425,34 @@ button:hover {
 
 .event-info {
   padding-bottom: 2%;
+  display:inline;
+}
+
+.event-right {
+  text-align:right;
+  float:right;
+}
+
+.event-details {
+  margin-bottom:2%;
+  position:relative;
+}
+
+.event-left {
+  text-align:left;
 }
 
 .event-name {
   font-size:25pt;
+}
+
+.vote-timer {
+  background-color:transparent;
+  border: 1px solid;
+  border-radius:10px;
+  font-size:0.8em;
+  padding-left:12px;
+  padding-right:12px;
 }
 
 .event-location {
