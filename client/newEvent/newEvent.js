@@ -16,7 +16,7 @@
           HttpService.postEvent({
             name: self.eventName,
             date: self.date,
-            time: (self.time).toString(),
+            time: ((self.time).toString()).slice(16,self.time.length),
             location: self.location,
             user_id: self.currentUser.id
           })
