@@ -30,7 +30,7 @@
           cutoff: timerInfo
         }).then(function(response){
           console.log(response, 'is the timer response')
-          console.log(self.currentEvent, ' current event data')
+          self.currentEvent.cutoff = response.data.cutoff
           self.isThereTime = true;
           self.timerInfo = ''
         })
