@@ -4,9 +4,9 @@ body {
   background-color: #EEEEEE;
 }
 
-/*button:hover {
+button:hover {
   background-color:#01d6bf
-}*/
+}
 
 .background {
   position: fixed;
@@ -161,7 +161,8 @@ body {
   font-size:12pt;
   padding:12px 35px 12px 35px;
   position:relative;
-  z-index:1
+  z-index:1;
+  width:5%;
 }
 
 .login-button:hover{
@@ -428,7 +429,22 @@ body {
   display:inline;
 }
 
+.timer-date {
+  width:50%;
+  display:inline;
+  border:1px solid;
+  border-radius:10px;
+  background-color:transparent;
+  font-size:0.85em;
+  margin-right:5%;
+}
+
+.width-date {
+  width:40%;
+}
+
 .event-right {
+  display:inline;
   text-align:right;
   float:right;
 }
