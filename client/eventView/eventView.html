@@ -61,15 +61,23 @@
           <!-- ng-repeat on event's places -->
           <span  ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
           <span ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address" class="place-details">
+          {{place.name}}
+          <!-- <span ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address" class="place-details">
               {{evtCtrl.selectedAddress}}
               <img ng-src="{{evtCtrl.selectedRating}}">
-          </span>
+          </span> -->
           <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
             <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
             {{place.votes}}
           </button>
+          </div>
+          <div class="slideDown" ng-hide="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
+            <div class="place-details">
+              {{evtCtrl.selectedAddress}}
+              <img ng-src="{{evtCtrl.selectedRating}}">
             </div>
           </div>
+        </div>
       <!-- END LIST OF PLACES -->
       </div>
     </div>
