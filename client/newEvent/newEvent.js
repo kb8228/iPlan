@@ -9,12 +9,14 @@
       self.date; // tied to input box
       self.location; // tied to input box
       self.currentUser = DataService.currentUser;
+      self.time;
 
       self.postEvent = function(){
         // if(store.get('profile')){
           HttpService.postEvent({
             name: self.eventName,
             date: self.date,
+            time: (self.time).toString(),
             location: self.location,
             user_id: self.currentUser.id
           })
