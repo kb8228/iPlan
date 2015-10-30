@@ -37,10 +37,6 @@
             console.log('error: ', err);
           }
         });
-
-        // $window.setTimeout(function(){
-        //   $window.location.reload();
-        // }, 1000)
       });
 
     };
