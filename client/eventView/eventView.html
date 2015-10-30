@@ -17,31 +17,10 @@
             <i class="fa fa-clock-o"></i>
             {{evtCtrl.currentEvent.time | date:'shortTime'}}
           <span class="event-right" ng-if="!evtCtrl.voteTimer">
-            <button class="vote-timer" ng-click="evtCtrl.setTimer">Create a Vote Timer</button>
-          </span>
-        </div>
-      </div>
-    <div class="event-name">
-      {{evtCtrl.currentEvent.name}}
-    </div>
-    <div class="event-location">
-      <i class="fa fa-map-marker"></i>
-        {{evtCtrl.currentEvent.location}}
-      <span class="location-time-space"></span>
-        <i class="fa fa-calendar"></i>
-        {{evtCtrl.currentEvent.date | date:'mediumDate'}}
-      <span class="location-time-space"></span>
-        <i class="fa fa-clock-o"></i>
-        {{evtCtrl.currentEvent.time | date:'shortTime'}}
->>>>>>> [feat] add timestamps to events
-=======
-            {{evtCtrl.currentEvent.time | date:'shortTime'}}
-          <span class="event-right" ng-if="!evtCtrl.voteTimer">
             <button class="vote-timer">Create a Vote Timer</button>
           </span>
         </div>
       </div>
->>>>>>> [feat] create vote timer button
     </div>
   </div>
 
