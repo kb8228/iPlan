@@ -1,5 +1,5 @@
 node_modules
 bower_components
 /server/config/yelpSearch.js
-/usr
+/server/usr
 .DS_Store

@@ -210,7 +210,7 @@ button:hover {
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
-  height:100%;
+  height:800px;
   width:15%;
   left:0;
   z-index: 1;
@@ -492,6 +492,12 @@ button:hover {
   color:#fff;
 }
 
+.event-table{
+  width:70%;
+  margin:0 auto;
+  margin-top:3%;
+}
+
 .new-input {
   background-color:#fff;
   height:2.3em;
@@ -499,11 +505,12 @@ button:hover {
 }
 
 .add-event {
+  text-align:center;
   margin:0 auto;
   background-color:#00cab4;
   color:#fff;
   border:none;
-  padding: 5px 10px 5px 10px;
+  padding: 7px 20px 7px 20px;
 }
 
 .yelp-float-left {
