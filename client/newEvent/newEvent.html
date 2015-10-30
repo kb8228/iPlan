@@ -1,6 +1,6 @@
 <div ng-if="newEvt.currentUser.id">
   <form name="eventForm" ng-submit="newEvt.postEvent(eventForm.$valid)" novalidate>
-  <table align="center" width="500" height="200">
+  <table class="event-table">
     <tr>
       <td>Event Name</td>
       <td><input type="text" class="new-input" ng-model="newEvt.eventName" required placeholder="name for your event"></td>
