@@ -19,7 +19,7 @@ var EventUser = db.Model.extend({
   fetchById: function(options){
     return new this(options).fetch({withRelated: ['event', 'user']});
   },
-  newEventsUsers: function(options){
+  newEventUser: function(options){
     return new this(options);
   }
 });
