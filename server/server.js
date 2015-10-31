@@ -51,11 +51,19 @@ app.put('/api/events/:id', function(req,res,next){
   db.model('Event').fetchById({id: eventId})
   .then(function(data){
     data.save(saveTime)
-  })
-})
+  });
+});
 
 app.post('/api/events', function(req, res, next){
   db.model('Event').newEvent(req.body).save()
+  .then(function(evt){
+    res.json(evt);
+  });
+});
+
+app.get('/api/events/:code', function(req, res, next){
+  var code = req.params.code;
+  db.model('Event').fetchById({code: code})
   .then(function(evt){
     res.json(evt);
   });
@@ -87,14 +95,6 @@ app.get('/api/users/:email', function(req, res, next){
   db.model('User').fetchById({email: userEmail})
   .then(function(user){
     res.json(user);
-  });
-});
-
-app.get('/api/events/:code', function(req, res, next){
-  var code = req.params.code;
-  db.model('Event').fetchById({code: code})
-  .then(function(evt){
-    res.json(evt);
   });
 });
 
