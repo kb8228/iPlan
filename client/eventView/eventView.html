@@ -73,7 +73,7 @@
           <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
             <div class="place-left card-content">
               <div>
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x95&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA" class="map-padding">
+                <a href="{{place.url}}"><img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x95&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA" class="map-padding"></a>
               </div>
             </div>
             <div class="card-content place-right">
