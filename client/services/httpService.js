@@ -51,7 +51,7 @@
       callYelp: callYelp,
       postPlace: postPlace,
       sendMail: sendMail,
-      postEventUser:postEventUser
+      postEventUser: postEventUser
     };
   }]);
 })();
