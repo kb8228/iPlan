@@ -22,6 +22,7 @@
             console.log('postEvent .then response data: ', response.data);
             HttpService.postEventUser({
               event_id: response.data.id,
+              event_code: response.data.code,
               user_id: self.currentUser.id,
               user_role: 'host'
             })
@@ -38,8 +39,7 @@
             console.log('error in posting event: ', err);
           });
           self.eventName = '';
-      };   
-    }
+      }; 
 
     function newEventDir(){
       return {
