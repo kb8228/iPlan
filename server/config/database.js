@@ -71,6 +71,7 @@ var users = buildTable('users', function(table){
 var eventsUsers = buildTable('events_users', function(table){
   table.increments('id').primary();
   table.integer('event_id').notNullable();
+  table.string('event_code').notNullable();
   table.integer('user_id').notNullable();
   table.string('user_role').notNullable();
   table.boolean('voted');

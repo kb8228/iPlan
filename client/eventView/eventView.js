@@ -9,6 +9,13 @@
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
+
+    self.events = DataService.events;
+    console.log('evtCtrl events: ', self.events);
+    window.setTimeout(function(){
+      console.log('evtCtrl events after timeout: ', self.events);
+    }, 1000);
+
     self.currentUser = DataService.currentUser;
     self.currentGuest = DataService.currentGuest;
     self.eventCode = $location.path().replace('/events/', '');
@@ -37,7 +44,6 @@
     self.setEvent = function(){
       HttpService.getEvent(self.eventCode)
       .then(function(response){
-        console.log('setEvent success: ', response.data);
         DataService.setCurrentEvent(response.data);
         angular.forEach(response.data.places, function(val, key){
           self.toggle[val.id] = self.toggle[val.id] || false;

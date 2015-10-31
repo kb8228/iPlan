@@ -31,13 +31,28 @@
         })
         .then(function(user){
           DataService.setCurrentUser(user);
+          // set events
+          // if(self.currentUser.eventsUsers.length){
+          //   var temp = [];
+          //   console.log('evtUsers fr login: ', self.currentUser.eventsUsers);
+          //   self.currentUser.eventsUsers.forEach(function(evtUser){
+          //     HttpService.getEvent(evtUser.event_code)
+          //     .then(function(evt){
+          //       temp.push(evt);
+          //     });
+          //   });
+          //   console.log('LoginController temp events: ', temp);
+          //   DataService.setEvents(temp);
+          // }
+        })
+        .then(function(user){
           if(self.currentUser.eventsUsers.length){
-            $location.path('/events/' + self.currentUser.eventsUsers[0].event.code); // rework after pulling events
+            $location.path('/events/' + self.currentUser.eventsUsers[0].event_code); // rework after pulling events
           }
           else{
             $location.path('/');
           }
-          $window.location.reload();
+          // $window.location.reload();
         })
         .catch(function(err){
           if(err){
@@ -55,6 +70,9 @@
         HttpService.getUser(profile.email)
         .then(function(response){
           DataService.setCurrentUser(response.data);
+        })
+        .then(function(user){
+          console.log('eventsUsers fr checkLogin: ', self.currentUser.eventsUsers);
         });
       }
     };
