@@ -39,7 +39,7 @@
           else{
             $location.path('/');
           }
-          $window.location.reload();
+          // $window.location.reload();
         })
         .catch(function(err){
           if(err){
