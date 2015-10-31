@@ -120,6 +120,7 @@
 
     self.sendMail = function(){
       var newMail = {
+        name: 'Nate',
         to: self.to,
         subject: 'You got an invite from iPlan',
         message: self.message

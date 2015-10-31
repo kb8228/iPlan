@@ -114,12 +114,12 @@ app.post('/sendmail', function(req, res, next){
   var compiledTemplate = hogan.compile(template);
 
   var data = req.body;
-  console.log(req);
+
   transporter.sendMail({
     from: 'testingiplan@gmail.com',
     to: data.to,
     subject: 'You got an invite from iPlan!',
-    html: compiledTemplate.render()
+    html: compiledTemplate.render({name: data.name})
   }, function(err){
     console.log(err);
   });

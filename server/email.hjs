@@ -205,7 +205,7 @@
 
                       <table class="twelve columns"><tr><td>
 
-                            <h1>Hi, Elijah Baily</h1>
+                            <h1>Hi, {{name}}</h1>
                             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
                             <img width="580" height="300" src="http://placehold.it/580x300" /></td>
                           <td class="expander"></td>
