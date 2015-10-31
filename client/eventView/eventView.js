@@ -1,9 +1,9 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', EventViewController])
+  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', EventViewController])
   .directive('eventViewDir', eventViewDir);
 
-  function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window){ // inject http service, EventService factory
+  function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter){ // inject http service, EventService factory
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
@@ -170,7 +170,7 @@
       var date = new Date();
       console.log(date, ' this is the JS date')
       var eventCutoff = self.currentEvent.cutoff
-      console.log(eventCutoff, ' this is cutoff time')
+      var filteredDate = $filter('date')(eventCutoff, 'MMM dd yyyy HH:mm:ss')
       if(date === self.currentEvent.cutoff) {
         console.log('CUTOFF!!!!!!')
       }
