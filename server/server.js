@@ -45,15 +45,6 @@ app.get('/api/events', function(req, res){
   // here we will eventually fetch events by user
 });
 
-app.put('/api/events/:id', function(req,res,next){
-  var eventId = req.params.id;
-  var saveTime = req.body;
-  db.model('Event').fetchById({id: eventId})
-  .then(function(data){
-    data.save(saveTime)
-  });
-});
-
 app.post('/api/events', function(req, res, next){
   db.model('Event').newEvent(req.body).save()
   .then(function(evt){
