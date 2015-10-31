@@ -1,9 +1,9 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', EventViewController])
+  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', EventViewController])
   .directive('eventViewDir', eventViewDir);
 
-  function EventViewController(HttpService, DataService, $location, $route, $routeParams){ // inject http service, EventService factory
+  function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window){ // inject http service, EventService factory
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
@@ -47,6 +47,7 @@
       .catch(function(err){
         console.log('err in evtCtrl setEvent: ', err);
       });
+      self.timeCheck();
     };
 
     self.refresh = function(eventId){
@@ -143,11 +144,26 @@
         eventId: self.currentEvent.id
       })
       .then(function(response){
-        self.setEvent(response.data.id)
+        self.refresh(response.data.id)
         self.isThereTime = true;
         self.timerInfo = ''
       })
     }
+
+    self.checkDateTime = function() {
+      var date = new Date();
+      console.log(date, ' this is the JS date')
+      var eventCutoff = self.currentEvent.cutoff
+      console.log(eventCutoff, ' this is cutoff time')
+      if(date === self.currentEvent.cutoff) {
+        console.log('CUTOFF!!!!!!')
+      }
+    }
+
+    self.timeCheck = function() {
+      var check = setInterval(self.checkDateTime(),3000)
+    }
+
     self.setEvent();
   };
 

@@ -74,6 +74,11 @@ button:hover {
   z-index:-1;
 }
 
+.rating-right{
+  text-align:right;
+  float:right;
+}
+
 .section-two{
   text-align:center;
   height:400px;
@@ -595,7 +600,7 @@ button:hover {
 }
 
 .snippet {
-  font-size: 20px;
+  font-size:0.85em;
   color: black;
   margin-top: 12px;
 }
@@ -604,16 +609,37 @@ button:hover {
   display: inline-block;
 }
 
+.split-para { 
+  display:block;margin:10px;
+}
+
+.map-padding {
+  margin-right:5px;
+}
+
+.split-para span { 
+  display:block;
+  float:right;
+  margin-left:10px;
+}
+
 .place-left {
-  float: left
+  float: left;
+  height:50%;
 }
 
 .place-right {
-  font-size: 18px;
   color:#999;
 }
 
 .rating {
   padding-left: 25px;
   position: relative;
+}
+
+.yelp-redirect {
+  background-color:#7482b5;
+  color:#fff;
+  border:none;
+  padding: 3px 10px 3px 10px;
 }
