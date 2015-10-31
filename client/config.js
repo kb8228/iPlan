@@ -18,8 +18,8 @@
       templateUrl: 'index.html'
     })
     .when('/events/:id', {
-      // templateUrl: './eventView/eventView.html'
-      templateUrl: 'index.html'
+       templateUrl: './eventView/eventView.html'
+      //templateUrl: 'index.html'
     })
     .when('/code/:code', {
       templateUrl: 'index.html'
