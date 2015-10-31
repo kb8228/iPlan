@@ -34,13 +34,13 @@
             } else {
               $location.path('/');
             }
+            $window.location.reload();
         })
         .catch(function(err){
           if(err){
             console.log('error: ', err);
           }
         });
-        $window.location.reload();
       });
 
     };
