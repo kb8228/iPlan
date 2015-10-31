@@ -72,6 +72,13 @@
             <div class="card-content place-details">
               {{evtCtrl.selectedAddress}}
               <img ng-src="{{evtCtrl.selectedRating}}">
+              <div>
+                <p>{{place.category}}</p>
+                <a href="{{place.url}}">{{place.url}}</a>
+                <div class="snippet">
+                  {{place.snippet}}
+                </div>
+              </div>
             </div>
           </div>
         </div>

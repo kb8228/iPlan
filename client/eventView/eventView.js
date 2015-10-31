@@ -89,6 +89,9 @@
         name: choice.name,
         address: choice.location.display_address[0] + ", " + choice.location.display_address[1],
         rating_img: choice.rating_img_url,
+        url: choice.url,
+        category: choice.categories[0][0],
+        snippet: choice.snippet_text,
         event_id: self.currentEvent.id
       })
       .then(function(response){
