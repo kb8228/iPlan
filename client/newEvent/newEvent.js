@@ -16,12 +16,22 @@
             name: self.eventName,
             date: self.date,
             time: self.time,
-            location: self.location,
-            user_id: self.currentUser.id
+            location: self.location
           })
           .then(function(response){
+            console.log('postEvent .then response data: ', response.data);
+            HttpService.postEventUser({
+              event_id: response.data.id,
+              event_code: response.data.code,
+              user_id: self.currentUser.id,
+              user_role: 'host'
+            })
+            .then(function(response){
+              console.log('response fr postEventUser: ', response);
+            });
+            
             DataService.setCurrentEvent(response.data);
-            $location.path('/events/' + response.data.id);
+            $location.path('/events/' + response.data.code);
             $window.location.reload();
             console.log('success response: ', response.data);
           })
@@ -29,7 +39,7 @@
             console.log('error in posting event: ', err);
           });
           self.eventName = '';
-      };   
+      }; 
     }
 
     function newEventDir(){

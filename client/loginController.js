@@ -1,40 +1,57 @@
 (function(){
   angular.module('iplanApp')
-  .controller('LoginController', ['$http', 'auth', 'store', '$location', 'DataService', 'HttpService', '$window', LoginController]);
+  .controller('LoginController', ['$http', 'auth', 'store', '$location', '$route', 'DataService', 'HttpService', '$window', LoginController]);
 
-  function LoginController($http, auth, store, $location, DataService, HttpService, $window) {
+  function LoginController($http, auth, store, $location, $route, DataService, HttpService, $window) {
     var self = this;
-    self.user = DataService.currentUser;
+    self.currentUser = DataService.currentUser;
     self.hasToken = false;
     self.getEvent = false;
 
     self.login = function () {
+      console.log('login called');
       auth.signin({}, function (profile, token) {
+        console.log('profile at login: ', profile);
         store.set('profile', profile);
         store.set('token', token);
         self.hasToken = true;
         // success callback
-        HttpService.getUser(profile.identities[0].user_id)
+        HttpService.getUser(profile.email)
         .then(function(response){
           if(!response.data){
-            console.log(response);
             var user = {
               facebook_id: profile.identities[0].user_id,
               name: profile.name,
               email: profile.email
             }
+            console.log('new user obj fr login: ', user);
             return HttpService.postUser(user);
           }
           return response.data;
         })
         .then(function(user){
-          DataService.setCurrentUser(user);
-            if (self.user.events[0].id){
-              $location.path('/events/' + self.user.events[0].id);
-            } else {
-              $location.path('/');
-            }
-            $window.location.reload();
+          return DataService.setCurrentUser(user);
+        })
+        // .then(function(user){
+        //   if(user.eventsUsers.length){
+        //     var events = user.eventsUsers.map(function(evt, index){
+        //       HttpService.getEvent(evt.event_code)
+        //       .then(function(res){
+        //         return res.data;
+        //       });
+        //     });
+        //     return DataService.setEvents(events);
+        //   }
+        //   return null;
+        // })
+        .then(function(user){
+          if(user.eventsUsers.length){
+            $location.path('/events/' + self.currentUser.eventsUsers[0].event_code);
+          }
+          else{
+            $location.path('/');
+          }
+          $window.location.reload();
         })
         .catch(function(err){
           if(err){
@@ -46,13 +63,19 @@
     };
 
     self.checkLogin = function(){
+      console.log('checkLogin called');
       var profile = store.get('profile');
       if(profile){
         self.hasToken = true;
-        HttpService.getUser(profile.identities[0].user_id)
-        .then(function(response){
-          DataService.setCurrentUser(response.data);
-        });
+        if(!self.currentUser.id){
+          HttpService.getUser(profile.email)
+          .then(function(response){
+            DataService.setCurrentUser(response.data);
+          })
+          .then(function(user){
+            console.log('eventsUsers fr checkLogin: ', self.currentUser.eventsUsers);
+          });
+        }
       }
     };
 

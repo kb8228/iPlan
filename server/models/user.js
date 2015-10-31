@@ -1,16 +1,16 @@
 var db = require('../config/database');
 var Promise = require('bluebird');
 
-require('./event');
+require('./eventUser');
 
 var User = db.Model.extend({
   tableName: 'users',
-  events: function(){
-    return this.hasMany('Event');
+  eventsUsers: function(){
+    return this.hasMany('EventUser');
   }
 }, {
   fetchById: function(options){
-    return new this(options).fetch({withRelated: ['events']});
+    return new this(options).fetch({withRelated: ['eventsUsers']});
   },
   newUser: function(options){
     return new this(options);

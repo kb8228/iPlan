@@ -3,7 +3,7 @@ var Promise = require('bluebird');
 var crypto   = require('crypto');
 
 require('./place');
-require('./user');
+require('./eventUser');
 
 var createSha = function(text) {
   var shasum = crypto.createHash('sha1');
@@ -17,18 +17,15 @@ var Event = db.Model.extend({
   places: function(){
     return this.hasMany('Place');
   },
-  guests: function(){
-    return this.hasMany('Guest');
-  },
-  user: function(){
-    return this.belongsTo(User, 'users_id');
+  eventsUsers: function(){
+    return this.hasMany('EventUser');
   }
 }, {
   fetchById: function(options){
-    return new this(options).fetch({withRelated: ['places', 'guests']});
+    return new this(options).fetch({withRelated: ['places', 'eventsUsers']});
   },
   newEvent: function(options){
-    // options.code = createSha(options.name + options.id);
+    options.code = createSha(options.name + options.id);
     return new this(options);
   }
 });

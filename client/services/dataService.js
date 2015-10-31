@@ -4,13 +4,14 @@
 
     var currentEvent = {};
     var currentUser = {};
-    var currentGuest = [];
+    var events = [];
 
     var setCurrentEvent = function(eventData){
       for(var key in eventData){
         currentEvent[key] = eventData[key];
       }
       console.log("this is the current event ", currentEvent);
+      return currentEvent;
     };
     var getCurrentEvent = function(){
       return currentEvent;
@@ -19,30 +20,31 @@
       for(var key in userData){
         currentUser[key] = userData[key];
       }
-      console.log('DataService setCurrentUser: ', currentUser);
+      return currentUser;
     };
+
     var getCurrentUser = function(){
       return currentUser;
     };
 
-    var setCurrentGuest = function(guestData){
-        currentGuest.push(guestData);
-    };
-
-    var getCurrentGuest = function(){
-      return currentGuest;
+    var setEvents = function(evts){
+      console.log('evts passed to setEvents: ', evts);
+      evts.forEach(function(evt, index){
+        events[index] = evt;
+      });
+      console.log('setEvents fr DataService: ', events);
+      return events;
     };
 
     return {
       currentEvent: currentEvent,
       currentUser: currentUser,
-      currentGuest: currentGuest,
+      events: events,
+      setEvents: setEvents,
       setCurrentEvent: setCurrentEvent,
       getCurrentEvent: getCurrentEvent,
       setCurrentUser: setCurrentUser,
-      getCurrentUser: getCurrentUser,
-      setCurrentGuest: setCurrentGuest,
-      getCurrentGuest: getCurrentGuest
+      getCurrentUser: getCurrentUser
     };
   });
 })();

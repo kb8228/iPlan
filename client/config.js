@@ -17,11 +17,7 @@
     .when('/', {
       templateUrl: 'index.html'
     })
-    .when('/events/:id', {
-       templateUrl: './eventView/eventView.html'
-      //templateUrl: 'index.html'
-    })
-    .when('/code/:code', {
+    .when('/events/:code', {
       templateUrl: 'index.html'
     })
     .otherwise({

@@ -46,8 +46,7 @@ var events = buildTable('events', function(table){
   table.timestamp('time');
   table.timestamp('cutoff');
   table.string('location');
-  table.string('code');
-  table.integer('user_id');
+  table.string('code').notNullable();
 });
 
 var places = buildTable('places', function(table){
@@ -66,19 +65,20 @@ var places = buildTable('places', function(table){
 var users = buildTable('users', function(table){
   table.increments('id').primary();
   table.string('facebook_id');
-  table.string('name').notNullable();
-  table.string('email').notNullable();
-  table.string('token');
-});
-
-var guests = buildTable('guests', function(table){
-  table.increments('id').primary();
-  table.string('email').unique().notNullable();
   table.string('name');
-  table.integer('event_id');
+  table.string('email').unique().notNullable();
 });
 
-var tables = [events, places, users, guests];
+var eventsUsers = buildTable('events_users', function(table){
+  table.increments('id').primary();
+  table.integer('event_id').notNullable();
+  table.string('event_code').notNullable();
+  table.integer('user_id').notNullable();
+  table.string('user_role').notNullable();
+  table.boolean('voted');
+});
+
+var tables = [events, places, users, eventsUsers];
 
 Promise.all(tables)
 .then(function(tables){
