@@ -6,7 +6,7 @@ var knex = require('knex')({
     host     : process.env.dbHost || 'localhost',
     host     : process.env.dbHost || '127.0.0.1',
     user     : process.env.dbUser || 'root',
-    password : process.env.dbPassword || '',
+    password : process.env.dbPassword || 'ok',
     database : process.env.dbDatabase || 'iplan',
     charset  : 'utf8'
   }
@@ -54,6 +54,7 @@ var places = buildTable('places', function(table){
   table.string('name').notNullable();
   table.string('address').notNullable();
   table.string('rating_img');
+  table.string('url');
   table.integer('votes');
   table.integer('event_id');
 });
