@@ -599,3 +599,21 @@ button:hover {
   color: black;
   margin-top: 12px;
 }
+
+.place-container {
+  display: inline-block;
+}
+
+.place-left {
+  float: left
+}
+
+.place-right {
+  font-size: 18px;
+  color:#999;
+}
+
+.rating {
+  padding-left: 25px;
+  position: relative;
+}
