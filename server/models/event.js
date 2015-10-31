@@ -28,7 +28,7 @@ var Event = db.Model.extend({
     return new this(options).fetch({withRelated: ['places', 'guests']});
   },
   newEvent: function(options){
-    options.code = createSha(options.name + options.id);
+    // options.code = createSha(options.name + options.id);
     return new this(options);
   }
 });

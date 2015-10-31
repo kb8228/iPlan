@@ -6,6 +6,7 @@ var Promise = require('bluebird');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var nodemailer = require('nodemailer');
+var _ = require('underscore')
 var transporter = nodemailer.createTransport('SMTP', {
   auth: {
     user: 'testingiplan@gmail.com',
@@ -51,6 +52,15 @@ app.get('/api/events/:id', function(req, res, next){
     res.json(data.toJSON());
   });
 });
+
+app.put('/api/events/:id', function(req,res,next){
+  var eventId = req.params.id;
+  var saveTime = req.body;
+  db.model('Event').fetchById({id: eventId})
+  .then(function(data){
+    data.save(saveTime)
+  })
+})
 
 app.post('/api/events', function(req, res, next){
   db.model('Event').newEvent(req.body).save()

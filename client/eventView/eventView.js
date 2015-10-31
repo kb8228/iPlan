@@ -13,17 +13,9 @@
     self.currentGuest = DataService.currentGuest;
     self.evtId = $location.path().replace('/events/', '');
     self.hidePlace = false;
-    self.voteTimer = false;
     self.getTimer = false;
-
-    self.createTimer = function() {
-      if(!self.getTimer) {
-        self.getTimer = true;
-      } else {
-        self.getTimer = false;
-      }
-      console.log(self.getTimer)
-    }
+    self.timerInfo = false;
+    self.isThereTime = false;
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -140,11 +132,21 @@
           self.refresh(response.data.event_id);
         });
       });
-
     self.message = '';
     self.to = '';
     };
 
+    self.createTimer = function(eventTimeCut) {
+      HttpService.putEvent({
+        cutoff: self.timerInfo,
+        eventId: self.currentEvent.id
+      })
+      .then(function(response){
+        self.setEvent(response.data.id)
+        self.isThereTime = true;
+        self.timerInfo = ''
+      })
+    }
     self.setEvent();
   };
 
