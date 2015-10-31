@@ -40,6 +40,7 @@
           });
           self.eventName = '';
       }; 
+    }
 
     function newEventDir(){
       return {
