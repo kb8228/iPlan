@@ -64,9 +64,9 @@
           <!-- TODO: pull event names from current user -->
           <div ng-controller="EventViewController as evtCtrl">
             <ul>
-              <div class="left-links" ng-repeat="event in evtCtrl.currentUser.events" ng-click="evtCtrl.refresh(event.id)">
-                <a href="/#/events/{{event.id}}" class="event-links">
-                  {{event.name}}
+              <div class="left-links" ng-repeat="event in evtCtrl.currentUser.eventsUsers" ng-click="evtCtrl.refresh(event.event.code)">
+                <a href="/#/events/{{event.event.code}}" class="event-links">
+                  {{event.event.name}}
                 </a>
               </div>
             </ul>
