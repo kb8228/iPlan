@@ -44,7 +44,7 @@ var events = buildTable('events', function(table){
   table.timestamp('created_at');
   table.timestamp('updated_at');
   table.timestamp('time');
-  table.date('cutoff');
+  table.timestamp('cutoff');
   table.string('location');
   table.string('code');
   table.integer('user_id');

@@ -142,13 +142,11 @@
         eventId: self.currentEvent.id
       })
       .then(function(response){
-        self.currentEvent.cutoff = response.data.cutoff;
         self.setEvent(response.data.id)
         self.isThereTime = true;
         self.timerInfo = ''
       })
     }
-
     self.setEvent();
   };
 
