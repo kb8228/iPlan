@@ -6,7 +6,7 @@ require('../models/event');
 var Events = db.Collection.extend({
   model: db.model('Event')
 }, {
-  fetchByUser: function(userId){
+  fetchByUser: function(userId){ // delete this route once EventsUsers works
     return db.collection('Events')
     .forge()
     .query(function(qb){

@@ -22,7 +22,7 @@ var Event = db.Model.extend({
   }
 }, {
   fetchById: function(options){
-    return new this(options).fetch({withRelated: ['places', 'events_users']});
+    return new this(options).fetch({withRelated: ['places', 'eventsUsers']});
   },
   newEvent: function(options){
     options.code = createSha(options.name + options.id);

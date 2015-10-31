@@ -16,12 +16,16 @@
             name: self.eventName,
             date: self.date,
             time: self.time,
-            location: self.location,
-            user_id: self.currentUser.id
+            location: self.location
           })
           .then(function(response){
+            HttpService.postEventUser({
+              event_id: response.data.id,
+              user_id: self.currentUser.id,
+              user_role: 'host'
+            });
             DataService.setCurrentEvent(response.data);
-            $location.path('/events/' + response.data.id);
+            $location.path('/events/' + response.data.code);
             $window.location.reload();
             console.log('success response: ', response.data);
           })
