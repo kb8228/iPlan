@@ -193,19 +193,16 @@
           //hour matches //check the minutes more precisely or if it has surpassed
           if(dateMinute === filteredMinute) {
             self.cutVoting = false;
-            console.log('done')
+            console.log(self.cutVoting)
           } else if (dateMinute > filteredMinute) {
             self.cutVoting = false;
-            console.log('done')
+            console.log(self.cutVoting)
           }
         } else if (dateHour > filteredHour) {
           self.cutVoting = false;
-          console.log('done')
+          console.log(self.cutVoting)
         }
-      } else if(dateMonth > filteredMonth || dateDay > filteredDay || dateYear > filteredYear) {
-          self.cutVoting = false;
-          console.log('done')
-      }
+      } 
     }
 
     self.timeCheck = function() {

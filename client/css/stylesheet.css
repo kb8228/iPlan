@@ -639,6 +639,16 @@ button:hover {
   position: relative;
 }
 
+.winner-details {
+  font-size:13pt;
+  text-align:center;
+}
+
+.winner-headline {
+  text-align:center;
+  font-size:20pt;
+}
+
 .yelp-redirect {
   background-color:#7482b5;
   color:#fff;

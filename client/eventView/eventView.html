@@ -33,8 +33,10 @@
   </div>
 
   <div class="event-container">
-    <div class="container-padding">
       <!-- ADD PLACE FORM -->
+    <div class="container-padding">
+      <!-- CHECK IF VOTING IS NOT DONE! -->
+<!--      <div ng-hide="evtCtrl.cutVoting"> -->
       <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
         <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
       </form>
@@ -64,7 +66,7 @@
         <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
           <div class="places-choices">
           <!-- ng-repeat on event's places -->
-            <span  ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
+            <span ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
               <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
               <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
                 {{place.votes}}
@@ -88,13 +90,25 @@
                 <div class="snippet">
                   " {{place.snippet}} "
                 </div>
-              </div>
+            </div>
           </div>
         </div>
       <!-- END LIST OF PLACES -->
       </div>
-    </div>
+<!--     </div> -->
     <!-- END container-padding -->
+    </div>
+
+    <div ng-if="!evtCtrl.cutVoting">
+      <div class="container-padding">
+        <div class="winner-details">
+          Voting is over!
+        </div>
+        <div class="winner-headline">
+          The Winner Is...
+        </div>
+      </div>
+    </div>
   </div>
   <!-- END event-container -->
 
