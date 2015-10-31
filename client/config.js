@@ -17,11 +17,11 @@
     .when('/', {
       templateUrl: 'index.html'
     })
+    // delete this route if :code works
     .when('/events/:id', {
-      // templateUrl: './eventView/eventView.html'
       templateUrl: 'index.html'
     })
-    .when('/code/:code', {
+    .when('/events/:code', {
       templateUrl: 'index.html'
     })
     .otherwise({

@@ -83,9 +83,16 @@ app.post('/api/users', function(req, res, next){
   });
 });
 
+app.post('api/eventsusers', function(req, res, next){
+  db.model('EventUser').newEventUser(req.body).save()
+  .then(function(evtUser){
+    res.json(evtUser);
+  });
+});
+
 app.get('/api/users/:email', function(req, res, next){
-  var userId = req.params.email;
-  db.model('User').fetchById({email: userId})
+  var userEmail = req.params.email;
+  db.model('User').fetchById({email: userEmail})
   .then(function(user){
     res.json(user);
   });
