@@ -11,6 +11,7 @@
         currentEvent[key] = eventData[key];
       }
       console.log("this is the current event ", currentEvent);
+      return currentEvent;
     };
     var getCurrentEvent = function(){
       return currentEvent;
@@ -19,17 +20,20 @@
       for(var key in userData){
         currentUser[key] = userData[key];
       }
-      console.log('DataService setCurrentUser: ', currentUser);
+      return currentUser;
     };
+
     var getCurrentUser = function(){
       return currentUser;
     };
 
     var setEvents = function(evts){
+      console.log('evts passed to setEvents: ', evts);
       evts.forEach(function(evt, index){
         events[index] = evt;
       });
-      console.log('setEvents in DataService: ', events);
+      console.log('setEvents fr DataService: ', events);
+      return events;
     };
 
     return {

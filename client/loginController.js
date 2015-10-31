@@ -32,6 +32,18 @@
         .then(function(user){
           return DataService.setCurrentUser(user);
         })
+        // .then(function(user){
+        //   if(user.eventsUsers.length){
+        //     var events = user.eventsUsers.map(function(evt, index){
+        //       HttpService.getEvent(evt.event_code)
+        //       .then(function(res){
+        //         return res.data;
+        //       });
+        //     });
+        //     return DataService.setEvents(events);
+        //   }
+        //   return null;
+        // })
         .then(function(user){
           if(user.eventsUsers.length){
             $location.path('/events/' + self.currentUser.eventsUsers[0].event_code);
@@ -39,7 +51,7 @@
           else{
             $location.path('/');
           }
-          // $window.location.reload();
+          $window.location.reload();
         })
         .catch(function(err){
           if(err){

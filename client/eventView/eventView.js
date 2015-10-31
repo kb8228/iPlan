@@ -9,20 +9,15 @@
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
-
     self.events = DataService.events;
-    console.log('evtCtrl events: ', self.events);
-    window.setTimeout(function(){
-      console.log('evtCtrl events after timeout: ', self.events);
-    }, 1000);
-
     self.currentUser = DataService.currentUser;
-    self.currentGuest = DataService.currentGuest;
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
     self.timerInfo = false;
     self.isThereTime = false;
+
+    console.log('evtCtrl user: ', self.currentUser);
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -55,6 +50,10 @@
       });
       self.timeCheck();
     };
+
+    self.setUserEvents = function(){
+      
+    }
 
     self.refresh = function(eventCode){
       self.eventCode = eventCode;
