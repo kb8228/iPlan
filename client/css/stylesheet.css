@@ -216,7 +216,7 @@ button:hover {
 .leftbar {
   position:absolute;
   background-color: #3f4c79;
-  height:800px;
+  height:120%;
   width:15%;
   left:0;
   z-index: 1;
@@ -436,6 +436,8 @@ button:hover {
 
 .timer-date {
   width:49%;
+  padding-top:2px;
+  padding-bottom:3.5px;
   display:inline;
   border:1px solid;
   border-radius:10px;
