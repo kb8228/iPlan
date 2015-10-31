@@ -12,7 +12,7 @@ var EventsUsers = db.Collection.extend({
     .query(function(qb){
       qb.where('user_id', '=', userId);
     })
-    .fetch();
+    .fetch({withRelated: 'event'});
   },
   fetchByEvent: function(eventId){
     return db.collection('EventsUsers')
@@ -20,7 +20,7 @@ var EventsUsers = db.Collection.extend({
     .query(function(qb){
       qb.where('event_id', '=', eventId);
     })
-    .fetch();
+    .fetch({withRelated: 'user'});
   }
 });
 

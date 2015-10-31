@@ -1,14 +1,15 @@
 (function(){
   angular.module('iplanApp')
-  .controller('LoginController', ['$http', 'auth', 'store', '$location', 'DataService', 'HttpService', '$window', LoginController]);
+  .controller('LoginController', ['$http', 'auth', 'store', '$location', '$route', 'DataService', 'HttpService', '$window', LoginController]);
 
-  function LoginController($http, auth, store, $location, DataService, HttpService, $window) {
+  function LoginController($http, auth, store, $location, $route, DataService, HttpService, $window) {
     var self = this;
     self.currentUser = DataService.currentUser;
     self.hasToken = false;
     self.getEvent = false;
 
     self.login = function () {
+      console.log('login called');
       auth.signin({}, function (profile, token) {
         console.log('profile at login: ', profile);
         store.set('profile', profile);
@@ -17,7 +18,6 @@
         // success callback
         HttpService.getUser(profile.email)
         .then(function(response){
-          console.log('1st response from login: ', response);
           if(!response.data){
             var user = {
               facebook_id: profile.identities[0].user_id,
@@ -30,29 +30,28 @@
           return response.data;
         })
         .then(function(user){
-          DataService.setCurrentUser(user);
-          // set events
-          // if(self.currentUser.eventsUsers.length){
-          //   var temp = [];
-          //   console.log('evtUsers fr login: ', self.currentUser.eventsUsers);
-          //   self.currentUser.eventsUsers.forEach(function(evtUser){
-          //     HttpService.getEvent(evtUser.event_code)
-          //     .then(function(evt){
-          //       temp.push(evt);
-          //     });
-          //   });
-          //   console.log('LoginController temp events: ', temp);
-          //   DataService.setEvents(temp);
-          // }
+          return DataService.setCurrentUser(user);
         })
+        // .then(function(user){
+        //   if(user.eventsUsers.length){
+        //     var events = user.eventsUsers.map(function(evt, index){
+        //       HttpService.getEvent(evt.event_code)
+        //       .then(function(res){
+        //         return res.data;
+        //       });
+        //     });
+        //     return DataService.setEvents(events);
+        //   }
+        //   return null;
+        // })
         .then(function(user){
-          if(self.currentUser.eventsUsers.length){
-            $location.path('/events/' + self.currentUser.eventsUsers[0].event_code); // rework after pulling events
+          if(user.eventsUsers.length){
+            $location.path('/events/' + self.currentUser.eventsUsers[0].event_code);
           }
           else{
             $location.path('/');
           }
-          // $window.location.reload();
+          $window.location.reload();
         })
         .catch(function(err){
           if(err){
@@ -64,16 +63,19 @@
     };
 
     self.checkLogin = function(){
+      console.log('checkLogin called');
       var profile = store.get('profile');
       if(profile){
         self.hasToken = true;
-        HttpService.getUser(profile.email)
-        .then(function(response){
-          DataService.setCurrentUser(response.data);
-        })
-        .then(function(user){
-          console.log('eventsUsers fr checkLogin: ', self.currentUser.eventsUsers);
-        });
+        if(!self.currentUser.id){
+          HttpService.getUser(profile.email)
+          .then(function(response){
+            DataService.setCurrentUser(response.data);
+          })
+          .then(function(user){
+            console.log('eventsUsers fr checkLogin: ', self.currentUser.eventsUsers);
+          });
+        }
       }
     };
 

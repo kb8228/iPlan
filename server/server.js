@@ -82,6 +82,22 @@ app.post('/api/eventsusers', function(req, res, next){
   });
 });
 
+app.get('/api/eventsusers/users/:user_id', function(req, res, next){
+  var userId = req.params.user_id;
+  db.collection('EventsUsers').fetchByUser(userId)
+  .then(function(eventsUsers){
+    res.json(eventsUsers);
+  });
+});
+
+app.get('/api/eventsusers/events/:event_id', function(req, res, next){
+  var eventId = req.params.event_id;
+  db.collection('EventsUsers').fetchByEvent(eventId)
+  .then(function(eventsUsers){
+    res.json(eventsUsers);
+  });
+});
+
 app.get('/api/users/:email', function(req, res, next){
   var userEmail = req.params.email;
   db.model('User').fetchById({email: userEmail})

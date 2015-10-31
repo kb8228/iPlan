@@ -61,16 +61,17 @@
   <div ng-if="loginCtrl.hasToken" ng-cloak>
         <div class="leftbar">
           <div class="left-title"><div class="green-i">i</div>Plan</div>
-          <!-- TODO: pull event names from current user -->
+        <!-- EVT NAME LIST -->
           <div ng-controller="EventViewController as evtCtrl">
             <ul>
               <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
                 <a href="/#/events/{{event.code}}" class="event-links">
-                  {{event.event.name}}
+                  {{event.name}}
                 </a>
               </div>
             </ul>
           </div>
+        <!-- END EVT NAME LIST -->
         </div> <!-- END leftbar -->
 
       <div class="left-padding">
