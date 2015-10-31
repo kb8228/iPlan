@@ -57,6 +57,7 @@ var places = buildTable('places', function(table){
   table.string('url');
   table.string('category');
   table.string('snippet');
+  table.string('location');
   table.integer('votes');
   table.integer('event_id');
 });

@@ -92,6 +92,7 @@
         url: choice.url,
         category: choice.categories[0][0],
         snippet: choice.snippet_text,
+        location: choice.location.coordinate.latitude +','+ choice.location.coordinate.longitude,
         event_id: self.currentEvent.id
       })
       .then(function(response){
