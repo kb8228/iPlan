@@ -16,6 +16,7 @@
     self.getTimer = false;
     self.timerInfo = false;
     self.isThereTime = false;
+    self.cutVoting = true;
 
     console.log('evtCtrl user: ', self.currentUser);
 
@@ -185,13 +186,25 @@
       var filteredHour = $filter('date')(self.currentEvent.cutoff, 'HH')
       var filteredMinute = $filter('date')(self.currentEvent.cutoff, 'mm')
       
-      console.log(filteredMonth,dateMonth)
-      console.log(filteredDay, dateDay)
-      console.log(filteredYear, dateYear)
-      console.log(filteredHour, dateHour)
-      console.log(filteredMinute,dateMinute)
+      //checking to see if the month, day, year matches to begin checking further down
       if(dateMonth === filteredMonth && dateDay === filteredDay && dateYear === filteredYear) {
-        console.log('dates match!')
+        //dates match! //check against time
+        if(dateHour === filteredHour) {
+          //hour matches //check the minutes more precisely or if it has surpassed
+          if(dateMinute === filteredMinute) {
+            self.cutVoting = false;
+            console.log('done')
+          } else if (dateMinute > filteredMinute) {
+            self.cutVoting = false;
+            console.log('done')
+          }
+        } else if (dateHour > filteredHour) {
+          self.cutVoting = false;
+          console.log('done')
+        }
+      } else if(dateMonth > filteredMonth || dateDay > filteredDay || dateYear > filteredYear) {
+          self.cutVoting = false;
+          console.log('done')
       }
     }
 
