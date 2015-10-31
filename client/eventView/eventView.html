@@ -17,13 +17,13 @@
             <i class="fa fa-clock-o"></i>
             {{evtCtrl.currentEvent.time | date:'shortTime'}}
           <span class="event-right">
-            <span ng-if="!evtCtrl.isThereTime">
-              <span ng-show="evtCtrl.getTimer">
+            <span ng-if="!evtCtrl.currentEvent.cutoff">
+              <span>
                 <input type="datetime-local" ng-model="evtCtrl.timerInfo" class="timer-date">
               </span>
-                <button class="vote-timer" ng-click="evtCtrl.createTimer()">Create a Vote Timer</button>
+                <button class="vote-timer" ng-click="evtCtrl.createTimer(evtCtrl.timerInfo)">Create a Vote Timer</button>
             </span>
-            <span ng-if="evtCtrl.isThereTime">
+            <span ng-if="evtCtrl.currentEvent.cutoff">
               Vote Cutoff: {{ evtCtrl.currentEvent.cutoff | date: 'shortTime'}}
             </span>
           </span>

@@ -14,28 +14,8 @@
     self.evtId = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
-    self.timerInfo;
+    self.timerInfo = false;
     self.isThereTime = false;
-
-    self.createTimer = function() {
-      if(!self.timerInfo) {
-          if(!self.getTimer) {
-          self.getTimer = true;
-        } else {
-          self.getTimer = false;
-        }
-      } else {
-        var timerInfo = self.timerInfo
-        HttpService.postEvent({
-          cutoff: timerInfo
-        }).then(function(response){
-          console.log(response, 'is the timer response')
-          self.currentEvent.cutoff = response.data.cutoff
-          self.isThereTime = true;
-          self.timerInfo = ''
-        })
-      }
-    }
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -152,10 +132,22 @@
           self.refresh(response.data.event_id);
         });
       });
-
     self.message = '';
     self.to = '';
     };
+
+    self.createTimer = function(eventTimeCut) {
+      HttpService.putEvent({
+        cutoff: eventTimeCut,
+        eventId: self.currentEvent.id
+      })
+      .then(function(response){
+        self.currentEvent.cutoff = response.data.cutoff;
+        self.setEvent(response.data.id)
+        self.isThereTime = true;
+        self.timerInfo = ''
+      })
+    }
 
     self.setEvent();
   };
