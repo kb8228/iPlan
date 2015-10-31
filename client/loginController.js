@@ -32,7 +32,7 @@
         .then(function(user){
           DataService.setCurrentUser(user);
           if(self.currentUser.eventsUsers.length){
-            $location.path('/events/' + self.currentUser.eventsUsers[0].event.code);
+            $location.path('/events/' + self.currentUser.eventsUsers[0].event.code); // rework after pulling events
           }
           else{
             $location.path('/');
