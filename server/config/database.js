@@ -39,11 +39,12 @@ var buildTable = function(name, callback){
 
 var events = buildTable('events', function(table){
   table.increments('id').primary();
-  table.string('name').notNullable();
+  table.string('name');
   table.date('date');
   table.timestamp('created_at');
   table.timestamp('updated_at');
   table.timestamp('time');
+  table.timestamp('cutoff');
   table.string('location');
   table.string('code').notNullable();
 });
@@ -53,6 +54,9 @@ var places = buildTable('places', function(table){
   table.string('name').notNullable();
   table.string('address').notNullable();
   table.string('rating_img');
+  table.string('url');
+  table.string('category');
+  table.string('snippet');
   table.integer('votes');
   table.integer('event_id');
 });
@@ -67,6 +71,7 @@ var users = buildTable('users', function(table){
 var eventsUsers = buildTable('events_users', function(table){
   table.increments('id').primary();
   table.integer('event_id').notNullable();
+  table.string('event_code').notNullable();
   table.integer('user_id').notNullable();
   table.string('user_role').notNullable();
   table.boolean('voted');

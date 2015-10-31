@@ -6,12 +6,21 @@
       console.log('this is the httpservice postevent', eventData);
       return $http.post('/api/events', eventData);
     };
+
+    var putEvent = function(eventData){
+      console.log('inside putevent', eventData)
+      return $http.put('/api/events/' + eventData.eventId, 
+        {cutoff: eventData.cutoff})
+    };
+
     var getEvent = function(eventCode){
       return $http.get('/api/events/' + eventCode);
     };
+
     var postUser = function(userData){
       return $http.post('/api/users', userData);
     };
+
     var getUser = function(email){
       return $http.get('/api/users/' + email);
     };
@@ -35,6 +44,7 @@
 
     return {
       postEvent: postEvent,
+      putEvent: putEvent,
       getEvent: getEvent,
       postUser: postUser,
       getUser: getUser,

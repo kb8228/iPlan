@@ -9,21 +9,20 @@
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
     self.currentEvent = DataService.currentEvent;
+
+    self.events = DataService.events;
+    console.log('evtCtrl events: ', self.events);
+    window.setTimeout(function(){
+      console.log('evtCtrl events after timeout: ', self.events);
+    }, 1000);
+
     self.currentUser = DataService.currentUser;
     self.currentGuest = DataService.currentGuest;
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
-    self.voteTimer = false;
     self.getTimer = false;
-
-    self.createTimer = function() {
-      if(!self.getTimer) {
-        self.getTimer = true;
-      } else {
-        self.getTimer = false;
-      }
-      console.log(self.getTimer)
-    }
+    self.timerInfo = false;
+    self.isThereTime = false;
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -45,7 +44,6 @@
     self.setEvent = function(){
       HttpService.getEvent(self.eventCode)
       .then(function(response){
-        console.log('setEvent success: ', response.data);
         DataService.setCurrentEvent(response.data);
         angular.forEach(response.data.places, function(val, key){
           self.toggle[val.id] = self.toggle[val.id] || false;
@@ -89,6 +87,9 @@
         name: choice.name,
         address: choice.location.display_address[0] + ", " + choice.location.display_address[1],
         rating_img: choice.rating_img_url,
+        url: choice.url,
+        category: choice.categories[0][0],
+        snippet: choice.snippet_text,
         event_id: self.currentEvent.id
       })
       .then(function(response){
@@ -147,11 +148,21 @@
         });
         self.refresh(self.eventCode);
       });
-
     self.message = '';
     self.to = '';
     };
 
+    self.createTimer = function(eventTimeCut) {
+      HttpService.putEvent({
+        cutoff: self.timerInfo,
+        eventId: self.currentEvent.id
+      })
+      .then(function(response){
+        self.setEvent(response.data.id)
+        self.isThereTime = true;
+        self.timerInfo = ''
+      })
+    }
     self.setEvent();
   };
 
