@@ -29,19 +29,18 @@
         })
         .then(function(user){
           DataService.setCurrentUser(user);
-          if(currentUser.events.length){
-            $location.path('/events/' + self.user.events[0].id);
-          }
-          else{
-            $location.path('/');
-          }
+            if (self.user.events[0].id){
+              $location.path('/events/' + self.user.events[0].id);
+            } else {
+              $location.path('/');
+            }
+            $window.location.reload();
         })
         .catch(function(err){
           if(err){
             console.log('error: ', err);
           }
         });
-        $window.location.reload();
       });
 
     };
