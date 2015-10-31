@@ -158,10 +158,10 @@
     self.createTimer = function(eventTimeCut) {
       HttpService.putEvent({
         cutoff: self.timerInfo,
-        eventId: self.currentEvent.id
+        code: self.currentEvent.code
       })
       .then(function(response){
-        self.refresh(response.data.id)
+        self.refresh(response.data.code)
         self.isThereTime = true;
         self.timerInfo = ''
       })
