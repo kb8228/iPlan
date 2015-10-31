@@ -23,6 +23,7 @@
     "connect-flash": "^0.1.1",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "hogan": "^1.0.2",
     "knex": "^0.8.6",
     "nodemailer": "^0.7.1",
     "passport": "^0.3.0",
