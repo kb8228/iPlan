@@ -11,7 +11,7 @@
     self.currentEvent = DataService.currentEvent;
     self.currentUser = DataService.currentUser;
     self.currentGuest = DataService.currentGuest;
-    self.evtId = $location.path().replace('/events/', '');
+    self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
     self.timerInfo = false;
@@ -35,7 +35,7 @@
     }
 
     self.setEvent = function(){
-      HttpService.getEvent(self.evtId)
+      HttpService.getEvent(self.eventCode)
       .then(function(response){
         console.log('setEvent success: ', response.data);
         DataService.setCurrentEvent(response.data);
@@ -50,8 +50,8 @@
       self.timeCheck();
     };
 
-    self.refresh = function(eventId){
-      self.evtId = eventId;
+    self.refresh = function(eventCode){
+      self.eventCode = eventCode;
       self.setEvent();
     };
 
@@ -89,7 +89,7 @@
         event_id: self.currentEvent.id
       })
       .then(function(response){
-        self.refresh(response.data.event_id);
+        self.refresh(response.data.code);
       })
       .catch(function(err){
         console.log('error in posting place: ', err);
@@ -124,15 +124,25 @@
 
       temp.forEach(function(val, index){
         var found = false;
-        var newGuest = {
-          email: val,
-          event_id: self.currentEvent.id
+        var newUser = {
+          email: val
         };
         HttpService.sendMail(newMail);
-        HttpService.postGuest(newGuest)
+        HttpService.postUser(newUser)
         .then(function(response){
-          self.refresh(response.data.event_id);
+          return response.data;
+        })
+        .then(function(user){
+          HttpService.postEventUser({
+            event_id: self.currentEvent.id,
+            user_id: user.id,
+            user_role: 'guest'
+          });
+        })
+        .catch(function(err){
+          console.log('err in postUser as guest: ', err);
         });
+        self.refresh(self.eventCode);
       });
     self.message = '';
     self.to = '';
