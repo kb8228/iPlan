@@ -29,12 +29,11 @@
         })
         .then(function(user){
           DataService.setCurrentUser(user);
-          if(currentUser.events.length){
-            $location.path('/events/' + self.user.events[0].id);
-          }
-          else{
-            $location.path('/');
-          }
+            if (self.user.events[0].id){
+              $location.path('/events/' + self.user.events[0].id);
+            } else {
+              $location.path('/');
+            }
         })
         .catch(function(err){
           if(err){
