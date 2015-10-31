@@ -19,11 +19,16 @@
             location: self.location
           })
           .then(function(response){
+            console.log('postEvent .then response data: ', response.data);
             HttpService.postEventUser({
               event_id: response.data.id,
               user_id: self.currentUser.id,
               user_role: 'host'
+            })
+            .then(function(response){
+              console.log('response fr postEventUser: ', response);
             });
+            
             DataService.setCurrentEvent(response.data);
             $location.path('/events/' + response.data.code);
             $window.location.reload();

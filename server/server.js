@@ -44,13 +44,13 @@ app.get('/api/events', function(req, res){
   // here we will eventually fetch events by user
 });
 
-app.get('/api/events/:id', function(req, res, next){
-  var eventId = req.params.id;
-  db.model('Event').fetchById({id: eventId})
-  .then(function(data){
-    res.json(data.toJSON());
-  });
-});
+// app.get('/api/events/:id', function(req, res, next){
+//   var eventId = req.params.id;
+//   db.model('Event').fetchById({id: eventId})
+//   .then(function(data){
+//     res.json(data.toJSON());
+//   });
+// });
 
 app.post('/api/events', function(req, res, next){
   db.model('Event').newEvent(req.body).save()
@@ -73,7 +73,7 @@ app.post('/api/users', function(req, res, next){
   });
 });
 
-app.post('api/eventsusers', function(req, res, next){
+app.post('/api/eventsusers', function(req, res, next){
   db.model('EventUser').newEventUser(req.body).save()
   .then(function(evtUser){
     res.json(evtUser);

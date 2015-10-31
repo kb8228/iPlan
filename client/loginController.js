@@ -37,8 +37,7 @@
           else{
             $location.path('/');
           }
-          // $window.location.reload();
-          $location.replace();
+          $window.location.reload();
         })
         .catch(function(err){
           if(err){
