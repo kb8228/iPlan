@@ -73,23 +73,22 @@
           <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
             <div class="place-left card-content">
               <div>
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=300x200&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x95&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA" class="map-padding">
               </div>
             </div>
             <div class="card-content place-right">
-              <div>
-                {{place.name}}<img class="rating" ng-src="{{evtCtrl.selectedRating}}">
-              </div>
-              <div>
-                <div>
-                  {{evtCtrl.selectedAddress}}<a class="red accent-4 waves-effect waves-light btn rating" href="{{place.url}}">Yelp</a>
-                </div>
-                {{place.category}}
+              <p class="split-para">
+                {{place.name}} 
+                  <span>
+                    <img class="rating" ng-src="{{evtCtrl.selectedRating}}">
+                  </span><BR>
+                {{evtCtrl.selectedAddress}} 
+                  <span>{{place.category}}</span>
+              </p>
                 <div class="snippet">
                   " {{place.snippet}} "
                 </div>
               </div>
-            </div>
           </div>
         </div>
       <!-- END LIST OF PLACES -->
