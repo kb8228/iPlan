@@ -70,18 +70,23 @@
                 {{place.votes}}
               </button>
           </div>
-          <div class="slideDown card large" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
-            <div class="card-image">
-              <img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=600x300&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA">
-            </div>
-            <div class="card-content place-details">
-              {{evtCtrl.selectedAddress}}
-              <img ng-src="{{evtCtrl.selectedRating}}">
+          <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
+            <div class="place-left card-content">
               <div>
-                <p>{{place.category}}</p>
-                <a href="{{place.url}}">{{place.url}}</a>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=300x200&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA">
+              </div>
+            </div>
+            <div class="card-content place-right">
+              <div>
+                {{place.name}}<img class="rating" ng-src="{{evtCtrl.selectedRating}}">
+              </div>
+              <div>
+                <div>
+                  {{evtCtrl.selectedAddress}}<a class="red accent-4 waves-effect waves-light btn rating" href="{{place.url}}">Yelp</a>
+                </div>
+                {{place.category}}
                 <div class="snippet">
-                  {{place.snippet}}
+                  " {{place.snippet}} "
                 </div>
               </div>
             </div>
