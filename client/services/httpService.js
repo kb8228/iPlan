@@ -9,7 +9,7 @@
 
     var putEvent = function(eventData){
       console.log('inside putevent', eventData)
-      return $http.put('/api/events/' + eventData.eventId, 
+      return $http.put('/api/events/' + eventData.code, 
         {cutoff: eventData.cutoff})
     };
 
