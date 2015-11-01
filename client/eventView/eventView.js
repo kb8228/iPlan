@@ -40,6 +40,7 @@
     self.setEvent = function(){
       HttpService.getEvent(self.eventCode)
       .then(function(response){
+        console.log('setEvent response: ', response.data);
         DataService.setCurrentEvent(response.data);
         angular.forEach(response.data.places, function(val, key){
           self.toggle[val.id] = self.toggle[val.id] || false;
@@ -95,7 +96,7 @@
         event_id: self.currentEvent.id
       })
       .then(function(response){
-        self.refresh(response.data.code);
+        self.refresh(self.eventCode);
       })
       .catch(function(err){
         console.log('error in posting place: ', err);
