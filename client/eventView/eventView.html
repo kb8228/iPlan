@@ -36,7 +36,7 @@
       <!-- ADD PLACE FORM -->
     <div class="container-padding">
       <!-- CHECK IF VOTING IS NOT DONE! -->
-<!--      <div ng-hide="evtCtrl.cutVoting"> -->
+      <div ng-if="evtCtrl.cutVoting">
       <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
         <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
       </form>
@@ -94,6 +94,7 @@
           </div>
         </div>
       <!-- END LIST OF PLACES -->
+      </div>
       </div>
 <!--     </div> -->
     <!-- END container-padding -->
