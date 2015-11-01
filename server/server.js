@@ -7,9 +7,6 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var nodemailer = require('nodemailer');
 var _ = require('underscore')
-var fs = require('fs');
-var hogan = require('hogan');
-
 var transporter = nodemailer.createTransport('SMTP', {
   auth: {
     user: 'testingiplan@gmail.com',
@@ -54,6 +51,15 @@ app.post('/api/events', function(req, res, next){
     res.json(evt);
   });
 });
+
+app.put('/api/events/:code', function(req, res, next){
+  var code = req.params.code;
+  var saveTime = req.body;
+  db.model('Event').fetchById({code: code})
+  .then(function(data){
+    data.save(saveTime)
+  })
+})
 
 app.get('/api/events/:code', function(req, res, next){
   var code = req.params.code;
@@ -109,17 +115,13 @@ app.get('/api/users/:email', function(req, res, next){
 });
 
 app.post('/sendmail', function(req, res, next){
-  var template = fs.readFileSync(__dirname + '/email.hjs', 'utf-8');
-  console.log(__dirname);
-  var compiledTemplate = hogan.compile(template);
-
   var data = req.body;
-
+  console.log(req);
   transporter.sendMail({
     from: 'testingiplan@gmail.com',
     to: data.to,
     subject: 'You got an invite from iPlan!',
-    html: compiledTemplate.render({name: data.name})
+    text: data.message
   }, function(err){
     console.log(err);
   });
