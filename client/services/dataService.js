@@ -4,7 +4,8 @@
 
     var currentEvent = {};
     var currentUser = {};
-    var events = {};
+    var events = [];
+    var users = [];
 
     var setCurrentEvent = function(eventData){
       for(var key in eventData){
@@ -33,19 +34,29 @@
       evts.forEach(function(evt, index){
         events[index] = evt;
       });
-      console.log('setEvents fr DataService: ', events);
+      console.log('setEvents from DataService: ', events);
       return events;
+    };
+
+    var setUsers = function(users){
+      users.forEach(function(user, index){
+        users[index] = user;
+      });
+      console.log('setUsers from DataService: ', users);
+      return users;
     };
 
     return {
       currentEvent: currentEvent,
       currentUser: currentUser,
       events: events,
+      users: users,
       setEvents: setEvents,
       setCurrentEvent: setCurrentEvent,
       getCurrentEvent: getCurrentEvent,
       setCurrentUser: setCurrentUser,
-      getCurrentUser: getCurrentUser
+      getCurrentUser: getCurrentUser,
+      setUsers: setUsers
     };
   });
 })();

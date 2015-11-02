@@ -24,12 +24,13 @@
               event_id: response.data.id,
               event_code: response.data.code,
               user_id: self.currentUser.id,
+              email: self.currentUser.email,
               user_role: 'host'
             })
             .then(function(response){
               console.log('response fr postEventUser: ', response);
             });
-            
+
             DataService.setCurrentEvent(response.data);
             $location.path('/events/' + response.data.code);
             $window.location.reload();
@@ -39,7 +40,7 @@
             console.log('error in posting event: ', err);
           });
           self.eventName = '';
-      }; 
+      };
     }
 
     function newEventDir(){
