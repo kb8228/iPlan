@@ -59,13 +59,13 @@
 <!-- if user has a token, display a different view !-->
  <div ng-controller="LoginController as loginCtrl" ng-cloak>
   <div ng-if="loginCtrl.hasToken" ng-cloak>
-        <div class="leftbar">
-          <div class="left-title"><div class="green-i">i</div>Plan</div>
+        <div class="leftbar" ng-controller="EventViewController as evtCtrl">
+          <div class="left-title" ng-click="evtCtrl.clearEvent()"><div class="green-i">i</div>Plan</div>
         <!-- EVT NAME LIST -->
-          <div ng-controller="EventViewController as evtCtrl">
+          <div>
             <ul>
               <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
-                <a href="/#/events/{{event.code}}" class="event-links">
+                <a href="/#/events/{{event.event.code}}" class="event-links">
                   {{event.event.name}}
                 </a>
               </div>

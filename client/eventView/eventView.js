@@ -53,6 +53,11 @@
       }
     };
 
+    self.clearEvent = function(){
+      DataService.clearCurrentEvent();
+      $location.path('/');
+    }
+
     self.checkDateTime = function() {
       //compare against js date format//
       //sat oct
