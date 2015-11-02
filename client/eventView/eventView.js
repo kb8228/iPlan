@@ -93,7 +93,7 @@
       HttpService.getUsers(self.eventCode)
       .then(function(user){
         DataService.setUsers(user.data);
-        console.log('im the user', user.data);
+        console.log('im the user', user);
 
       })
     }
@@ -110,6 +110,8 @@
     self.refresh = function(eventCode){
       self.eventCode = eventCode;
       self.setEvent();
+      self.setUsersEvent();
+      self.setEventsUser();
     };
 
     self.searchYelp = function(){

@@ -65,7 +65,7 @@
           <div ng-controller="EventViewController as evtCtrl">
             <ul>
               <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
-                <a href="/#/events/{{event.code}}" class="event-links">
+                <a href="/#/events/{{event.event.code}}" class="event-links">
                   {{event.event.name}}
                 </a>
               </div>
