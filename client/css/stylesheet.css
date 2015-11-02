@@ -640,7 +640,7 @@ button:hover {
 }
 
 .winner-details {
-  font-size:13pt;
+  font-size:10pt;
   text-align:center;
 }
 
@@ -654,4 +654,34 @@ button:hover {
   color:#fff;
   border:none;
   padding: 3px 10px 3px 10px;
+}
+
+.place-winner {
+  text-align:center;
+  margin: 0 auto;
+}
+
+.place-winner-details {
+  font-weight:bold;
+  font-size:25pt;
+  color:#00d0bc;
+}
+
+.place-winner-info {
+  font-size:10pt;
+}
+
+.winner-map {
+  margin-bottom:15px;
+}
+
+.place-winner-address {
+  margin-top:12px;
+  font-size:10pt;
+}
+
+.winner-snippet {
+  padding-right:50px;
+  padding-left:50px;
+  font-style:italic;
 }

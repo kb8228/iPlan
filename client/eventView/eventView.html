@@ -1,4 +1,4 @@
-<div ng-if="evtCtrl.currentEvent.name">
+<div ng-if="evtCtrl.currentEvent.name" ng-init="evtCtrl.startCheckingTime()">
   <!-- CURRENT EVENT INFO -->
 
   <div class="event-info">
@@ -36,7 +36,7 @@
       <!-- ADD PLACE FORM -->
     <div class="container-padding">
       <!-- CHECK IF VOTING IS NOT DONE! -->
-<!--      <div ng-hide="evtCtrl.cutVoting"> -->
+      <div ng-if="evtCtrl.cutVoting">
       <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
         <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
       </form>
@@ -95,19 +95,36 @@
         </div>
       <!-- END LIST OF PLACES -->
       </div>
+      </div>
 <!--     </div> -->
     <!-- END container-padding -->
     </div>
 
     <div ng-if="!evtCtrl.cutVoting">
-      <div class="container-padding">
-        <div class="winner-details">
-          Voting is over!
+<!--       <div class="container-padding"> -->
+      <center>
+        <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes' | limitTo: 1">
+          <div class="winner-details">
+            Voting is over!<BR> With a total of {{place.votes}} vote(s)
+          </div>
+          <div class="winner-headline">
+            The Winner Is...
+          </div>
+          <span class="place-winner-details">{{place.name}}</span>
+          <div class="place-winner-info">
+            <img ng-src="{{place.rating_img}}"><BR>
+            {{place.category}}
+          </div>
+          <BR>
+          <a href="{{place.url}}"><img class="winner-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x160&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA"></a>
+          <BR>
+          <span class="place-winner-address">{{place.address}}
+          </span><BR><BR><BR>
+          <div class="winner-snippet">
+            " {{place.snippet}} "
+          </div>
         </div>
-        <div class="winner-headline">
-          The Winner Is...
-        </div>
-      </div>
+      </center>
     </div>
   </div>
   <!-- END event-container -->
