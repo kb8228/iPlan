@@ -1,11 +1,12 @@
 (function(){
   angular.module('iplanApp')
-  .controller('UserController', ['auth', UserController])
+  .controller('UserController', ['auth', 'DataService', UserController])
   .directive('userViewDir', userViewDir);
 
-  function UserController(auth) {
+  function UserController(auth, DataService) {
     var self = this;
     self.auth = auth;
+    self.currentUser = DataService.currentUser;
   }
 
   function userViewDir(){

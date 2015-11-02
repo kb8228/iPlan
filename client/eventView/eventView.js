@@ -50,7 +50,6 @@
         .catch(function(err){
           console.log('err in evtCtrl setEvent: ', err);
         });
-        self.timeCheck(); 
       }
     };
 
