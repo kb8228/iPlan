@@ -33,12 +33,12 @@
           return DataService.setCurrentUser(user);
         })
         .then(function(user){
-          if(user.eventsUsers.length){
-            $location.path('/events/' + self.currentUser.eventsUsers[0].event_code);
-          }
-          else{
-            $location.path('/');
-          }
+          // if(user.eventsUsers.length){
+          //   $location.path('/events/' + self.currentUser.eventsUsers[0].event_code);
+          // }
+          // else{
+          //   $location.path('/');
+          // }
           $window.location.reload();
         })
         .catch(function(err){
