@@ -1,9 +1,9 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', EventViewController])
+  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
   .directive('eventViewDir', eventViewDir);
 
-  function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter){ // inject http service, EventService factory
+  function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
@@ -49,13 +49,7 @@
       .catch(function(err){
         console.log('err in evtCtrl setEvent: ', err);
       });
-      self.timeCheck();
     };
-
-
-    self.timeCheck = function() {
-      var check = setInterval(self.checkDateTime(),3000)
-    }
 
     self.checkDateTime = function() {
       //compare against js date format//
@@ -138,7 +132,6 @@
         self.choices = [];
       }
         self.placeName = '';
-        self.timeCheck();
     };
 
     self.postPlace = function(choice){
@@ -160,7 +153,6 @@
       });
       self.placeName = '';
       self.choices = [];
-      self.timeCheck();
     };
 
     self.upVote = function(place) {
@@ -271,8 +263,8 @@
       console.log(dateHour, dateMinute)
     }
 
-    self.timeCheck = function() {
-      var check = setInterval(self.checkDateTime(),3000)
+    self.startCheckingTime = function() {
+      time = $interval(self.checkDateTime(), 3000)
     }
 
     self.setEvent();
