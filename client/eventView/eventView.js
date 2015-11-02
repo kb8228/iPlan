@@ -10,14 +10,14 @@
     self.choices = []; //
     self.events = DataService.events;
     self.currentUser = DataService.currentUser;
+    self.currentEvent = DataService.currentEvent;
+    self.guests = DataService.users;
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
     self.timerInfo = false;
     self.isThereTime = false;
     self.cutVoting = true;
-
-    console.log('evtCtrl user: ', self.currentUser);
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -52,8 +52,6 @@
       self.timeCheck();
     };
 
-    self.currentEvent = DataService.currentEvent;
-    console.log('im the current event',self.currentEvent);
 
     self.timeCheck = function() {
       var check = setInterval(self.checkDateTime(),3000)
@@ -97,20 +95,20 @@
       }
     }
 
-    self.setEvent();
-
     self.setUsersEvent = function(){
       HttpService.getUsers(self.eventCode)
       .then(function(user){
-        console.log('im the users!', user.data)
+        DataService.setUsers(user.data);
+        console.log('im the user', user.data);
 
       })
     }
 
     self.setEventsUser = function(){
-      HttpService.getEvents(self.currentUser.eventsUsers[0].id)
-      .then(function(event){
-        console.log('im the event!', event.data)
+      HttpService.getEvents(self.currentUser.email)
+      .then(function(evt){
+        DataService.setEvents(evt.data);
+        console.log('im the event', evt.data);
 
       })
     }
@@ -199,10 +197,13 @@
           return response.data;
         })
         .then(function(user){
+
+          console.log('im in the post eventuser!', user);
           HttpService.postEventUser({
             event_id: self.currentEvent.id,
             event_code: self.currentEvent.code,
             user_id: user.id,
+            email: user.email,
             user_role: 'guest'
           });
         })
@@ -227,7 +228,10 @@
       })
     }
 
+    self.setEvent();
     self.setUsersEvent();
+    self.setEventsUser();
+
   };
 
   function eventViewDir(){
