@@ -9,7 +9,7 @@
 
     var putEvent = function(eventData){
       console.log('inside putevent', eventData)
-      return $http.put('/api/events/' + eventData.code, 
+      return $http.put('/api/events/' + eventData.code,
         {cutoff: eventData.cutoff})
     };
 
@@ -42,6 +42,9 @@
       return $http.post('/api/eventsusers', options);
     };
 
+    var getEventUsers = function(options){
+      return $http.get('/api/eventsusers/users/' + options);
+    }
     return {
       postEvent: postEvent,
       putEvent: putEvent,
