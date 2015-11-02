@@ -44,9 +44,9 @@
       return events;
     };
 
-    var setUsers = function(users){
-      users.forEach(function(user, index){
-        users[index] = user;
+    var setUsers = function(evtUsers){
+      evtUsers.forEach(function(evtUser, index){
+        users[index] = evtUser;
       });
       console.log('setUsers from DataService: ', users);
       return users;

@@ -45,6 +45,8 @@
           angular.forEach(response.data.places, function(val, key){
             self.toggle[val.id] = self.toggle[val.id] || false;
           });
+          self.setUsersEvent();
+          self.setEventsUser();
           return response.data;
         })
         .catch(function(err){
@@ -57,11 +59,16 @@
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
         .then(function(user){
-          DataService.setUsers(user.data);
-          console.log('im the user', user.data);
-        });
+          return DataService.setUsers(user.data);
+
+        })
+        .then(function(users){
+          console.log('im the second then user', users);
+          console.log('im the guest', self.guests);
+
+        })
       }
-    };
+    }
 
     self.setEventsUser = function(){
       HttpService.getEvents(self.currentUser.email)
@@ -72,6 +79,11 @@
         }
       });
     };
+        DataService.setEvents(evt.data);
+        console.log('im the event', self.events);
+
+      })
+    }
 
     self.refresh = function(eventCode){
       self.eventCode = eventCode;
@@ -236,8 +248,6 @@
     }
 
     self.setEvent();
-    self.setUsersEvent();
-    self.setEventsUser();
 
   };
 
