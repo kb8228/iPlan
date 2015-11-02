@@ -74,6 +74,7 @@ var eventsUsers = buildTable('events_users', function(table){
   table.integer('event_id').notNullable();
   table.string('event_code').notNullable();
   table.integer('user_id').notNullable();
+  table.string('email').notNullable();
   table.string('user_role').notNullable();
   table.boolean('voted');
 });

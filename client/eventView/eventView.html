@@ -80,11 +80,11 @@
             </div>
             <div class="card-content place-right">
               <p class="split-para">
-                {{place.name}} 
+                {{place.name}}
                   <span>
                     <img class="rating" ng-src="{{evtCtrl.selectedRating}}">
                   </span><BR>
-                {{evtCtrl.selectedAddress}} 
+                {{evtCtrl.selectedAddress}}
                   <span>{{place.category}}</span>
               </p>
                 <div class="snippet">
@@ -131,7 +131,7 @@
       <center>
         <div class="attend-divider"></div>
         <ul>
-        <li class="invited-text" ng-repeat="guest in evtCtrl.currentEvent.guests">{{guest.email}}</li>
+        <li class="invited-text" ng-repeat="guest in evtCtrl.guests">{{guest.user.email}}</li>
         </ul>
       </center>
     </div>

@@ -10,7 +10,7 @@ var EventsUsers = db.Collection.extend({
     return db.collection('EventsUsers')
     .forge()
     .query(function(qb){
-      qb.where('user_id', '=', userId);
+      qb.where('email', '=', userId);
     })
     .fetch({withRelated: 'event'});
   },
@@ -18,7 +18,7 @@ var EventsUsers = db.Collection.extend({
     return db.collection('EventsUsers')
     .forge()
     .query(function(qb){
-      qb.where('event_id', '=', eventId);
+      qb.where('event_code', '=', eventId);
     })
     .fetch({withRelated: 'user'});
   }
