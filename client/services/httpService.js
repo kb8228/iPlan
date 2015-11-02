@@ -42,9 +42,14 @@
       return $http.post('/api/eventsusers', options);
     };
 
-    var getEventUsers = function(options){
+    var getEvents = function(options){
       return $http.get('/api/eventsusers/users/' + options);
     }
+
+    var getUsers = function(options){
+      return $http.get('/api/eventsusers/events/' + options);
+    }
+
     return {
       postEvent: postEvent,
       putEvent: putEvent,
@@ -54,7 +59,9 @@
       callYelp: callYelp,
       postPlace: postPlace,
       sendMail: sendMail,
-      postEventUser: postEventUser
+      postEventUser: postEventUser,
+      getUsers: getUsers,
+      getEvents: getEvents
     };
   }]);
 })();

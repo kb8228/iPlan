@@ -4,7 +4,7 @@
 
     var currentEvent = {};
     var currentUser = {};
-    var events = [];
+    var events = {};
 
     var setCurrentEvent = function(eventData){
       for(var key in eventData){
@@ -13,9 +13,11 @@
       console.log("this is the current event ", currentEvent);
       return currentEvent;
     };
+
     var getCurrentEvent = function(){
       return currentEvent;
     };
+
     var setCurrentUser = function(userData){
       for(var key in userData){
         currentUser[key] = userData[key];
@@ -28,7 +30,6 @@
     };
 
     var setEvents = function(evts){
-      console.log('evts passed to setEvents: ', evts);
       evts.forEach(function(evt, index){
         events[index] = evt;
       });
