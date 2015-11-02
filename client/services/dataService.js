@@ -15,6 +15,12 @@
       return currentEvent;
     };
 
+    var clearCurrentEvent = function(){
+      for(var key in currentEvent){
+        delete currentEvent[key];
+      }
+    }
+
     var getCurrentEvent = function(){
       return currentEvent;
     };
@@ -53,6 +59,7 @@
       users: users,
       setEvents: setEvents,
       setCurrentEvent: setCurrentEvent,
+      clearCurrentEvent: clearCurrentEvent,
       getCurrentEvent: getCurrentEvent,
       setCurrentUser: setCurrentUser,
       getCurrentUser: getCurrentUser,

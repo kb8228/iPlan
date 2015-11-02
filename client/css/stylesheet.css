@@ -181,6 +181,13 @@ button:hover {
 /*  position:relative;*/
 }
 
+.intro {
+  color:black;
+  font-size:20px;
+  padding:25px 50px;
+/*  position:relative;*/
+}
+
 .header {
   background-color: white;
   color:black;
@@ -229,6 +236,10 @@ button:hover {
   padding-top:25px;
   position:relative;
   margin-bottom:30px;
+}
+
+.left-title:hover {
+  cursor: pointer;
 }
 
 .green-i{
