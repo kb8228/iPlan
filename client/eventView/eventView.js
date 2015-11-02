@@ -37,18 +37,21 @@
     }
 
     self.setEvent = function(){
-      HttpService.getEvent(self.eventCode)
-      .then(function(response){
-        console.log('setEvent response: ', response.data);
-        DataService.setCurrentEvent(response.data);
-        angular.forEach(response.data.places, function(val, key){
-          self.toggle[val.id] = self.toggle[val.id] || false;
+      console.log('evtCtrl eventCode: ', self.eventCode);
+      if(self.eventCode.length === 10){ // checking if we have a code
+        HttpService.getEvent(self.eventCode)
+        .then(function(response){
+          DataService.setCurrentEvent(response.data);
+          angular.forEach(response.data.places, function(val, key){
+            self.toggle[val.id] = self.toggle[val.id] || false;
+          });
+          return response.data;
+        })
+        .catch(function(err){
+          console.log('err in evtCtrl setEvent: ', err);
         });
-        return response.data;
-      })
-      .catch(function(err){
-        console.log('err in evtCtrl setEvent: ', err);
-      });
+        self.timeCheck(); 
+      }
     };
 
     self.checkDateTime = function() {
@@ -90,22 +93,24 @@
     }
 
     self.setUsersEvent = function(){
-      HttpService.getUsers(self.eventCode)
-      .then(function(user){
-        DataService.setUsers(user.data);
-        console.log('im the user', user);
-
-      })
-    }
+      if(self.eventCode.length === 10){
+        HttpService.getUsers(self.eventCode)
+        .then(function(user){
+          DataService.setUsers(user.data);
+          console.log('im the user', user.data);
+        });
+      }
+    };
 
     self.setEventsUser = function(){
       HttpService.getEvents(self.currentUser.email)
       .then(function(evt){
-        DataService.setEvents(evt.data);
-        console.log('im the event', evt.data);
-
-      })
-    }
+        if(evt.data.length){
+          DataService.setEvents(evt.data);
+          console.log('im the event', evt.data);
+        }
+      });
+    };
 
     self.refresh = function(eventCode){
       self.eventCode = eventCode;
