@@ -250,12 +250,22 @@
       time = $interval(self.checkDateTime(), 3000)
     }
 
-    self.editEventName = function() {
+    self.toggleNameChange = function() {
       if(!self.showEditing) {
         self.showEditing = true;
       } else {
         self.showEditing = false;
       }
+    }
+
+    self.changeEventName = function(inputText) {
+      HttpService.putEvent({
+        name: inputText,
+        code: self.currentEvent.code
+      })
+      self.changeName = '';
+      self.showEditing = true;
+      $window.location.reload();
     }
 
     self.refresh(self.eventCode);

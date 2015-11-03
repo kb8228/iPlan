@@ -9,10 +9,12 @@
             {{evtCtrl.currentEvent.name}}
           </span>
           <span ng-hide="evtCtrl.showEditing">
-            <input class="change-name-edit">
+            <form ng-submit="evtCtrl.changeEventName(evtCtrl.changeName)" class="inline-form">
+              <input class="change-name-edit" ng-model="evtCtrl.changeName">
+            </form>
           </span>
           <span class="edit-pencil">
-            <i class="fa fa-pencil" ng-click="evtCtrl.editEventName()">
+            <i class="fa fa-pencil" ng-click="evtCtrl.toggleNameChange()">
             </i>
           </span>
         </div>
