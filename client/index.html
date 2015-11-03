@@ -61,6 +61,7 @@
   <div ng-if="loginCtrl.hasToken" ng-cloak>
         <div class="leftbar" ng-controller="EventViewController as evtCtrl">
           <div class="left-title" ng-click="evtCtrl.clearEvent()"><div class="green-i">i</div>Plan</div>
+          <div><center><img class="picture" ng-src="{{loginCtrl.currentUser.picture}}"><center></div>
         <!-- EVT NAME LIST -->
           <div>
             <ul>
