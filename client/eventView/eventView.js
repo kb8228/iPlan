@@ -59,15 +59,10 @@
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
         .then(function(user){
-          return DataService.setUsers(user.data);
+          DataService.setUsers(user.data);
 
         })
-        .then(function(users){
-          console.log('im the second then user', users);
-          console.log('im the guest', self.guests);
-
-        })
-      }
+       }
     }
 
     self.setEventsUser = function(){
@@ -79,11 +74,6 @@
         }
       });
     };
-        DataService.setEvents(evt.data);
-        console.log('im the event', self.events);
-
-      })
-    }
 
     self.refresh = function(eventCode){
       self.eventCode = eventCode;
