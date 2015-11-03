@@ -5,7 +5,16 @@
     <div class="event-details">
       <div class="event-left">
         <div class="event-name">
-          {{evtCtrl.currentEvent.name}}
+          <span ng-show="evtCtrl.showEditing">
+            {{evtCtrl.currentEvent.name}}
+          </span>
+          <span ng-hide="evtCtrl.showEditing">
+            <input class="change-name-edit">
+          </span>
+          <span class="edit-pencil">
+            <i class="fa fa-pencil" ng-click="evtCtrl.editEventName()">
+            </i>
+          </span>
         </div>
         <div class="event-location">
           <i class="fa fa-map-marker"></i>
@@ -24,7 +33,9 @@
                 <button class="vote-timer" ng-click="evtCtrl.createTimer(evtCtrl.timerInfo)">Create a Vote Timer</button>
             </span>
             <span ng-if="evtCtrl.currentEvent.cutoff">
-              Vote Cutoff: {{evtCtrl.currentEvent.cutoff | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff | date: 'shortTime'}}
+              Vote Cutoff: {{evtCtrl.currentEvent.cutoff 
+              | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff 
+              | date: 'shortTime'}}
             </span>
           </span>
         </div>

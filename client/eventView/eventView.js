@@ -18,6 +18,7 @@
     self.timerInfo = false;
     self.isThereTime = false;
     self.cutVoting = true;
+    self.showEditing = true;
 
     console.log('events fr evtCtrl init: ', self.events);
 
@@ -230,20 +231,17 @@
               $window.location.reload()
             }
             self.cutVoting = false;
-            console.log(self.cutVoting)
           } else if (dateMinute > filteredMinute) {
             if(!self.cutVoting) {
               $window.location.reload()
             }
             self.cutVoting = false;
-            console.log(self.cutVoting)
           }
         } else if (dateHour > filteredHour) {
           if(!self.cutVoting) {
               $window.location.reload()
           }
           self.cutVoting = false;
-          console.log(self.cutVoting)
         }
       } 
     }
@@ -252,7 +250,14 @@
       time = $interval(self.checkDateTime(), 3000)
     }
 
-    console.log(self.currentUser, 'is curr user');
+    self.editEventName = function() {
+      if(!self.showEditing) {
+        self.showEditing = true;
+      } else {
+        self.showEditing = false;
+      }
+    }
+
     self.refresh(self.eventCode);
   };
 

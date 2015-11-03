@@ -764,3 +764,22 @@ a:visited{
   display:block;
   padding-top:33px;
 }
+
+.event-name .edit-pencil {
+  display:none;
+  font-size:0.5em;
+}
+
+.event-name:hover .edit-pencil {
+  display:inline-block;
+  font-size:0.5em;
+}
+
+.change-name-edit {
+  width:26%;
+  font-size:25pt;
+  height:20%;
+  border:none;
+  background-color:transparent;
+  border-bottom:1px solid black;
+}
