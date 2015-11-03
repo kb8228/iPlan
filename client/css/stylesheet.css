@@ -429,6 +429,18 @@ button:hover {
   width:8%;
 }
 
+.upvote-button:hover .thumbs-up-display{
+  display:none;
+}
+
+.upvote-button:hover .thumbs-down-display{
+  display:inline;
+}
+
+.upvote-button .thumbs-down-display{
+  display:none;
+}
+
 .event-info {
   padding-bottom: 2%;
   display:inline;
@@ -692,4 +704,5 @@ button:hover {
   height: 100px;
   width: 100px;
   padding: 5px 5px 5px 5px;
+  margin-bottom: 10px;
 }
