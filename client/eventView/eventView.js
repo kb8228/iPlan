@@ -45,6 +45,8 @@
           angular.forEach(response.data.places, function(val, key){
             self.toggle[val.id] = self.toggle[val.id] || false;
           });
+          self.setUsersEvent();
+          self.setEventsUser();
           return response.data;
         })
         .catch(function(err){
@@ -53,58 +55,15 @@
       }
     };
 
-    self.clearEvent = function(){
-      DataService.clearCurrentEvent();
-      $location.path('/');
-    }
-
-    self.checkDateTime = function() {
-      //compare against js date format//
-      //sat oct
-      var date = new Date();
-      var stringDate = date.toString();
-      var dateMonth = stringDate.slice(4,7)
-      var dateDay = stringDate.slice(8,10);
-      var dateYear = stringDate.slice(11,15);
-      var dateHour = stringDate.slice(16,18);
-      var dateMinute = stringDate.slice(19,21);
-
-      //cut off variables//
-      var filteredDate = $filter('date')(self.currentEvent.cutoff, 'MMM dd yyyy HH:mm:ss')
-      var filteredMonth = $filter('date')(self.currentEvent.cutoff, 'MMM')
-      var filteredDay = $filter('date')(self.currentEvent.cutoff, 'dd')
-      var filteredYear = $filter('date')(self.currentEvent.cutoff, 'yyyy')
-      var filteredHour = $filter('date')(self.currentEvent.cutoff, 'HH')
-      var filteredMinute = $filter('date')(self.currentEvent.cutoff, 'mm')
-
-      //checking to see if the month, day, year matches to begin checking further down
-      if(dateMonth === filteredMonth && dateDay === filteredDay && dateYear === filteredYear) {
-        //dates match! //check against time
-        if(dateHour === filteredHour) {
-          //hour matches //check the minutes more precisely or if it has surpassed
-          if(dateMinute === filteredMinute) {
-            self.cutVoting = false;
-            console.log(self.cutVoting)
-          } else if (dateMinute > filteredMinute) {
-            self.cutVoting = false;
-            console.log(self.cutVoting)
-          }
-        } else if (dateHour > filteredHour) {
-          self.cutVoting = false;
-          console.log(self.cutVoting)
-        }
-      }
-    }
-
     self.setUsersEvent = function(){
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
         .then(function(user){
           DataService.setUsers(user.data);
-          console.log('im the user', user.data);
-        });
-      }
-    };
+
+        })
+       }
+    }
 
     self.setEventsUser = function(){
       HttpService.getEvents(self.currentUser.email)
@@ -235,7 +194,7 @@
 
     self.checkDateTime = function() {
       //compare against js date format//
-      //sat oct 
+      //sat oct
       var date = new Date();
       var stringDate = date.toString();
       var dateMonth = stringDate.slice(4,7)
@@ -243,7 +202,7 @@
       var dateYear = stringDate.slice(11,15);
       var dateHour = stringDate.slice(16,18);
       var dateMinute = stringDate.slice(19,21);
-      
+
       //cut off variables//
       var filteredDate = $filter('date')(self.currentEvent.cutoff, 'MMM dd yyyy HH:mm:ss')
       var filteredMonth = $filter('date')(self.currentEvent.cutoff, 'MMM')
@@ -251,7 +210,7 @@
       var filteredYear = $filter('date')(self.currentEvent.cutoff, 'yyyy')
       var filteredHour = $filter('date')(self.currentEvent.cutoff, 'HH')
       var filteredMinute = $filter('date')(self.currentEvent.cutoff, 'mm')
-      
+
       //checking to see if the month, day, year matches to begin checking further down
       if(dateMonth === filteredMonth && dateDay === filteredDay && dateYear === filteredYear) {
         //dates match! //check against time
@@ -268,7 +227,7 @@
           self.cutVoting = false;
           console.log(self.cutVoting)
         }
-      } 
+      }
       console.log(self.currentEvent)
       console.log(filteredDate)
       console.log(dateHour, dateMinute)
@@ -279,8 +238,6 @@
     }
 
     self.setEvent();
-    self.setUsersEvent();
-    self.setEventsUser();
 
   };
 
