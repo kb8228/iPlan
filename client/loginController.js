@@ -22,7 +22,8 @@
             var user = {
               facebook_id: profile.identities[0].user_id,
               name: profile.name,
-              email: profile.email
+              email: profile.email,
+              picture: profile.picture
             }
             console.log('new user obj fr login: ', user);
             return HttpService.postUser(user);

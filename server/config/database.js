@@ -67,6 +67,7 @@ var users = buildTable('users', function(table){
   table.string('facebook_id');
   table.string('name');
   table.string('email').unique().notNullable();
+  table.string('picture');
 });
 
 var eventsUsers = buildTable('events_users', function(table){
