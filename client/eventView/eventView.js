@@ -99,9 +99,9 @@
     self.setUsersEvent = function(){
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
-        .then(function(user){
-          DataService.setUsers(user.data);
-          console.log('im the user', user.data);
+        .then(function(users){
+          DataService.setUsers(users.data);
+          console.log('im the user', users.data);
         });
       }
     };
@@ -116,8 +116,8 @@
       });
     };
 
-    self.refresh = function(eventCode){
-      self.eventCode = eventCode;
+    self.refresh = function(evtCode){
+      self.eventCode = evtCode;
       self.setEvent();
       self.setUsersEvent();
       self.setEventsUser();
@@ -158,6 +158,7 @@
       })
       .then(function(response){
         self.refresh(self.eventCode);
+        console.log('self.eventCode in postPlace success: ', self.eventCode);
       })
       .catch(function(err){
         console.log('error in posting place: ', err);
