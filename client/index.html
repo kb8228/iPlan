@@ -14,26 +14,36 @@
 <div class="background"></div>
 <div ng-controller="LoginController as loginCtrl" ng-cloak>
   <div ng-if="!loginCtrl.hasToken" ng-cloak>
-    <div class="absolute-top" ng-cloak>
       <div class="section-one" ng-cloak>
-        <button class="sign-up" ng-click="loginCtrl.login()">Log In</button>
+        <!-- header navigation -->
+        <div class="header-nav" ng-cloak>
+          <span class="logo-header">
+            <span class="logo-green-i">i</span>Plan
+          </span> 
+          <button class="sign-up" type="submit" ng-click="loginCtrl.login()" value="Sign Up"/>
+            Sign Up
+          </button>
+          <a class="login-link" ng-click="loginCtrl.login()">
+            Log In
+          </a>
+        </div>
 
-          <div class="top-space"></div>
-          <div class="logo-header">
-            <div class="logo-green-i">i</div>Plan
-          </div>
-          <div class="description-header">
-            change how you plan for events
-          </div>
-          <input class="login-button" type="submit" ng-click="loginCtrl.login()" value="Sign Up"/>
+      <div class="top-space"></div>
+        <div>
+          <img src="./css/img/MacMockUp.png" class="mac-mock">
+        </div>
+        <div class="description-header">
+          The Simplest Way<BR>
+          To Organize Events<BR>
+          <span>Easy Starts Here</span><BR>
+          <button class="see-how">
+            See How It Works
+          </button>
+        </div>
       </div>
-    </div>
 
-      <center>
-        <img src="./css/img/MacMockUp.png" class="mac-mock">
-      </center>
     <div class="section-two-one"></div>
-    <div class="section-two" ng-cloak>
+    <!-- <div class="section-two" ng-cloak>
       <div class="section-two-container">
         <div class="section-two-main-text">
           Create. Find. Share.
@@ -50,7 +60,7 @@
       <div class="section-three-top">
         <div class="section-three-main-text">
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

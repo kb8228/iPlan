@@ -27,11 +27,12 @@ button:hover {
 }
 
 .mac-mock {
-  height: 55%;
+  height:55%;
   width:55%;
   position:relative;
   z-index:1;
-  top:375px;
+  float:right;
+  margin-right:4%;
 }
 
 .absolute-top {
@@ -45,21 +46,27 @@ button:hover {
   float:right;
   color:#fff;
   top:0;
-  border: 1px solid white;
+  margin-right:2%;
+  border-radius:99px;
+  border: 2px solid rgba(255,255,255,0.14);
+  transition: border-color .2s;
   background-color:transparent;
-  margin-top:1%;
-  margin-right:1%;
+  text-transform:uppercase;
+  position:relative;
   padding:5px 18px 5px 18px;
 }
 
 .sign-up:hover {
-  border-color: #02dac3;
+  border:2px solid rgba(255,255,255,1);
+  background-color:transparent;
 }
 
 .section-one{
-  background-image:url('./img/section1.png');
+  background: linear-gradient(to left top,#01a8b3,#01b995,#3b4774,#1f2e63);
+  vertical-align:baseline;
+  text-rendering:optimizeLegibility;
   background-size:cover;
-  height:800px;
+  height:100%;
   width:100%;
   background-position: 60% 40%;
   top:0;
@@ -135,10 +142,14 @@ button:hover {
 }
 
 .logo-header {
-  font-size:50pt;
+  font-size:35pt;
   font-weight:100;
   color:#fff;
   text-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  text-align:left;
+  float:left;
+  margin-left:2%;
+  position:relative;
 }
 
 .top-space {
@@ -151,27 +162,37 @@ button:hover {
 }
 
 .description-header {
-  font-size:17pt;
+  margin-top:15%;
+  font-size:25pt;
   color:#fff;
   margin-bottom:2%;
+  line-height:40pt;
   font-weight:50;
   letter-spacing:0.5pt;
-  text-shadow: 0px 1px 5px rgba(0,0,0,0.1);
 }
 
-.login-button {
-  background-color:#00cbb5;
+.description-header span{
+  color:#192858;
+}
+
+.login-link {
+  color:rgba(255,255,255,0.80);
+  display: block;
+  text-transform:uppercase;
+  float: right;
+  margin-right: 29px;
+  line-height: 30px;
+  -webkit-transition: #fff .15s ease;
+  transition: #fff .15s ease;
+}
+
+.login-link:hover{
   color:#fff;
-  border:none;
-  font-size:12pt;
-  padding:12px 35px 12px 35px;
-  position:relative;
-  z-index:1;
-  width:5%;
+  text-decoration:none;
 }
 
-.login-button:hover{
-  background-color:#02dac3;
+a:visited{
+  color:inherit;
 }
 
 .welcome {
@@ -709,4 +730,27 @@ button:hover {
   width: 100px;
   padding: 5px 5px 5px 5px;
   margin-bottom: 10px;
+}
+
+.header-nav {
+  padding:23px 0 20px;
+  top:0;
+  width:100%;
+  position:absolute;
+}
+
+.see-how {
+  margin-top:2%;
+  font-size:15pt;
+  background-color:transparent;
+  border:none;
+  padding-right:20px;
+  padding-left:20px;
+  border-radius:99px;
+  border: 2px solid rgba(255,255,255,0.14);
+}
+
+.see-how:hover {
+  background-color:transparent;
+  border: 2px solid rgba(255,255,255,1);
 }
