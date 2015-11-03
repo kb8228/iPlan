@@ -231,6 +231,10 @@ button:hover {
   margin-bottom:30px;
 }
 
+.left-title:hover {
+  cursor: pointer;
+}
+
 .green-i{
   color:#0eb7ab;
   display:inline-block;

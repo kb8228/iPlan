@@ -57,6 +57,11 @@
       }
     };
 
+    self.clearEvent = function(){
+      DataService.clearCurrentEvent();
+      $location.path('/');
+    }
+
     self.setUsersEvent = function(){
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
@@ -144,9 +149,9 @@
 
     self.sendMail = function(){
       var newMail = {
-        name: 'Nate',
+        name: '',
         to: self.to,
-        subject: 'You got an invite from iPlan',
+        subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
         message: self.message
       };
 

@@ -129,7 +129,7 @@ app.post('/sendmail', function(req, res, next){
   transporter.sendMail({
     from: 'testingiplan@gmail.com',
     to: data.to,
-    subject: 'You got an invite from iPlan!',
+    subject: data.subject,
     text: data.message
   }, function(err){
     console.log(err);
