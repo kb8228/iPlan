@@ -9,9 +9,7 @@
     self.getEvent = false;
 
     self.login = function () {
-      console.log('login called');
       auth.signin({}, function (profile, token) {
-        console.log('profile at login: ', profile);
         store.set('profile', profile);
         store.set('token', token);
         self.hasToken = true;
@@ -25,8 +23,16 @@
               email: profile.email,
               picture: profile.picture
             }
-            console.log('new user obj fr login: ', user);
             return HttpService.postUser(user);
+          }
+          if(!response.data.facebook_id){
+            var user = {
+              facebook_id: profile.identities[0].user_id,
+              name: profile.name,
+              email: profile.email,
+              picture: profile.picture
+            }
+            return HttpService.putUser(user);
           }
           return response.data;
         })
@@ -34,12 +40,6 @@
           return DataService.setCurrentUser(user);
         })
         .then(function(user){
-          // if(user.eventsUsers.length){
-          //   $location.path('/events/' + self.currentUser.eventsUsers[0].event_code);
-          // }
-          // else{
-          //   $location.path('/');
-          // }
           $window.location.reload();
         })
         .catch(function(err){
@@ -61,8 +61,8 @@
           .then(function(response){
             DataService.setCurrentUser(response.data);
           })
-          .then(function(user){
-            console.log('eventsUsers fr checkLogin: ', self.currentUser.eventsUsers);
+          .catch(function(err){
+            console.log('error in checkLogin: ', err);
           });
         }
       }

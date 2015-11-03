@@ -19,6 +19,8 @@
     self.isThereTime = false;
     self.cutVoting = true;
 
+    console.log('events fr evtCtrl init: ', self.events);
+
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
         if(!self.hidePlace) {
@@ -237,7 +239,7 @@
       time = $interval(self.checkDateTime(), 3000)
     }
 
-    self.setEvent();
+    self.refresh(self.eventCode);
 
   };
 

@@ -3,14 +3,12 @@
   .factory('HttpService', ['$http', function($http){
 
     var postEvent = function(eventData){
-      console.log('this is the httpservice postevent', eventData);
       return $http.post('/api/events', eventData);
     };
 
     var putEvent = function(eventData){
-      console.log('inside putevent', eventData)
       return $http.put('/api/events/' + eventData.code,
-        {cutoff: eventData.cutoff})
+        eventData)
     };
 
     var getEvent = function(eventCode){
@@ -19,6 +17,11 @@
 
     var postUser = function(userData){
       return $http.post('/api/users', userData);
+    };
+
+    var putUser = function(userData){
+      return $http.put('/api/users/' + userData.email,
+        userData);
     };
 
     var getUser = function(email){
@@ -56,6 +59,7 @@
       getEvent: getEvent,
       postUser: postUser,
       getUser: getUser,
+      putUser: putUser,
       callYelp: callYelp,
       postPlace: postPlace,
       sendMail: sendMail,
