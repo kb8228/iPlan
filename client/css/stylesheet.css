@@ -728,8 +728,8 @@ a:visited{
 .picture {
   margin: 0 auto;
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   padding: 5px 5px 5px 5px;
   margin-bottom: 10px;
 }
