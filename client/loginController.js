@@ -9,9 +9,7 @@
     self.getEvent = false;
 
     self.login = function () {
-      console.log('login called');
       auth.signin({}, function (profile, token) {
-        console.log('profile at login: ', profile);
         store.set('profile', profile);
         store.set('token', token);
         self.hasToken = true;
@@ -24,7 +22,6 @@
               name: profile.name,
               email: profile.email
             }
-            console.log('new user obj fr login: ', user);
             return HttpService.postUser(user);
           }
           return response.data;
@@ -63,7 +60,6 @@
     };
 
     self.checkLogin = function(){
-      console.log('checkLogin called');
       var profile = store.get('profile');
       if(profile){
         self.hasToken = true;
