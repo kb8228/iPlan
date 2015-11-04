@@ -62,6 +62,14 @@
       }
     };
 
+    self.refresh = function(evtCode){
+      console.log('REFRESH evtCode passed in: ', evtCode);
+      self.eventCode = evtCode;
+      self.setEvent();
+      self.setUsersEvent();
+      self.setEventsUser();
+    };
+
     self.clearEvent = function(){
       DataService.clearCurrentEvent();
       $location.path('/');
@@ -84,13 +92,6 @@
           console.log('im the event', evt.data);
         }
       });
-    };
-
-    self.refresh = function(evtCode){
-      self.eventCode = evtCode;
-      self.setEvent();
-      self.setUsersEvent();
-      self.setEventsUser();
     };
 
     self.searchYelp = function(){
@@ -127,8 +128,7 @@
         event_id: self.currentEvent.id
       })
       .then(function(response){
-        self.refresh(self.eventCode);
-        console.log('self.eventCode in postPlace success: ', self.eventCode);
+        self.refresh(self.currentEvent.code);
       })
       .catch(function(err){
         console.log('error in posting place: ', err);
