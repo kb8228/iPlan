@@ -222,7 +222,7 @@
             user_role: 'guest'
           })
           .then(function(evtUser){
-            self.refresh(evtUser.data.event_code);
+            self.refresh(self.currentEvent.code);
           })
           .catch(function(err){
             console.log('err in posting eventUser', err);
