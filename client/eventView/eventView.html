@@ -81,8 +81,8 @@
             </div>
             <div ng-if="evtCtrl.currentEvent.cutoff">
               <span ng-show="evtCtrl.toggleCutOff">
-                Vote Cutoff: {{evtCtrl.currentEvent.cutoff 
-                | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff 
+                Vote Cutoff: {{evtCtrl.currentEvent.cutoff
+                | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff
                 | date: 'shortTime'}}
               </span>
               <span ng-hide="evtCtrl.toggleCutOff">
@@ -131,17 +131,18 @@
           <div class="places-choices">
           <!-- ng-repeat on event's places -->
             <span ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
-            <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
-              <span class="thumbs-up-display">
-                <i class="fa fa-thumbs-o-up"></i>
-                  {{place.votes}}
+              <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
+                <span class="thumbs-up-display">
+                  <i class="fa fa-thumbs-o-up"></i>
+                    {{place.votes}}
+                </span>
+                <span class="thumbs-down-display">
+                  <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
+                </span>
+              </button>
+              <span class="places-x">
+                <i ng-click="evtCtrl.deletePlace(place.id)" class='fa fa-times'></i>
               </span>
-              <span class="thumbs-down-display">
-                <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
-              </span>
-            </button>
-            <span class="places-x">
-              <i class='fa fa-times'></i>
             </span>
           </div>
           <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
@@ -165,7 +166,7 @@
             </div>
           </div>
         </div> <!-- END LIST OF PLACES -->
-      </div> <!-- END ng-if evtCtrl.cutVoting -->  
+      </div> <!-- END ng-if evtCtrl.cutVoting -->
     </div> <!-- END container-padding -->
 
     <div ng-if="!evtCtrl.cutVoting">
