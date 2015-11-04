@@ -51,11 +51,11 @@
 
     var getEvents = function(options){
       return $http.get('/api/eventsusers/users/' + options);
-    }
+    };
 
     var getUsers = function(options){
       return $http.get('/api/eventsusers/events/' + options);
-    }
+    };
 
     return {
       postEvent: postEvent,

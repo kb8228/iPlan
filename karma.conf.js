@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Tue Nov 03 2015 14:07:30 GMT-0800 (PST)
+// Generated on Tue Nov 03 2015 15:51:21 GMT-0800 (PST)
 
 module.exports = function(config) {
   config.set({
@@ -7,14 +7,26 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
     files: [
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-mocks.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.js',
+      'https://code.angularjs.org/1.2.16/angular-cookies.min.js',
+      'https://cdn.auth0.com/js/lock-7.9.min.js',
+      'https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js',
+      'https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js',
+      'https://cdn.auth0.com/w2/auth0-angular-4.js',
+
+      'client/**/*.js',
+      'client/*.js',
+      'spec/unit/*.js'
     ],
 
 
@@ -49,7 +61,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
@@ -61,8 +73,11 @@ module.exports = function(config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
 
-    // Concurrency level
-    // how many browser should be started simultanous
-    concurrency: Infinity
+    plugins: [
+    // Karma will require() these plugins
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-jasmine-html-reporter'
+    ]
   })
 }
