@@ -18,6 +18,11 @@
     self.timerInfo = false;
     self.isThereTime = false;
     self.cutVoting = true;
+    self.showEditing = true;
+    self.showEditingLocation = true;
+    self.showDate = true;
+    self.showTime = true;
+    self.toggleCutOff = true;
 
     console.log('events fr evtCtrl init: ', self.events);
 
@@ -230,20 +235,17 @@
               $window.location.reload()
             }
             self.cutVoting = false;
-            console.log(self.cutVoting)
           } else if (dateMinute > filteredMinute) {
             if(!self.cutVoting) {
               $window.location.reload()
             }
             self.cutVoting = false;
-            console.log(self.cutVoting)
           }
         } else if (dateHour > filteredHour) {
           if(!self.cutVoting) {
               $window.location.reload()
           }
           self.cutVoting = false;
-          console.log(self.cutVoting)
         }
       } 
     }
@@ -252,7 +254,97 @@
       time = $interval(self.checkDateTime(), 3000)
     }
 
-    console.log(self.currentUser, 'is curr user');
+    self.toggleNameChange = function() {
+      if(!self.showEditing) {
+        self.showEditing = true;
+      } else {
+        self.showEditing = false;
+      }
+    }
+
+    self.changeEventName = function(inputText) {
+      HttpService.putEvent({
+        name: inputText,
+        code: self.currentEvent.code
+      })
+      self.changeName = '';
+      self.showEditing = true;
+      $window.location.reload();
+    }
+
+    self.toggleLocationChange = function() {
+      if(!self.showEditingLocation) {
+        self.showEditingLocation = true;
+      } else {
+        self.showEditingLocation = false;
+      }
+    }
+
+    self.changeEventLocation = function(inputText) {
+      HttpService.putEvent({
+        location: inputText,
+        code: self.currentEvent.code
+      })
+      self.changeLocation = '';
+      self.showEditingLocation = true;
+      $window.location.reload();
+    }
+
+    self.toggleDateChange = function() {
+      if(!self.showDate) {
+        self.showDate = true;
+      } else {
+        self.showDate = false;
+      }
+    }
+
+    self.changeEventDate = function(inputText) {
+      HttpService.putEvent({
+        date: inputText,
+        code: self.currentEvent.code
+      })
+      self.showDate = true;
+      self.dateChange = '';
+      $window.location.reload();
+    }
+
+    self.toggleTimeChange = function() {
+      if(!self.showTime) {
+        self.showTime = true;
+      } else {
+        self.showTime = false;
+      }
+    }
+
+    self.changeEventTime = function(inputText) {
+      HttpService.putEvent({
+        time: inputText,
+        code:self.currentEvent.code
+      })
+      self.showTime = true;
+      self.timeChange = '';
+      $window.location.reload();
+    }
+
+    self.toggleCutOffChange = function() {
+      console.log(self.toggleCutOff)
+      if(!self.toggleCutOff) {
+        self.toggleCutOff = true;
+      } else {
+        self.toggleCutOff = false;
+      }
+    }
+
+    self.changeCutOff = function(inputText) {
+      HttpService.putEvent({
+        cutoff: inputText,
+        code:self.currentEvent.code
+      })
+      self.toggleCutOff = true;
+      self.cutOffChange = '';
+      $window.location.reload();
+    }
+
     self.refresh(self.eventCode);
   };
 
