@@ -322,7 +322,7 @@ a:visited{
   padding-left:3%;
   padding-right:3%;
   height:100%;
-  width:100%;
+  width:85%;
   display:inline-block;
   position:absolute;
   z-index:-2;
@@ -866,4 +866,8 @@ a:visited{
 .event-right:hover .edit-pencil {
   display:inline-block;
   font-size:0.8em;
+}
+
+.inline {
+  display: inline;
 }

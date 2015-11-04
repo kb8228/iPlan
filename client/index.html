@@ -10,95 +10,69 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="./css/materialize/css/materialize.min.css"  media="screen,projection"/>
 </head>
+
 <body>
 <div class="background"></div>
-<div ng-controller="LoginController as loginCtrl" ng-cloak>
+<div class="wrapper" ng-controller="LoginController as loginCtrl" ng-cloak>
   <div ng-if="!loginCtrl.hasToken" ng-cloak>
-      <div class="section-one" ng-cloak>
-        <!-- header navigation -->
-        <div class="header-nav" ng-cloak>
-          <span class="logo-header">
-            <span class="logo-green-i">i</span>Plan
-          </span> 
-          <button class="sign-up" type="submit" ng-click="loginCtrl.login()" value="Sign Up"/>
-            Sign Up
-          </button>
-          <a class="login-link" ng-click="loginCtrl.login()">
-            Log In
-          </a>
-        </div>
+    <div class="section-one" ng-cloak>
+      <!-- header navigation -->
+      <div class="header-nav" ng-cloak>
+        <div class="logo-header">
+          <span class="logo-green-i">i</span>Plan
+        </div> 
+        <button class="sign-up" ng-click="loginCtrl.login()">Sign Up</button>
+        <a class="login-link" ng-click="loginCtrl.login()">Log In</a>
+      </div> <!-- END header navigation -->
 
       <div class="top-space"></div>
-        <div>
-          <img src="./css/img/MacMockUp.png" class="mac-mock">
-        </div>
-        <div class="description-header">
-          The Simplest Way<BR>
-          To Organize Events<BR>
-          <span>Easy Starts Here</span><BR>
-          <button class="see-how" href="#how-it-works">
-            See How It Works
-          </button>
-        </div>
+      <img src="./css/img/MacMockUp.png" class="mac-mock">
+      <div class="description-header">
+        <p>The Simplest Way</p>
+        <p>To Organize Events</p>
+        <p><span>Easy Starts Here</span></p>
+        <button class="see-how" href="#how-it-works">See How It Works</button>
       </div>
-    <!-- end of section 1 -->
-    <!-- space inbetween sections -->
-
+    </div><!-- END section-one -->
+    
     <div id="how-it-works">
       hello
     </div>
+  </div> <!-- END ng-if !hasToken -->
 
-    <!-- <div class="section-two" ng-cloak>
-      <div class="section-two-container">
-        <div class="section-two-main-text">
-          Create. Find. Share.
-        </div>
-        <div class="section-two-description">
-          Organization made easy.
-        </div>
-      </div>
-    </div>
-
-    <div class="section-two-three"></div>
-
-    <div class="section-three-container" ng-cloak>
-      <div class="section-three-top">
-        <div class="section-three-main-text">
-        </div>
-      </div> -->
-    </div>
-  </div>
-</div>
-
-
-<!-- if user has a token, display a different view !-->
- <div ng-controller="LoginController as loginCtrl" ng-cloak>
+  <!-- ng-if hasToken -->
   <div ng-if="loginCtrl.hasToken" ng-cloak>
-        <div class="leftbar" ng-controller="EventViewController as evtCtrl">
-          <div class="left-title" ng-click="evtCtrl.clearEvent()"><div class="green-i">i</div>Plan</div>
-          <div><center><img class="picture" ng-src="{{evtCtrl.currentUser.picture}}"><center></div>
-        <!-- EVT NAME LIST -->
-          <div>
-            <ul>
-              <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
-                <a href="/#/events/{{event.event.code}}" class="event-links">
-                  {{event.event.name}}
-                </a>
-              </div>
-            </ul>
+    <div class="leftbar" ng-controller="EventViewController as evtCtrl">
+      <div class="left-title" ng-click="evtCtrl.clearEvent()">
+        <span class="green-i">i</span>Plan
+      </div>
+      <div>
+        <center>
+          <img class="picture" ng-src="{{evtCtrl.currentUser.picture}}">
+        <center>
+      </div>
+      <!-- EVT NAME LIST -->
+      <div>
+        <ul>
+          <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
+            <a href="/#/events/{{event.event.code}}" class="event-links">
+              {{event.event.name}}
+            </a>
           </div>
-        <!-- END EVT NAME LIST -->
-        </div> <!-- END leftbar -->
+        </ul>
+      </div> <!-- END EVT NAME LIST -->
+    </div> <!-- END leftbar -->
 
-      <div class="left-padding">
-        <div class="main-container">
-          <div class="top-header">
-            <div class="header-message">
-              Hello, {{loginCtrl.currentUser.name}}!
-            </div>
-              <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
-              <button class="nav-button" ng-click="loginCtrl.showEvent()"> New Event </button>
-          </div> <!-- END top-header -->
+    <div class="left-padding">
+      <div class="main-container">
+        <div class="top-header">
+          <div class="header-message">
+            Hello, {{loginCtrl.currentUser.name}}!
+          </div>
+          <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
+          <button class="nav-button" ng-click="loginCtrl.showEvent()"> New Event </button>
+        </div> <!-- END top-header -->
+      </div> <!-- END main-container -->
 
       <div class="bottom-container">
         <!-- hide the current event if newEvent is not clicked !-->
@@ -110,12 +84,11 @@
         <div ng-hide="loginCtrl.getEvent">
           <event-view-dir></event-view-dir>
         </div>
-
       </div> <!-- END bottom-container -->
-    </div> <!-- END body -->
+    </div> <!-- END left-padding -->
   </div> <!-- END ng-if hasToken -->
-  </div> <!-- END main-container -->
-</div> <!-- END left-padding -->
+
+</div> <!-- END wrapper -->
 
 <!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
