@@ -1,7 +1,8 @@
 (function(){
   angular.module('iplanApp')
   .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
-  .directive('eventViewDir', eventViewDir);
+  .directive('eventViewDir', eventViewDir)
+  .directive('eventList', eventList);
 
   function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
     var self = this;
@@ -178,9 +179,14 @@
         var newUser = {
           email: val
         };
+
         HttpService.sendMail(newMail);
-        HttpService.postUser(newUser)
+
+        HttpService.getUser(newUser.email)
         .then(function(response){
+          if(!response.data.email){
+            return HttpService.postUser(newUser);
+          }
           return response.data;
         })
         .then(function(user){
@@ -365,6 +371,17 @@
       restrict: 'E',
       // scope: {},
       templateUrl: '/eventView/eventView.html',
+      replace: true,
+      controller: 'EventViewController',
+      controllerAs: 'evtCtrl',
+      bindToController: true
+    }
+  }
+  function eventList(){
+    return {
+      restrict: 'E',
+      // scope: {},
+      templateUrl: '/eventView/eventList.html',
       replace: true,
       controller: 'EventViewController',
       controllerAs: 'evtCtrl',

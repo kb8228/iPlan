@@ -42,7 +42,8 @@
 
   <!-- ng-if hasToken -->
   <div ng-if="loginCtrl.hasToken" ng-cloak>
-    <div class="leftbar" ng-controller="EventViewController as evtCtrl">
+  <event-list></event-list>
+<!--     <div class="leftbar" ng-controller="EventViewController as evtCtrl">
       <div class="left-title" ng-click="evtCtrl.clearEvent()">
         <span class="green-i">i</span>Plan
       </div>
@@ -51,7 +52,6 @@
           <img class="picture" ng-src="{{evtCtrl.currentUser.picture}}">
         <center>
       </div>
-      <!-- EVT NAME LIST -->
       <div>
         <ul>
           <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
@@ -60,8 +60,8 @@
             </a>
           </div>
         </ul>
-      </div> <!-- END EVT NAME LIST -->
-    </div> <!-- END leftbar -->
+      </div>
+    </div> -->
 
     <div class="left-padding">
       <div class="main-container">

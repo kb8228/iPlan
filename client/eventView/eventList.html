@@ -1,0 +1,19 @@
+<div class="leftbar">
+  <div class="left-title" ng-click="evtCtrl.clearEvent()">
+    <span class="green-i">i</span>Plan
+  </div>
+  <div>
+    <center>
+      <img class="picture" ng-src="{{evtCtrl.currentUser.picture}}">
+    </center>
+  </div>
+  <div>
+    <ul>
+      <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
+        <a href="/#/events/{{event.event.code}}" class="event-links">
+          {{event.event.name}}
+        </a>
+      </div>
+    </ul>
+  </div>
+</div>
