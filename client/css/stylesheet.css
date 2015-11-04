@@ -191,6 +191,7 @@ button:hover {
 .login-link:hover{
   color:#fff;
   text-decoration:none;
+  cursor: pointer;
 }
 
 a:visited{

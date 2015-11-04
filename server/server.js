@@ -141,6 +141,7 @@ app.post('/sendmail', function(req, res, next){
     to: data.to,
     subject: data.subject,
     text: data.message
+    // html: hogan.compile(__dirname + './email.js') - or something like that instead of 'text:'
   }, function(err){
     console.log(err);
   });
