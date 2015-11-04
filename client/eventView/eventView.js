@@ -140,7 +140,7 @@
     self.deletePlace = function(id){
       HttpService.deletePlace(id)
       .then(function(response){
-        self.refresh(self.eventCode);
+        self.refresh(self.currentEvent.code);
         console.log('self.eventCode in deletePlace success: ', self.eventCode);
       })
       .catch(function(err){
