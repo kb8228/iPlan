@@ -486,6 +486,19 @@ a:visited{
   padding-left:7px;
 }
 
+.timer-date-change {
+  width:65%;
+  padding-top:2px;
+  padding-bottom:3.5px;
+  display:inline;
+  border:1px solid;
+  border-radius:10px;
+  background-color:transparent;
+  font-size:0.78em;
+  margin-right:4%;
+  padding-left:7px;
+}
+
 .width-date {
   width:100%;
 }
@@ -843,4 +856,14 @@ a:visited{
 .change-event-details:hover {
   color:#fff;
   border:1px solid #fff;
+}
+
+.event-right .edit-pencil {
+  display:none;
+  font-size:0.8em;
+}
+
+.event-right:hover .edit-pencil {
+  display:inline-block;
+  font-size:0.8em;
 }

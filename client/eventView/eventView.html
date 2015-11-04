@@ -81,12 +81,26 @@
               <span>
                 <input type="datetime-local" ng-model="evtCtrl.timerInfo" class="timer-date">
               </span>
-                <button class="vote-timer" ng-click="evtCtrl.createTimer(evtCtrl.timerInfo)">Create a Vote Timer</button>
-            </span>
+              <button class="vote-timer" ng-click="evtCtrl.createTimer(evtCtrl.timerInfo)">Create a Vote Timer</button>
+          </span>
             <span ng-if="evtCtrl.currentEvent.cutoff">
+             <span ng-show="evtCtrl.toggleCutOff">
               Vote Cutoff: {{evtCtrl.currentEvent.cutoff 
               | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff 
               | date: 'shortTime'}}
+            </span>
+              <span ng-hide="evtCtrl.toggleCutOff">
+                <input type="datetime-local" class="timer-date-change" ng-model="evtCtrl.cutoffChange">
+                <button class="change-event-details" ng-click="evtCtrl.changeCutOff(evtCtrl.cutoffChange)">
+                  Change
+                </button>
+            </span>
+              <span class="edit-pencil">
+                <i class="fa fa-pencil" ng-click="evtCtrl.toggleCutOffChange()">
+                </i>
+             </span>
+                </span>
+              </span>
             </span>
           </span>
         </div>

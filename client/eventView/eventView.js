@@ -22,6 +22,7 @@
     self.showEditingLocation = true;
     self.showDate = true;
     self.showTime = true;
+    self.toggleCutOff = true;
 
     console.log('events fr evtCtrl init: ', self.events);
 
@@ -271,6 +272,14 @@
       $window.location.reload();
     }
 
+    self.toggleLocationChange = function() {
+      if(!self.showEditingLocation) {
+        self.showEditingLocation = true;
+      } else {
+        self.showEditingLocation = false;
+      }
+    }
+
     self.changeEventLocation = function(inputText) {
       HttpService.putEvent({
         location: inputText,
@@ -279,14 +288,6 @@
       self.changeLocation = '';
       self.showEditingLocation = true;
       $window.location.reload();
-    }
-
-    self.toggleLocationChange = function() {
-      if(!self.showEditingLocation) {
-        self.showEditingLocation = true;
-      } else {
-        self.showEditingLocation = false;
-      }
     }
 
     self.toggleDateChange = function() {
@@ -322,6 +323,25 @@
       })
       self.showTime = true;
       self.timeChange = '';
+      $window.location.reload();
+    }
+
+    self.toggleCutOffChange = function() {
+      console.log(self.toggleCutOff)
+      if(!self.toggleCutOff) {
+        self.toggleCutOff = true;
+      } else {
+        self.toggleCutOff = false;
+      }
+    }
+
+    self.changeCutOff = function(inputText) {
+      HttpService.putEvent({
+        cutoff: inputText,
+        code:self.currentEvent.code
+      })
+      self.toggleCutOff = true;
+      self.cutOffChange = '';
       $window.location.reload();
     }
 
