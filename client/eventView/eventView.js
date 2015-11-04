@@ -19,6 +19,9 @@
     self.isThereTime = false;
     self.cutVoting = true;
     self.showEditing = true;
+    self.showEditingLocation = true;
+    self.showDate = true;
+    self.showTime = true;
 
     console.log('events fr evtCtrl init: ', self.events);
 
@@ -265,6 +268,60 @@
       })
       self.changeName = '';
       self.showEditing = true;
+      $window.location.reload();
+    }
+
+    self.changeEventLocation = function(inputText) {
+      HttpService.putEvent({
+        location: inputText,
+        code: self.currentEvent.code
+      })
+      self.changeLocation = '';
+      self.showEditingLocation = true;
+      $window.location.reload();
+    }
+
+    self.toggleLocationChange = function() {
+      if(!self.showEditingLocation) {
+        self.showEditingLocation = true;
+      } else {
+        self.showEditingLocation = false;
+      }
+    }
+
+    self.toggleDateChange = function() {
+      if(!self.showDate) {
+        self.showDate = true;
+      } else {
+        self.showDate = false;
+      }
+    }
+
+    self.changeEventDate = function(inputText) {
+      HttpService.putEvent({
+        date: inputText,
+        code: self.currentEvent.code
+      })
+      self.showDate = true;
+      self.dateChange = '';
+      $window.location.reload();
+    }
+
+    self.toggleTimeChange = function() {
+      if(!self.showTime) {
+        self.showTime = true;
+      } else {
+        self.showTime = false;
+      }
+    }
+
+    self.changeEventTime = function(inputText) {
+      HttpService.putEvent({
+        time: inputText,
+        code:self.currentEvent.code
+      })
+      self.showTime = true;
+      self.timeChange = '';
       $window.location.reload();
     }
 

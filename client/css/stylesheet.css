@@ -775,15 +775,72 @@ a:visited{
   font-size:0.5em;
 }
 
+.location .edit-pencil {
+  display:none;
+  font-size:0.8em;
+}
+
+.location:hover .edit-pencil {
+  display:inline-block;
+  font-size:0.8em;
+}
+
+.location-date .edit-pencil {
+  display:none;
+  font-size:0.8em;
+}
+
+.location-date:hover .edit-pencil {
+  display:inline-block;
+  font-size:0.8em;
+}
+
+.event-date .edit-pencil {
+  display:none;
+  font-size:0.8em;
+}
+
+.event-date:hover .edit-pencil {
+  display:inline-block;
+  font-size:0.8em;
+}
+
 .change-name-edit {
-  width:26%;
+  width:25%;
   font-size:25pt;
   height:20%;
   border:none;
   background-color:transparent;
-  border-bottom:1px solid black;
+  border-bottom:1px solid #666;
+}
+
+.change-location-edit {
+  width:15%;
+  font-size:11pt;
+  border:none;
+  background-color:transparent;
+  border-bottom:1px solid #666;
+}
+
+.change-date-edit {
+  width:12%;
+  font-size:11pt;
+  border:none;
+  background-color:transparent;
+  border-bottom:1px solid #666;
 }
 
 .inline-form {
   display:inline;
+}
+
+.change-event-details {
+  font-size:9pt;
+  background-color:transparent;
+  border:1px solid #666;
+}
+
+.change-event-details:hover {
+  color:#fff;
+  border:1px solid #fff;
 }
