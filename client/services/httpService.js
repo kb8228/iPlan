@@ -37,6 +37,10 @@
       return $http.post('/api/places', options);
     };
 
+    var deletePlace = function(id){
+      return $http.delete('/api/places/' + id);
+    };
+
     var sendMail = function(options){
       return $http.post('/sendmail', options);
     };
@@ -65,7 +69,8 @@
       sendMail: sendMail,
       postEventUser: postEventUser,
       getUsers: getUsers,
-      getEvents: getEvents
+      getEvents: getEvents,
+      deletePlace: deletePlace
     };
   }]);
 })();

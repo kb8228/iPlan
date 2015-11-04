@@ -85,8 +85,8 @@
           </span>
             <span ng-if="evtCtrl.currentEvent.cutoff">
              <span ng-show="evtCtrl.toggleCutOff">
-              Vote Cutoff: {{evtCtrl.currentEvent.cutoff 
-              | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff 
+              Vote Cutoff: {{evtCtrl.currentEvent.cutoff
+              | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff
               | date: 'shortTime'}}
             </span>
               <span ng-hide="evtCtrl.toggleCutOff">
@@ -153,7 +153,7 @@
                 </span>
               </button>
               <span class="places-x">
-                <i class='fa fa-times'></i>
+                <i ng-click="evtCtrl.deletePlace(place.id)" class='fa fa-times'></i>
               </span>
           </div>
           <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">

@@ -76,6 +76,15 @@ app.post('/api/places', function(req, res, next){
   });
 });
 
+app.delete('/api/places/:id', function(req, res, next){
+  console.log(req.params.id);
+  var placeId = req.params.id;
+  db.model('Place').fetchById({id: placeId}).destroy()
+  .then(function(){
+    res.json('cheesecake');
+  });
+});
+
 app.post('/api/users', function(req, res, next){
   db.model('User').newUser(req.body).save()
   .then(function(user){
