@@ -294,6 +294,7 @@ a:visited{
 
 .event-links:hover {
   color:#c9cfe6;
+  background-color:#36416a;
 }
 
 .top-header {
@@ -439,6 +440,13 @@ a:visited{
   padding-left:8px;
   margin-bottom:2.5%;
   z-index:0;
+}
+
+.places-x {
+  float:right;
+  text-align:right;
+  margin-right:2%;
+  color:#ccc;
 }
 
 .places-choices:hover{

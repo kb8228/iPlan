@@ -144,14 +144,17 @@
           <!-- ng-repeat on event's places -->
             <span ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
               <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
-              <span class="thumbs-up-display">
-                <i class="fa fa-thumbs-o-up"></i>
-                  {{place.votes}}
-              </span>
-              <span class="thumbs-down-display">
-                <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
-              </span>
+                <span class="thumbs-up-display">
+                  <i class="fa fa-thumbs-o-up"></i>
+                    {{place.votes}}
+                </span>
+                <span class="thumbs-down-display">
+                  <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
+                </span>
               </button>
+              <span class="places-x">
+                <i class='fa fa-times'></i>
+              </span>
           </div>
           <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
             <div class="place-left card-content">

@@ -345,6 +345,7 @@
       $window.location.reload();
     }
 
+    console.log(self.currentEvent, ' curr event')
     self.refresh(self.eventCode);
   };
 
