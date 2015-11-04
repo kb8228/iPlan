@@ -33,7 +33,7 @@
       }
 
       self.selectedAddress = place.address;
-      self.selectedRating = place.rating_img
+      self.selectedRating = place.rating_img;
       self.lastChosen = place;
       console.log(place, ' is the place you selected')
     }
