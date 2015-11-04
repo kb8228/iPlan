@@ -137,6 +137,17 @@
       self.choices = [];
     };
 
+    self.deletePlace = function(id){
+      HttpService.deletePlace(id)
+      .then(function(response){
+        self.refresh(self.currentEvent.code);
+        console.log('self.eventCode in deletePlace success: ', self.eventCode);
+      })
+      .catch(function(err){
+        console.log('error in deleting place: ', err);
+      });
+    }
+
     self.upVote = function(place) {
       if(!self.toggle[place.id]) {
         self.toggle[place.id] = true;
@@ -207,7 +218,7 @@
 
     self.checkDateTime = function() {
       //compare against js date format//
-      //sat oct 
+      //sat oct
       var date = new Date();
       var stringDate = date.toString();
       var dateMonth = stringDate.slice(4,7)
@@ -215,7 +226,7 @@
       var dateYear = stringDate.slice(11,15);
       var dateHour = stringDate.slice(16,18);
       var dateMinute = stringDate.slice(19,21);
-      
+
       //cut off variables//
       var filteredDate = $filter('date')(self.currentEvent.cutoff, 'MMM dd yyyy HH:mm:ss')
       var filteredMonth = $filter('date')(self.currentEvent.cutoff, 'MMM')
@@ -223,7 +234,7 @@
       var filteredYear = $filter('date')(self.currentEvent.cutoff, 'yyyy')
       var filteredHour = $filter('date')(self.currentEvent.cutoff, 'HH')
       var filteredMinute = $filter('date')(self.currentEvent.cutoff, 'mm')
-      
+
 
       //checking to see if the month, day, year matches to begin checking further down
       if(dateMonth === filteredMonth && dateDay === filteredDay && dateYear === filteredYear) {
@@ -247,7 +258,7 @@
           }
           self.cutVoting = false;
         }
-      } 
+      }
     }
 
     self.startCheckingTime = function() {
