@@ -10,9 +10,9 @@
     self.placeName;   // tied to input box in eventView.html
     self.choices = []; //
     self.events = DataService.events;
+    self.guests = DataService.users;
     self.currentUser = DataService.currentUser;
     self.currentEvent = DataService.currentEvent;
-    self.guests = DataService.users;
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
@@ -190,7 +190,7 @@
         name: '',
         to: self.to,
         subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
-        message: self.message
+        message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
       };
 
       var temp = self.to.replace(/ /g, '').split(',');
@@ -205,26 +205,32 @@
 
         HttpService.getUser(newUser.email)
         .then(function(response){
-          if(!response.data.email){
+          if(!response.data){
             return HttpService.postUser(newUser);
+          } 
+          else {
+            return response;
           }
-          return response.data;
         })
-        .then(function(user){
-
-          console.log('im in the post eventuser!', user);
+        .then(function(response){
+          console.log('im in the post eventuser!', response.data);
           HttpService.postEventUser({
             event_id: self.currentEvent.id,
             event_code: self.currentEvent.code,
-            user_id: user.id,
-            email: user.email,
+            user_id: response.data.id,
+            email: response.data.email,
             user_role: 'guest'
+          })
+          .then(function(evtUser){
+            self.refresh(evtUser.data.event_code);
+          })
+          .catch(function(err){
+            console.log('err in posting eventUser', err);
           });
         })
         .catch(function(err){
           console.log('err in postUser as guest: ', err);
         });
-        self.refresh(self.eventCode);
       });
     self.message = '';
     self.to = '';
