@@ -168,9 +168,14 @@
         var newUser = {
           email: val
         };
+
         HttpService.sendMail(newMail);
-        HttpService.postUser(newUser)
+
+        HttpService.getUser(newUser.email)
         .then(function(response){
+          if(!response.data.email){
+            return HttpService.postUser(newUser);
+          }
           return response.data;
         })
         .then(function(user){
