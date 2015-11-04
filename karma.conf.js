@@ -24,8 +24,8 @@ module.exports = function(config) {
       'https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js',
       'https://cdn.auth0.com/w2/auth0-angular-4.js',
 
-      'client/**/*.js',
       'client/*.js',
+      'client/**/*.js',
       'spec/unit/*.js'
     ],
 
