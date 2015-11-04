@@ -449,6 +449,10 @@ a:visited{
   color:#ccc;
 }
 
+.places-x:hover {
+  color: #666;
+}
+
 .places-choices:hover{
   cursor: pointer;
 }
