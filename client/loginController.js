@@ -80,8 +80,10 @@
       store.remove('profile');
       store.remove('token');
       self.hasToken = false;
+      DataService.clearData();
       $location.path('/');
-      $window.location.reload();
+      $location.replace();
+      // $window.location.reload();
     };
 
     self.showEvent = function() {

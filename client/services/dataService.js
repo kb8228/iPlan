@@ -32,6 +32,19 @@
       return currentUser;
     };
 
+    var clearData = function(){
+      clearCurrentEvent();
+      for(var key in self.currentUser){
+        delete currentUser[key];
+      }
+      events.forEach(function(evt, index){
+        delete events[index];
+      });
+      users.forEach(function(usr, index){
+        delete users[index];
+      });
+    };
+
     var getCurrentUser = function(){
       return currentUser;
     };
@@ -66,6 +79,7 @@
       clearCurrentEvent: clearCurrentEvent,
       getCurrentEvent: getCurrentEvent,
       setCurrentUser: setCurrentUser,
+      clearData: clearData,
       getCurrentUser: getCurrentUser,
       setUsers: setUsers
     };
