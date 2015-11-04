@@ -444,6 +444,7 @@ a:visited{
 
 .places-x {
   float:right;
+  padding: 3px, 3px, 3px, 3px;
   text-align:right;
   margin-right:2%;
   color:#ccc;
