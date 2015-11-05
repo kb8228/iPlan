@@ -52,6 +52,24 @@ app.post('/api/events', function(req, res, next){
   });
 });
 
+app.delete('/api/events/:id', function(req, res, next){
+  var eventId = req.params.id;
+  db.model('Event').fetchById({id: eventId})
+  .then(function(evt){
+    evt.destroy();
+    res.json({string: "cheese"});
+  });
+});
+
+app.delete('/api/eventsusers/:id', function(req, res, next){
+  var eventId = req.params.id;
+  db.model('EventUser').fetchById({event_id: eventId})
+  .then(function(evt){
+    evt.destroy();
+    res.json({string: "cheese"});
+  });
+});
+
 app.put('/api/events/:code', function(req, res, next){
   var code = req.params.code;
   var saveTime = req.body;
@@ -77,7 +95,6 @@ app.post('/api/places', function(req, res, next){
 });
 
 app.delete('/api/places/:id', function(req, res, next){
-  console.log(req.params.id);
   var placeId = req.params.id;
   db.model('Place').fetchById({id: placeId})
   .then(function(place){

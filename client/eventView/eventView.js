@@ -76,6 +76,27 @@
       $location.path('/');
     }
 
+    self.deleteEvent = function(id){
+      HttpService.deleteEvent(id)
+      .then(function(response){
+        console.log('deleteEvent success: ', self.eventCode);
+      })
+      .catch(function(err){
+        console.log('error in deleting event: ', err);
+      });
+
+      HttpService.deleteEventsUsers(id)
+      .then(function(response){
+        self.clearEvent();
+        $window.location.reload();
+        console.log('deleteEventsUsers success: ', self.eventCode);
+      })
+      .catch(function(err){
+        console.log('error in deleting eventsusers: ', err);
+      });
+
+    }
+
     self.setUsersEvent = function(){
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
