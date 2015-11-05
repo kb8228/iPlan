@@ -101,7 +101,7 @@
       .then(function(response){
         self.setEventsUsers();
         self.setUsersEvents
-        // $window.location.reload();
+        $window.location.reload();
         console.log('deleteEventsUsers success: ', self.eventCode);
       })
       .catch(function(err){
@@ -382,7 +382,7 @@
 
     self.findHost = function(){
       console.log('the current user: ', self.currentUser);
-      if (self.currentUser.email === self.currentUser.eventsUsers[0].email){
+      if (self.currentUser.eventUsers && self.currentUser.email === self.currentUser.eventsUsers[0].email){
         self.isHost = true;
       }
       console.log(self.isHost);
