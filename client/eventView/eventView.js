@@ -202,7 +202,7 @@
         .then(function(response){
           if(!response.data){
             return HttpService.postUser(newUser);
-          } 
+          }
           else {
             return response;
           }
@@ -382,7 +382,15 @@
       $window.location.reload();
     }
 
+    self.findHost = function(){
+      console.log('the current user: ', self.currentUser);
+      if (self.currentUser.email === self.currentUser.eventsUsers[0].email){
+        self.isHost = true;
+      }
+    }
+
     self.refresh(self.eventCode);
+    self.findHost();
   };
 
   function eventViewDir(){
