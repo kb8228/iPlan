@@ -217,7 +217,7 @@
         <center>
           <div class="attend-divider"></div>
           <ul>
-            <li class="invited-text" ng-repeat="guest in evtCtrl.guests">{{guest.email}}</li>
+            <li class="invited-text" ng-repeat="guest in evtCtrl.guests track by $index">{{guest.email}}</li>
           </ul>
         </center>
       </div>

@@ -33,7 +33,7 @@
 
             DataService.setCurrentEvent(response.data);
             $location.path('/events/' + response.data.code);
-            $window.location.reload();
+            // $window.location.reload();
             console.log('success response: ', response.data);
           })
           .catch(function(err){
