@@ -79,11 +79,7 @@
     };
 
     self.showEvent = function() {
-      if(!self.getEvent) {
-        self.getEvent = true;
-      } else {
-        self.getEvent = false;
-      }
+      self.getEvent = !self.getEvent;
     }
 
     self.checkLogin();

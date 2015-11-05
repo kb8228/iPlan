@@ -41,6 +41,24 @@
       self.lastChosen = place;
     }
 
+    self.setUsersEvent = function(){
+      if(self.eventCode.length === 10){
+        HttpService.getUsers(self.eventCode)
+        .then(function(users){
+          DataService.setUsers(users.data); //// THIS IS PROBLEMATIC
+        });
+      }
+    };
+
+    self.setEventsUser = function(){
+      HttpService.getEvents(self.currentUser.email)
+      .then(function(evt){
+        if(evt.data.length){
+          DataService.setEvents(evt.data);
+        }
+      });
+    };
+
     self.setEvent = function(){
       if(self.eventCode.length === 10){ // checking if we have a code
         HttpService.getEvent(self.eventCode)
@@ -49,8 +67,6 @@
           angular.forEach(response.data.places, function(val, key){
             self.toggle[val.id] = self.toggle[val.id] || false;
           });
-          self.setUsersEvent();
-          self.setEventsUser();
           return response.data;
         })
         .catch(function(err){
@@ -62,8 +78,8 @@
     self.refresh = function(evtCode){
       self.eventCode = evtCode;
       self.setEvent();
-      self.setUsersEvent();
       self.setEventsUser();
+      self.setUsersEvent();
     };
 
     self.clearEvent = function(){
@@ -91,24 +107,6 @@
       });
 
     }
-
-    self.setUsersEvent = function(){
-      if(self.eventCode.length === 10){
-        HttpService.getUsers(self.eventCode)
-        .then(function(users){
-          DataService.setUsers(users.data);
-        });
-      }
-    };
-
-    self.setEventsUser = function(){
-      HttpService.getEvents(self.currentUser.email)
-      .then(function(evt){
-        if(evt.data.length){
-          DataService.setEvents(evt.data);
-        }
-      });
-    };
 
     self.searchYelp = function(placeName){
       if(self.placeName.length > 2) {

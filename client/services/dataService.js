@@ -58,13 +58,13 @@
     };
 
     var setUsers = function(evtUsers){
-      users.forEach(function(user, index){
-        delete users[index];
-      });
+      for(var i = 0; i < users.length; i++){
+        delete users[i];
+      }
 
-      evtUsers.forEach(function(evtUser, index){
-        users[index] = evtUser.user;
-      });
+      for(var j = 0; j < evtUsers.length; j++){
+        users[j] = evtUsers[j].user;
+      }
       console.log('setUsers from DataService: ', users);
       return users;
     };
