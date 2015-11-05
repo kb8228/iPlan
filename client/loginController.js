@@ -40,7 +40,7 @@
           return DataService.setCurrentUser(user);
         })
         .then(function(user){
-          $window.location.reload();
+          $window.location.href = $window.location.href;
         })
         .catch(function(err){
           if(err){
