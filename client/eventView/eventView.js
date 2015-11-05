@@ -303,7 +303,6 @@
         name: inputText,
         code: self.currentEvent.code
       })
-      self.changeName = '';
       self.showEditing = true;
       $window.location.reload();
     }
@@ -321,7 +320,6 @@
         location: inputText,
         code: self.currentEvent.code
       })
-      self.changeLocation = '';
       self.showEditingLocation = true;
       $window.location.reload();
     }
@@ -340,7 +338,6 @@
         code: self.currentEvent.code
       })
       self.showDate = true;
-      self.dateChange = '';
       $window.location.reload();
     }
 
@@ -358,7 +355,6 @@
         code:self.currentEvent.code
       })
       self.showTime = true;
-      self.timeChange = '';
       $window.location.reload();
     }
 
@@ -376,7 +372,6 @@
         code:self.currentEvent.code
       })
       self.toggleCutOff = true;
-      self.cutOffChange = '';
       $window.location.reload();
     }
 
