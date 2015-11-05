@@ -898,3 +898,16 @@ a:visited{
 .inline {
   display: inline;
 }
+
+.description {
+  width: 75%;
+  margin: 50px auto;
+  text-align: left;
+}
+
+.intro {
+  font-size: 1.2em;
+}
+.intro strong {
+  font-weight: 600;
+}
