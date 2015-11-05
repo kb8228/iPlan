@@ -10,7 +10,7 @@ describe('Routing', function() {
     expect($route.routes['/'].templateUrl).toEqual('index.html');
   })
 
-  it('should route to the event page', function() {
+  it('should route to the event page when called', function() {
     expect($route.routes['/events/:code'].templateUrl).toEqual('index.html');
   })
 

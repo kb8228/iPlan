@@ -268,7 +268,6 @@
       var filteredHour = $filter('date')(self.currentEvent.cutoff, 'HH')
       var filteredMinute = $filter('date')(self.currentEvent.cutoff, 'mm')
 
-
       //checking to see if the month, day, year matches to begin checking further down
       if(dateMonth === filteredMonth && dateDay === filteredDay && dateYear === filteredYear) {
         //dates match! //check against time
