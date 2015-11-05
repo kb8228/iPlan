@@ -54,8 +54,8 @@ describe('EventViewController', function() {
       expect(typeof ctrl.showPlace).toBe('function');
     });
 
-    it('should search yelp', function() {
-      
+    it('should toggle change', function() {
+      expect(ctrl.searchYelp()).to.exist;
     })
 
   });

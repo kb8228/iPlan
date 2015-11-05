@@ -25,8 +25,6 @@
     self.showTime = true;
     self.toggleCutOff = true;
 
-    console.log('events fr evtCtrl init: ', self.events);
-
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
         if(!self.hidePlace) {
@@ -41,11 +39,9 @@
       self.selectedAddress = place.address;
       self.selectedRating = place.rating_img;
       self.lastChosen = place;
-      console.log(place, ' is the place you selected')
     }
 
     self.setEvent = function(){
-      console.log('evtCtrl eventCode: ', self.eventCode);
       if(self.eventCode.length === 10){ // checking if we have a code
         HttpService.getEvent(self.eventCode)
         .then(function(response){
@@ -64,7 +60,6 @@
     };
 
     self.refresh = function(evtCode){
-      console.log('REFRESH evtCode passed in: ', evtCode);
       self.eventCode = evtCode;
       self.setEvent();
       self.setUsersEvent();
@@ -111,12 +106,11 @@
       .then(function(evt){
         if(evt.data.length){
           DataService.setEvents(evt.data);
-          console.log('im the event', evt.data);
         }
       });
     };
 
-    self.searchYelp = function(){
+    self.searchYelp = function(placeName){
       if(self.placeName.length > 2) {
         var term = self.placeName.split(' ').join('+');
         var location = self.currentEvent.location.split(' ').join('+');
@@ -370,7 +364,6 @@
     }
 
     self.toggleCutOffChange = function() {
-      console.log(self.toggleCutOff)
       if(!self.toggleCutOff) {
         self.toggleCutOff = true;
       } else {
@@ -388,7 +381,6 @@
       $window.location.reload();
     }
 
-    console.log(self.currentEvent, ' curr event')
     self.refresh(self.eventCode);
   };
 
