@@ -174,19 +174,20 @@
     };
 
     self.sendMail = function(){
-      var newMail = {
-        name: self.currentUser.name,
-        to: self.to,
-        subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
-        message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
-      };
-
       var temp = self.to.replace(/ /g, '').split(',');
 
       temp.forEach(function(val, index){
         var found = false;
+
         var newUser = {
           email: val
+        }
+
+        var newMail = {
+          name: newUser.email,
+          to: self.to,
+          subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
+          message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
         };
 
         HttpService.sendMail(newMail);
