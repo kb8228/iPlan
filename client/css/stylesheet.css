@@ -246,6 +246,19 @@ a:visited{
   z-index: 1;
 }
 
+.leftbar .leftbar-x {
+  display:none;
+  float:right;
+  padding: 3px, 15px, 3px, 3px;
+  text-align:right;
+  padding-right:2%;
+  color:#30395a;
+}
+
+.leftbar:hover .leftbar-x{
+  display:inline-block;
+}
+
 .left-title {
   color:#fff;
   font-size:28pt;
