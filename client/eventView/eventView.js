@@ -387,6 +387,7 @@
       if (self.currentUser.email === self.currentUser.eventsUsers[0].email){
         self.isHost = true;
       }
+      console.log(self.isHost);
     }
 
     self.refresh(self.eventCode);
