@@ -9,8 +9,8 @@
             {{evtCtrl.currentEvent.name}}
           </span>
           <span ng-hide="evtCtrl.showEditing">
-            <form ng-submit="evtCtrl.changeEventName(evtCtrl.currentEvent.name)" class="inline-form">
-              <input class="change-name-edit" ng-model="evtCtrl.currentEvent.name">
+            <form ng-submit="evtCtrl.changeEventName(evtCtrl.changeName)" class="inline-form">
+              <input class="change-name-edit" ng-model="evtCtrl.changeName">
             </form>
           </span>
           <span class="edit-pencil">
@@ -26,8 +26,8 @@
               {{evtCtrl.currentEvent.location}}
             </span>
             <span ng-hide="evtCtrl.showEditingLocation">
-              <form class="inline-form" ng-submit="evtCtrl.changeEventLocation(evtCtrl.currentEvent.location)">
-                <input class="change-location-edit" ng-model="evtCtrl.currentEvent.location">
+              <form class="inline-form" ng-submit="evtCtrl.changeEventLocation(evtCtrl.changeLocation)">
+                <input class="change-location-edit" ng-model="evtCtrl.changeLocation">
               </form>
             </span>
             <span class="edit-pencil">
@@ -44,8 +44,8 @@
               </span>
               <span ng-hide="evtCtrl.showDate">
                 <form class="inline-form">
-                  <input type="date" class="change-date-edit" ng-model="evtCtrl.currentEvent.date">
-                  <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.currentEvent.date)">
+                  <input type="date" class="change-date-edit" ng-model="evtCtrl.changeDate">
+                  <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.changeDate)">
                     Change
                   </button>
                 </form>
@@ -65,8 +65,8 @@
             </span>
             <span ng-hide="evtCtrl.showTime">
               <form class="inline-form">
-                <input type="time" class="change-date-edit" ng-model="evtCtrl.currentEvent.time">
-                <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.currentEvent.time)">Change</button>
+                <input type="time" class="change-date-edit" ng-model="evtCtrl.changeTime">
+                <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.changeTime)">Change</button>
               </form>
             </span>
             <span class="edit-pencil">
@@ -86,8 +86,8 @@
                 | date: 'shortTime'}}
               </span>
               <span ng-hide="evtCtrl.toggleCutOff">
-                <input type="datetime-local" class="timer-date-change" ng-model="evtCtrl.currentEvent.cutoff">
-                <button class="change-event-details" ng-click="evtCtrl.changeCutOff(evtCtrl.currentEvent.cutoff)">Change</button>
+                <input type="datetime-local" class="timer-date-change" ng-model="evtCtrl.changeCutOff">
+                <button class="change-event-details" ng-click="evtCtrl.changeCutOff(evtCtrl.changeCutOff)">Change</button>
               </span>
               <span class="edit-pencil">
                 <i class="fa fa-pencil" ng-click="evtCtrl.toggleCutOffChange()">
