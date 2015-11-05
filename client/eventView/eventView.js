@@ -24,6 +24,7 @@
     self.showDate = true;
     self.showTime = true;
     self.toggleCutOff = true;
+    self.isHost = false;
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -82,14 +83,14 @@
 
       HttpService.deleteEventsUsers(id)
       .then(function(response){
-        self.clearEvent();
-        $window.location.reload();
+        self.setEventsUsers();
+        self.setUsersEvents
+        // $window.location.reload();
         console.log('deleteEventsUsers success: ', self.eventCode);
       })
       .catch(function(err){
         console.log('error in deleting eventsusers: ', err);
       });
-
     }
 
     self.setUsersEvent = function(){
@@ -201,7 +202,7 @@
         .then(function(response){
           if(!response.data){
             return HttpService.postUser(newUser);
-          } 
+          }
           else {
             return response;
           }
@@ -381,7 +382,16 @@
       $window.location.reload();
     }
 
+    self.findHost = function(){
+      console.log('the current user: ', self.currentUser);
+      if (self.currentUser.email === self.currentUser.eventsUsers[0].email){
+        self.isHost = true;
+      }
+      console.log(self.isHost);
+    }
+
     self.refresh(self.eventCode);
+    self.findHost();
   };
 
   function eventViewDir(){
