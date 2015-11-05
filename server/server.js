@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var nodemailer = require('nodemailer');
 var _ = require('underscore')
+var hogan = require('hogan');
 var transporter = nodemailer.createTransport('SMTP', {
   auth: {
     user: 'testingiplan@gmail.com',
@@ -152,13 +153,15 @@ app.get('/api/users/:email', function(req, res, next){
 
 app.post('/sendmail', function(req, res, next){
   var data = req.body;
+  var compiledTemplate = hogan.compile(template);
+
   console.log(req);
   transporter.sendMail({
     from: 'testingiplan@gmail.com',
     to: data.to,
     subject: data.subject,
     text: data.message
-    // html: hogan.compile(__dirname + './email.js') - or something like that instead of 'text:'
+    // html: compiledTemplate.render(__dirname + './email.js') - or something like that instead of 'text:'
   }, function(err){
     console.log(err);
   });
