@@ -24,6 +24,7 @@
     self.showDate = true;
     self.showTime = true;
     self.toggleCutOff = true;
+    self.isHost = false;
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -82,14 +83,14 @@
 
       HttpService.deleteEventsUsers(id)
       .then(function(response){
-        self.clearEvent();
-        $window.location.reload();
+        self.setEventsUsers();
+        self.setUsersEvents
+        // $window.location.reload();
         console.log('deleteEventsUsers success: ', self.eventCode);
       })
       .catch(function(err){
         console.log('error in deleting eventsusers: ', err);
       });
-
     }
 
     self.setUsersEvent = function(){
