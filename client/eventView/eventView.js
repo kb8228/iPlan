@@ -180,7 +180,7 @@
 
     self.sendMail = function(){
       var newMail = {
-        name: '',
+        name: self.currentUser.name,
         to: self.to,
         subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
         message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
