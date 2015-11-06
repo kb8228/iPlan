@@ -25,9 +25,18 @@
               <span ng-show="evtCtrl.showEditingLocation">
                 {{evtCtrl.currentEvent.location}}
               </span>
+<<<<<<< HEAD
               <span ng-hide="evtCtrl.showEditingLocation">
                 <form class="inline-form" ng-submit="evtCtrl.changeEventLocation(evtCtrl.changeLocation)">
                   <input class="change-location-edit" ng-model="evtCtrl.changeLocation">
+=======
+              <span ng-hide="evtCtrl.showDate">
+                <form class="inline-form">
+                  <input type="date" class="change-date-edit" ng-model="evtCtrl.evtDate">
+                  <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.evtDate)">
+                    Change
+                  </button>
+>>>>>>> [fix] fix date and time data type in eventView
                 </form>
               </span>
               <span class="edit-pencil">
@@ -36,6 +45,7 @@
               </span>
             </div>
 
+<<<<<<< HEAD
             <div class="location-date inline">
               <span class="location-time-space"></span>
                 <i class="fa fa-calendar"></i>
@@ -71,6 +81,28 @@
               <div class="edit-pencil inline">
                 <i class="fa fa-pencil" ng-click="evtCtrl.toggleTimeChange()"></i>
               </div>
+=======
+          <div class="event-date inline">
+            <i class="fa fa-clock-o"></i>
+            <span ng-show="evtCtrl.showTime">
+              {{evtCtrl.currentEvent.time | date:'shortTime'}}
+            </span>
+            <span ng-hide="evtCtrl.showTime">
+              <form class="inline-form">
+                <input type="time" class="change-date-edit" ng-model="evtCtrl.evtTime">
+                <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.evtTime)">Change</button>
+              </form>
+            </span>
+            <span class="edit-pencil">
+              <i class="fa fa-pencil" ng-click="evtCtrl.toggleTimeChange()"></i>
+            </span>
+          </div>
+
+          <div class="event-right inline">
+            <div ng-if="!evtCtrl.currentEvent.cutoff">
+              <input type="datetime-local" ng-model="evtCtrl.timerInfo" class="timer-date">
+              <button class="vote-timer" ng-click="evtCtrl.createTimer()">Create a Vote Timer</button>
+>>>>>>> [fix] fix date and time data type in eventView
             </div>
             <div class="events-x inline">
               <button ng-if="evtCtrl.isHost" class="delete" ng-click="evtCtrl.deleteEvent(evtCtrl.currentEvent.id)">Delete Event</button>
