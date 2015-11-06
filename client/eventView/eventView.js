@@ -13,6 +13,8 @@
     self.guests = DataService.users;
     self.currentUser = DataService.currentUser;
     self.currentEvent = DataService.currentEvent;
+    self.evtDate = new Date(self.currentEvent.date)
+    self.evtTime = new Date(self.currentEvent.time);
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
@@ -229,7 +231,7 @@
     self.to = '';
     };
 
-    self.createTimer = function(eventTimeCut) {
+    self.createTimer = function() {
       HttpService.putEvent({
         cutoff: self.timerInfo,
         code: self.currentEvent.code
@@ -302,9 +304,11 @@
       HttpService.putEvent({
         name: inputText,
         code: self.currentEvent.code
-      })
+      });
+
+      DataService.setCurrentEvent({name: inputText});
       self.showEditing = true;
-      $window.location.reload();
+      // $window.location.reload();
     }
 
     self.toggleLocationChange = function() {
@@ -333,8 +337,9 @@
     }
 
     self.changeEventDate = function(inputText) {
+      var date = new Date(inputText);
       HttpService.putEvent({
-        date: inputText,
+        date: date,
         code: self.currentEvent.code
       })
       self.showDate = true;
@@ -350,8 +355,9 @@
     }
 
     self.changeEventTime = function(inputText) {
+      var time = new Date(inputText);
       HttpService.putEvent({
-        time: inputText,
+        time: time,
         code:self.currentEvent.code
       })
       self.showTime = true;
@@ -390,7 +396,7 @@
   function eventViewDir(){
     return {
       restrict: 'E',
-      // scope: {},
+      scope: true,
       templateUrl: '/eventView/eventView.html',
       replace: true,
       controller: 'EventViewController',
@@ -398,10 +404,11 @@
       bindToController: true
     }
   }
+
   function eventList(){
     return {
       restrict: 'E',
-      // scope: {},
+      scope: true,
       templateUrl: '/eventView/eventList.html',
       replace: true,
       controller: 'EventViewController',
