@@ -44,8 +44,8 @@
               </span>
               <span ng-hide="evtCtrl.showDate">
                 <form class="inline-form">
-                  <input type="date" class="change-date-edit" ng-model="evtCtrl.changeDate">
-                  <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.changeDate)">
+                  <input type="date" class="change-date-edit" ng-model="evtCtrl.evtDate">
+                  <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.evtDate)">
                     Change
                   </button>
                 </form>
@@ -65,8 +65,8 @@
             </span>
             <span ng-hide="evtCtrl.showTime">
               <form class="inline-form">
-                <input type="time" class="change-date-edit" ng-model="evtCtrl.changeTime">
-                <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.changeTime)">Change</button>
+                <input type="time" class="change-date-edit" ng-model="evtCtrl.evtTime">
+                <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.evtTime)">Change</button>
               </form>
             </span>
             <span class="edit-pencil">
@@ -77,7 +77,7 @@
           <div class="event-right inline">
             <div ng-if="!evtCtrl.currentEvent.cutoff">
               <input type="datetime-local" ng-model="evtCtrl.timerInfo" class="timer-date">
-              <button class="vote-timer" ng-click="evtCtrl.createTimer(evtCtrl.timerInfo)">Create a Vote Timer</button>
+              <button class="vote-timer" ng-click="evtCtrl.createTimer()">Create a Vote Timer</button>
             </div>
             <div ng-if="evtCtrl.currentEvent.cutoff">
               <span ng-show="evtCtrl.toggleCutOff">
