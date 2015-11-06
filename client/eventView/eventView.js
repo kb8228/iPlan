@@ -2,7 +2,8 @@
   angular.module('iplanApp')
   .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
   .directive('eventViewDir', eventViewDir)
-  .directive('eventList', eventList);
+  .directive('eventList', eventList)
+  .directive('eventLink', eventLink);
 
   function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
     var self = this;
@@ -373,8 +374,9 @@
     }
 
     self.changeCutOff = function(inputText) {
+      var cutoff = new Date(inputText);
       HttpService.putEvent({
-        cutoff: inputText,
+        cutoff: cutoff,
         code:self.currentEvent.code
       })
       self.toggleCutOff = true;
@@ -414,6 +416,20 @@
       controller: 'EventViewController',
       controllerAs: 'evtCtrl',
       bindToController: true
+    }
+  }
+
+  function eventLink(){
+    return {
+      restrict: 'EA',
+      scope: {
+        events: '='
+      },
+      templateUrl: '/eventView/eventLink.html',
+      replace: true,
+      link: function(scope, elem, attrs){
+        
+      }
     }
   }
 })();

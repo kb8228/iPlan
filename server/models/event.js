@@ -27,7 +27,22 @@ var Event = db.Model.extend({
   newEvent: function(options){
     options.code = createSha(options.name + options.id);
     return new this(options);
+  },
+  deleteEvent: function(id){
+    return new this({id: id}).fetch({
+      withRelated:['places', 'eventsUsers']
+    })
+    .then(function (item) {
+      return item.related('eventsUsers').invokeThen('destroy')
+      .then(function () {
+        return item.related('places').invokeThen('destroy')
+        .then(function(){
+          return item.destroy();
+        })
+      });
+    });
   }
+
 });
 
 module.exports = db.model('Event', Event);
