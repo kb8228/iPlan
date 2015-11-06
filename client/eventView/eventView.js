@@ -2,7 +2,8 @@
   angular.module('iplanApp')
   .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
   .directive('eventViewDir', eventViewDir)
-  .directive('eventList', eventList);
+  .directive('eventList', eventList)
+  .directive('eventLink', eventLink);
 
   function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
     var self = this;
@@ -13,6 +14,8 @@
     self.guests = DataService.users;
     self.currentUser = DataService.currentUser;
     self.currentEvent = DataService.currentEvent;
+    self.evtDate = new Date(self.currentEvent.date)
+    self.evtTime = new Date(self.currentEvent.time);
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
@@ -77,6 +80,7 @@
     };
 
     self.refresh = function(evtCode){
+      $location.path('/events/' + evtCode);
       self.eventCode = evtCode;
       self.setEvent();
       self.setEventsUser();
@@ -91,21 +95,14 @@
     self.deleteEvent = function(id){
       HttpService.deleteEvent(id)
       .then(function(response){
+        $location.path('/');
         console.log('deleteEvent success: ', self.eventCode);
+        self.setEventsUser();
+        self.setUsersEvent();
+        $window.location.reload();
       })
       .catch(function(err){
         console.log('error in deleting event: ', err);
-      });
-
-      HttpService.deleteEventsUsers(id)
-      .then(function(response){
-        self.setEventsUsers();
-        self.setUsersEvents
-        $window.location.reload();
-        console.log('deleteEventsUsers success: ', self.eventCode);
-      })
-      .catch(function(err){
-        console.log('error in deleting eventsusers: ', err);
       });
     }
 
@@ -229,7 +226,7 @@
     self.to = '';
     };
 
-    self.createTimer = function(eventTimeCut) {
+    self.createTimer = function() {
       HttpService.putEvent({
         cutoff: self.timerInfo,
         code: self.currentEvent.code
@@ -302,9 +299,11 @@
       HttpService.putEvent({
         name: inputText,
         code: self.currentEvent.code
-      })
+      });
+
+      DataService.setCurrentEvent({name: inputText});
       self.showEditing = true;
-      $window.location.reload();
+      // $window.location.reload();
     }
 
     self.toggleLocationChange = function() {
@@ -333,8 +332,9 @@
     }
 
     self.changeEventDate = function(inputText) {
+      var date = new Date(inputText);
       HttpService.putEvent({
-        date: inputText,
+        date: date,
         code: self.currentEvent.code
       })
       self.showDate = true;
@@ -350,8 +350,9 @@
     }
 
     self.changeEventTime = function(inputText) {
+      var time = new Date(inputText);
       HttpService.putEvent({
-        time: inputText,
+        time: time,
         code:self.currentEvent.code
       })
       self.showTime = true;
@@ -367,8 +368,9 @@
     }
 
     self.changeCutOff = function(inputText) {
+      var cutoff = new Date(inputText);
       HttpService.putEvent({
-        cutoff: inputText,
+        cutoff: cutoff,
         code:self.currentEvent.code
       })
       self.toggleCutOff = true;
@@ -390,7 +392,7 @@
   function eventViewDir(){
     return {
       restrict: 'E',
-      // scope: {},
+      scope: true,
       templateUrl: '/eventView/eventView.html',
       replace: true,
       controller: 'EventViewController',
@@ -398,15 +400,30 @@
       bindToController: true
     }
   }
+
   function eventList(){
     return {
       restrict: 'E',
-      // scope: {},
+      scope: true,
       templateUrl: '/eventView/eventList.html',
       replace: true,
       controller: 'EventViewController',
       controllerAs: 'evtCtrl',
       bindToController: true
+    }
+  }
+
+  function eventLink(){
+    return {
+      restrict: 'EA',
+      scope: {
+        events: '='
+      },
+      templateUrl: '/eventView/eventLink.html',
+      replace: true,
+      link: function(scope, elem, attrs){
+
+      }
     }
   }
 })();

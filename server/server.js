@@ -56,21 +56,28 @@ app.post('/api/events', function(req, res, next){
 
 app.delete('/api/events/:id', function(req, res, next){
   var eventId = req.params.id;
-  db.model('Event').fetchById({id: eventId})
-  .then(function(evt){
-    evt.destroy();
-    res.json({string: "cheese"});
+  db.model('Event').deleteEvent(eventId)
+  .then(function(response){
+    res.sendStatus(200);
   });
 });
 
-app.delete('/api/eventsusers/:id', function(req, res, next){
-  var eventId = req.params.id;
-  db.model('EventUser').fetchById({event_id: eventId})
-  .then(function(evt){
-    evt.destroy();
-    res.json({string: "cheese"});
+app.delete('/api/places/:id', function(req, res, next){
+  var placeId = req.params.id;
+  db.model('Place').deletePlace(placeId)
+  .then(function(response){
+    res.sendStatus(200);
   });
 });
+
+// app.delete('/api/eventsusers/:id', function(req, res, next){
+//   var eventId = req.params.id;
+//   db.model('EventUser').fetchById({event_id: eventId})
+//   .then(function(evt){
+//     evt.destroy();
+//     res.json({string: "cheese"});
+//   });
+// });
 
 app.put('/api/events/:code', function(req, res, next){
   var code = req.params.code;
@@ -93,15 +100,6 @@ app.post('/api/places', function(req, res, next){
   db.model('Place').newPlace(req.body).save()
   .then(function(place){
     res.json(place);
-  });
-});
-
-app.delete('/api/places/:id', function(req, res, next){
-  var placeId = req.params.id;
-  db.model('Place').fetchById({id: placeId})
-  .then(function(place){
-    place.destroy();
-    res.json({string: "cheese"});
   });
 });
 

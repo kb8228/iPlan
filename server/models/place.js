@@ -17,7 +17,13 @@ var Place = db.Model.extend({
   },
   newPlace: function(options){
     return new this(options);
+  },
+  deletePlace: function(id){
+    return new this({id: id}).fetch().then(function(item){
+      return item.destroy();
+    });
   }
+  
 });
 
 module.exports = db.model('Place', Place);

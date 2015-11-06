@@ -9,14 +9,11 @@
   </div>
   <div>
     <ul>
-      <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
-        <a href="/#/events/{{event.event.code}}" class="event-links">
+      <li class="left-links event-links" ng-repeat="event in evtCtrl.events">
+        <span ng-click="evtCtrl.refresh(event.event.code)">
           {{event.event.name}}
-          <span ng-show="evtCtrl.isHost" class="leftbar-x">
-            <i ng-click="evtCtrl.deleteEvent(event.event.id)" class='fa fa-times'></i>
-          </span>
-        </a>
-      </div>
+        </span>
+      </li>
     </ul>
   </div>
 </div>

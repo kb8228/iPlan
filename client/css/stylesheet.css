@@ -277,7 +277,7 @@ a:visited{
   display:inline-block;
 }
 
-.left-links a{
+.left-links {
   color:#7482b5;
   text-align:center;
   width:100%;
@@ -297,6 +297,10 @@ a:visited{
   margin-bottom:5px;
   text-decoration:none;
   display:block;
+}
+
+.event-links:hover {
+  cursor: pointer;
 }
 
 .event-links:focus {
@@ -465,7 +469,28 @@ a:visited{
 }
 
 .places-x:hover {
-  color: #666;
+  color: rgba(255, 0, 0, 0.65);
+}
+
+.events-x {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: right;
+  padding: 3px, 3px, 3px, 3px;
+}
+
+.delete {
+  border-style: none;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 0.8em;
+  padding: 2px 10px;
+}
+
+.delete:hover {
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
 .places-choices:hover{
@@ -768,8 +793,8 @@ a:visited{
 .picture {
   margin: 0 auto;
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 65px;
+  width: 65px;
   padding: 5px 5px 5px 5px;
   margin-bottom: 10px;
 }
@@ -897,4 +922,17 @@ a:visited{
 
 .inline {
   display: inline;
+}
+
+.description {
+  width: 75%;
+  margin: 50px auto;
+  text-align: left;
+}
+
+.intro {
+  font-size: 1.2em;
+}
+.intro strong {
+  font-weight: 600;
 }
