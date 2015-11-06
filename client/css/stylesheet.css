@@ -277,7 +277,7 @@ a:visited{
   display:inline-block;
 }
 
-.left-links a{
+.left-links {
   color:#7482b5;
   text-align:center;
   width:100%;
@@ -297,6 +297,10 @@ a:visited{
   margin-bottom:5px;
   text-decoration:none;
   display:block;
+}
+
+.event-links:hover {
+  cursor: pointer;
 }
 
 .event-links:focus {
