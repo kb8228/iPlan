@@ -80,6 +80,7 @@
     };
 
     self.refresh = function(evtCode){
+      $location.path('/events/' + evtCode);
       self.eventCode = evtCode;
       self.setEvent();
       self.setEventsUser();
@@ -94,21 +95,14 @@
     self.deleteEvent = function(id){
       HttpService.deleteEvent(id)
       .then(function(response){
+        $location.path('/');
         console.log('deleteEvent success: ', self.eventCode);
+        self.setEventsUser();
+        self.setUsersEvent();
+        $window.location.reload();
       })
       .catch(function(err){
         console.log('error in deleting event: ', err);
-      });
-
-      HttpService.deleteEventsUsers(id)
-      .then(function(response){
-        self.setEventsUsers();
-        self.setUsersEvents
-        $window.location.reload();
-        console.log('deleteEventsUsers success: ', self.eventCode);
-      })
-      .catch(function(err){
-        console.log('error in deleting eventsusers: ', err);
       });
     }
 
@@ -428,7 +422,7 @@
       templateUrl: '/eventView/eventLink.html',
       replace: true,
       link: function(scope, elem, attrs){
-        
+
       }
     }
   }
