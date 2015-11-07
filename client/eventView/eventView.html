@@ -55,7 +55,6 @@
                   </i>
                 </span>
             </div>
-
             <div class="location-time-space inline"></div>
 
             <div class="event-date inline">
@@ -74,7 +73,7 @@
               </div>
             </div>
             <div class="events-x inline">
-              <button class="delete" ng-click="evtCtrl.deleteEvent(evtCtrl.currentEvent.id)">Delete Event</button>
+              <button ng-if="evtCtrl.isHost" class="delete" ng-click="evtCtrl.deleteEvent(evtCtrl.currentEvent.id)">Delete Event</button>
             </div>
             <div class="event-right inline">
               <div ng-if="!evtCtrl.currentEvent.cutoff">
