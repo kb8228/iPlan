@@ -41,7 +41,7 @@
       var promises = [self.setEvents()];
 
       return $q.all(promises).then(function() {
-        console.log('events set in eventList: ', events);
+        console.log('events set in eventList: ', self.events);
       });
     }
 

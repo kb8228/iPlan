@@ -1,228 +1,228 @@
-<div ng-if="evtCtrl.currentEvent.name" ng-init="evtCtrl.startCheckingTime()">
-  <!-- CURRENT EVENT INFO -->
-
-  <div class="event-info">
-    <div class="event-details">
-      <div class="event-left">
-        <div class="event-name">
-          <span ng-show="evtCtrl.showEditing">
-            {{evtCtrl.currentEvent.name}}
-          </span>
-          <span ng-hide="evtCtrl.showEditing">
-            <form ng-submit="evtCtrl.changeEventName(evtCtrl.changeName)" class="inline-form">
-              <input class="change-name-edit" ng-model="evtCtrl.changeName">
-            </form>
-          </span>
-          <span class="edit-pencil">
-            <i class="fa fa-pencil" ng-click="evtCtrl.toggleNameChange()">
-            </i>
-          </span>
-        </div>
-
-        <div class="event-location">
-          <div class="location inline">
-            <i class="fa fa-map-marker"></i>
-            <span ng-show="evtCtrl.showEditingLocation">
-              {{evtCtrl.currentEvent.location}}
+<div ng-if="!evtCtrl.newEvent">
+  <div ng-if="evtCtrl.currentEvent.name" ng-init="evtCtrl.startCheckingTime()">
+    <!-- CURRENT EVENT INFO -->
+    <div class="event-info">
+      <div class="event-details">
+        <div class="event-left">
+          <div class="event-name">
+            <span ng-show="evtCtrl.showEditing">
+              {{evtCtrl.currentEvent.name}}
             </span>
-            <span ng-hide="evtCtrl.showEditingLocation">
-              <form class="inline-form" ng-submit="evtCtrl.changeEventLocation(evtCtrl.changeLocation)">
-                <input class="change-location-edit" ng-model="evtCtrl.changeLocation">
+            <span ng-hide="evtCtrl.showEditing">
+              <form ng-submit="evtCtrl.changeEventName(evtCtrl.changeName)" class="inline-form">
+                <input class="change-name-edit" ng-model="evtCtrl.changeName">
               </form>
             </span>
             <span class="edit-pencil">
-              <i class="fa fa-pencil" ng-click="evtCtrl.toggleLocationChange()">
+              <i class="fa fa-pencil" ng-click="evtCtrl.toggleNameChange()">
               </i>
             </span>
           </div>
 
-          <div class="location-date inline">
-            <span class="location-time-space"></span>
-              <i class="fa fa-calendar"></i>
-              <span ng-show="evtCtrl.showDate">
-                {{evtCtrl.currentEvent.date | date:'mediumDate'}}
+          <div class="event-location">
+            <div class="location inline">
+              <i class="fa fa-map-marker"></i>
+              <span ng-show="evtCtrl.showEditingLocation">
+                {{evtCtrl.currentEvent.location}}
               </span>
-              <span ng-hide="evtCtrl.showDate">
-                <form class="inline-form">
-                  <input type="date" class="change-date-edit" ng-model="evtCtrl.evtDate">
-                  <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.evtDate)">
-                    Change
-                  </button>
+              <span ng-hide="evtCtrl.showEditingLocation">
+                <form class="inline-form" ng-submit="evtCtrl.changeEventLocation(evtCtrl.changeLocation)">
+                  <input class="change-location-edit" ng-model="evtCtrl.changeLocation">
                 </form>
               </span>
               <span class="edit-pencil">
-                <i class="fa fa-pencil" ng-click="evtCtrl.toggleDateChange()">
-                </i>
-              </span>
-          </div>
-
-          <div class="location-time-space inline"></div>
-
-          <div class="event-date inline">
-            <i class="fa fa-clock-o"></i>
-            <div class="inline" ng-show="evtCtrl.showTime">
-              {{evtCtrl.currentEvent.time | date:'shortTime'}}
-            </div>
-            <div class="inline" ng-hide="evtCtrl.showTime">
-              <form class="inline-form">
-                <input type="time" class="change-date-edit" ng-model="evtCtrl.evtTime">
-                <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.evtTime)">Change</button>
-              </form>
-            </div>
-            <div class="edit-pencil inline">
-              <i class="fa fa-pencil" ng-click="evtCtrl.toggleTimeChange()"></i>
-            </div>
-          </div>
-          <div class="events-x inline">
-            <button class="delete" ng-click="evtCtrl.deleteEvent(evtCtrl.currentEvent.id)">Delete Event</button>
-          </div>
-          <div class="event-right inline">
-            <div ng-if="!evtCtrl.currentEvent.cutoff">
-              <input type="datetime-local" ng-model="evtCtrl.timerInfo" class="timer-date">
-              <button class="vote-timer" ng-click="evtCtrl.createTimer()">Create a Vote Timer</button>
-            </div>
-            <div ng-if="evtCtrl.currentEvent.cutoff">
-              <span ng-show="evtCtrl.toggleCutOff">
-                Vote Cutoff: {{evtCtrl.currentEvent.cutoff
-                | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff
-                | date: 'shortTime'}}
-              </span>
-              <span ng-hide="evtCtrl.toggleCutOff">
-                <input type="datetime-local" class="timer-date-change" ng-model="evtCtrl.changeCutOff">
-                <button class="change-event-details" ng-click="evtCtrl.changeCutOff(evtCtrl.changeCutOff)">Change</button>
-              </span>
-              <span class="edit-pencil">
-                <i class="fa fa-pencil" ng-click="evtCtrl.toggleCutOffChange()">
+                <i class="fa fa-pencil" ng-click="evtCtrl.toggleLocationChange()">
                 </i>
               </span>
             </div>
-          </div> <!-- END event-right -->
-        </div> <!-- END event-location -->
-      </div> <!-- END event-left -->
-    </div> <!-- END event-details -->
-  </div> <!-- END event-info -->
 
-  <div class="event-container">
-    <div class="container-padding">
-      <!-- CHECK IF VOTING IS NOT DONE! -->
-      <div ng-if="evtCtrl.cutVoting">
-        <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
-          <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
-        </form> <!-- END placeForm -->
-
-        <!-- LIST OF CHOICES -->
-        <div ng-if="evtCtrl.choices[0]">
-          <div class="yelp-div">
-             <div ng-repeat="choice in evtCtrl.choices">
-              <button class="yelp-results" ng-click="evtCtrl.postPlace(choice)">
-                <ul class="yelp-float-left">
-                  <B>{{choice.name}}</B><BR>
-                  {{choice.location.display_address[0]}}
-                  {{choice.location.display_address[1]}}
-                </ul>
-                <ul class="yelp-float-right">
-                  <span><img ng-src="{{choice.rating_img_url}}"></span>
-                </ul>
-              </button>
+            <div class="location-date inline">
+              <span class="location-time-space"></span>
+                <i class="fa fa-calendar"></i>
+                <span ng-show="evtCtrl.showDate">
+                  {{evtCtrl.currentEvent.date | date:'mediumDate'}}
+                </span>
+                <span ng-hide="evtCtrl.showDate">
+                  <form class="inline-form">
+                    <input type="date" class="change-date-edit" ng-model="evtCtrl.evtDate">
+                    <button class="change-event-details" ng-click="evtCtrl.changeEventDate(evtCtrl.evtDate)">
+                      Change
+                    </button>
+                  </form>
+                </span>
+                <span class="edit-pencil">
+                  <i class="fa fa-pencil" ng-click="evtCtrl.toggleDateChange()">
+                  </i>
+                </span>
             </div>
-          </div>
-        </div> <!-- END evtCtrl.choices -->
 
-        <!-- LIST OF ADDED PLACES -->
-        <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
-          <div class="places-choices">
-          <!-- ng-repeat on event's places -->
-            <span ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
-              <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
-                <span class="thumbs-up-display">
-                  <i class="fa fa-thumbs-o-up"></i>
-                    {{place.votes}}
-                </span>
-                <span class="thumbs-down-display">
-                  <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
-                </span>
-              </button>
-              <span class="places-x">
-                <i ng-click="evtCtrl.deletePlace(place.id)" class='fa fa-times'></i>
-              </span>
-            </span>
-          </div>
-          <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
-            <div class="place-left card-content">
-              <div>
-                <a href="{{place.url}}"><img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x95&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA" class="map-padding"></a>
+            <div class="location-time-space inline"></div>
+
+            <div class="event-date inline">
+              <i class="fa fa-clock-o"></i>
+              <div class="inline" ng-show="evtCtrl.showTime">
+                {{evtCtrl.currentEvent.time | date:'shortTime'}}
+              </div>
+              <div class="inline" ng-hide="evtCtrl.showTime">
+                <form class="inline-form">
+                  <input type="time" class="change-date-edit" ng-model="evtCtrl.evtTime">
+                  <button class="change-event-details" ng-click="evtCtrl.changeEventTime(evtCtrl.evtTime)">Change</button>
+                </form>
+              </div>
+              <div class="edit-pencil inline">
+                <i class="fa fa-pencil" ng-click="evtCtrl.toggleTimeChange()"></i>
               </div>
             </div>
-            <div class="card-content place-right">
-              <p class="split-para">
-                {{place.name}}
-                  <span>
-                    <img class="rating" ng-src="{{evtCtrl.selectedRating}}">
-                  </span><BR>
-                {{evtCtrl.selectedAddress}}
-                  <span>{{place.category}}</span>
-              </p>
-                <div class="snippet">
-                  " {{place.snippet}} "
+            <div class="events-x inline">
+              <button class="delete" ng-click="evtCtrl.deleteEvent(evtCtrl.currentEvent.id)">Delete Event</button>
+            </div>
+            <div class="event-right inline">
+              <div ng-if="!evtCtrl.currentEvent.cutoff">
+                <input type="datetime-local" ng-model="evtCtrl.timerInfo" class="timer-date">
+                <button class="vote-timer" ng-click="evtCtrl.createTimer()">Create a Vote Timer</button>
+              </div>
+              <div ng-if="evtCtrl.currentEvent.cutoff">
+                <span ng-show="evtCtrl.toggleCutOff">
+                  Vote Cutoff: {{evtCtrl.currentEvent.cutoff
+                  | date: 'mediumDate'}} @ {{evtCtrl.currentEvent.cutoff
+                  | date: 'shortTime'}}
+                </span>
+                <span ng-hide="evtCtrl.toggleCutOff">
+                  <input type="datetime-local" class="timer-date-change" ng-model="evtCtrl.changeCutOff">
+                  <button class="change-event-details" ng-click="evtCtrl.changeCutOff(evtCtrl.changeCutOff)">Change</button>
+                </span>
+                <span class="edit-pencil">
+                  <i class="fa fa-pencil" ng-click="evtCtrl.toggleCutOffChange()">
+                  </i>
+                </span>
+              </div>
+            </div> <!-- END event-right -->
+          </div> <!-- END event-location -->
+        </div> <!-- END event-left -->
+      </div> <!-- END event-details -->
+    </div> <!-- END event-info -->
+
+    <div class="event-container">
+      <div class="container-padding">
+        <!-- CHECK IF VOTING IS NOT DONE! -->
+        <div ng-if="evtCtrl.cutVoting">
+          <form name="placeForm" ng-submit="evtCtrl.searchYelp(placeForm.$valid)" novalidate>
+            <input type="text" class="input-add-place" ng-model="evtCtrl.placeName" placeholder="+ add a place"/>
+          </form> <!-- END placeForm -->
+
+          <!-- LIST OF CHOICES -->
+          <div ng-if="evtCtrl.choices[0]">
+            <div class="yelp-div">
+               <div ng-repeat="choice in evtCtrl.choices">
+                <button class="yelp-results" ng-click="evtCtrl.postPlace(choice)">
+                  <ul class="yelp-float-left">
+                    <B>{{choice.name}}</B><BR>
+                    {{choice.location.display_address[0]}}
+                    {{choice.location.display_address[1]}}
+                  </ul>
+                  <ul class="yelp-float-right">
+                    <span><img ng-src="{{choice.rating_img_url}}"></span>
+                  </ul>
+                </button>
+              </div>
+            </div>
+          </div> <!-- END evtCtrl.choices -->
+
+          <!-- LIST OF ADDED PLACES -->
+          <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes'">
+            <div class="places-choices">
+            <!-- ng-repeat on event's places -->
+              <span ng-click="evtCtrl.showPlace(place)">{{place.name}}</span>
+                <button class="upvote-button" ng-click="evtCtrl.upVote(place)">
+                  <span class="thumbs-up-display">
+                    <i class="fa fa-thumbs-o-up"></i>
+                      {{place.votes}}
+                  </span>
+                  <span class="thumbs-down-display">
+                    <i ng-class="{'fa fa-thumbs-o-down': evtCtrl.toggle[place.id], 'fa fa-thumbs-o-up': !evtCtrl.toggle[place.id]}"></i>
+                  </span>
+                </button>
+                <span class="places-x">
+                  <i ng-click="evtCtrl.deletePlace(place.id)" class='fa fa-times'></i>
+                </span>
+            </div>
+            <div class="place-container card" ng-show="evtCtrl.hidePlace" ng-if="evtCtrl.selectedAddress === place.address">
+              <div class="place-left card-content">
+                <div>
+                  <a href="{{place.url}}"><img src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x95&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA" class="map-padding"></a>
                 </div>
+              </div>
+              <div class="card-content place-right">
+                <p class="split-para">
+                  {{place.name}}
+                    <span>
+                      <img class="rating" ng-src="{{evtCtrl.selectedRating}}">
+                    </span><BR>
+                  {{evtCtrl.selectedAddress}}
+                    <span>{{place.category}}</span>
+                </p>
+                  <div class="snippet">
+                    " {{place.snippet}} "
+                  </div>
+              </div>
             </div>
-          </div>
-        </div> <!-- END LIST OF PLACES -->
-      </div> <!-- END ng-if evtCtrl.cutVoting -->
-    </div> <!-- END container-padding -->
+          </div> <!-- END LIST OF PLACES -->
+        </div> <!-- END ng-if evtCtrl.cutVoting -->
+      </div> <!-- END container-padding -->
 
-    <div ng-if="!evtCtrl.cutVoting">
-      <center>
-        <div ng-if="(evtCtrl.currentEvent.places).length > 0">
-          <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes' | limitTo: 1">
-            <div class="winner-details">
-              <p>Voting is over!</p>
-              <p>With a total of {{place.votes}} vote(s)</p>
-            </div>
-            <div class="winner-headline">The Winner Is...</div>
-            <span class="place-winner-details">{{place.name}}</span>
-            <div class="place-winner-info">
-              <img ng-src="{{place.rating_img}}"><BR>
-              {{place.category}}
-            </div>
-            <BR>
-            <a href="{{place.url}}"><img class="winner-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x160&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA"></a>
-            <BR>
-            <span class="place-winner-address">{{place.address}}
-            </span><BR><BR><BR>
-            <div class="winner-snippet">" {{place.snippet}} "</div>
-          </div>
-        <div ng-if="evtCtrl.currentEvent.places.length === 0">
-          <div class="winner-details">Voting is over!</div>
-          <div class="winner-headline">You Have No Place Suggestions.. :(</div>
-        </div>
-      </center>
-    </div>
-  </div> <!-- END event-container -->
-
-  <!-- right side of the page !-->
-  <div class="right-side">
-    <div class="email-container">
-      <div class="container-padding">
-        <div class="email-header">Invite Friends</div>
-        <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
-          <input ng-model="evtCtrl.to" class="email-to" placeholder="Email To" >
-          <textarea ng-model="evtCtrl.message" class="email-message" placeholder="Message"></textarea>
-          <button class="email-button" ng-click="evtCtrl.sendMail()">Send Email</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="attendee-container">
-      <div class="container-padding">
-        <div class="attend-title">Invited</div>
+      <div ng-if="!evtCtrl.cutVoting">
         <center>
-          <div class="attend-divider"></div>
-          <ul>
-            <li class="invited-text" ng-repeat="guest in evtCtrl.guests track by $index">{{guest.email}}</li>
-          </ul>
+          <div ng-if="(evtCtrl.currentEvent.places).length > 0">
+            <div id="{{place.id}}" ng-repeat="place in evtCtrl.currentEvent.places | orderBy: '-votes' | limitTo: 1">
+              <div class="winner-details">
+                <p>Voting is over!</p>
+                <p>With a total of {{place.votes}} vote(s)</p>
+              </div>
+              <div class="winner-headline">The Winner Is...</div>
+              <span class="place-winner-details">{{place.name}}</span>
+              <div class="place-winner-info">
+                <img ng-src="{{place.rating_img}}"><BR>
+                {{place.category}}
+              </div>
+              <BR>
+              <a href="{{place.url}}"><img class="winner-map" src="https://maps.googleapis.com/maps/api/staticmap?center={{place.location}}&zoom=15&size=275x160&maptype=roadmap&markers={{place.location}}&key=AIzaSyA1TtnBWhqQjlyyBzDT4vQ28ddmfeRxboA"></a>
+              <BR>
+              <span class="place-winner-address">{{place.address}}
+              </span><BR><BR><BR>
+              <div class="winner-snippet">" {{place.snippet}} "</div>
+            </div>
+          <div ng-if="evtCtrl.currentEvent.places.length === 0">
+            <div class="winner-details">Voting is over!</div>
+            <div class="winner-headline">You Have No Place Suggestions.. :(</div>
+          </div>
         </center>
       </div>
-    </div>
-  </div> <!-- END right-side -->
+    </div> <!-- END event-container -->
+
+    <!-- right side of the page !-->
+    <div class="right-side">
+      <div class="email-container">
+        <div class="container-padding">
+          <div class="email-header">Invite Friends</div>
+          <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
+            <input ng-model="evtCtrl.to" class="email-to" placeholder="Email To" >
+            <textarea ng-model="evtCtrl.message" class="email-message" placeholder="Message"></textarea>
+            <button class="email-button" ng-click="evtCtrl.sendMail()">Send Email</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="attendee-container">
+        <div class="container-padding">
+          <div class="attend-title">Invited</div>
+          <center>
+            <div class="attend-divider"></div>
+            <ul>
+              <li class="invited-text" ng-repeat="guest in evtCtrl.guests track by $index">{{guest.email}}</li>
+            </ul>
+          </center>
+        </div>
+      </div>
+    </div> <!-- END right-side -->
+  </div>
 </div>

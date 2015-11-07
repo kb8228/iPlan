@@ -9,8 +9,8 @@
   </div>
   <div>
     <ul>
-      <li class="left-links event-links" ng-repeat="event in evtList.events | orderBy: '-event.created_at'">
-        <span ng-click="evtList.setCurrentEvent(event.event.code)">
+      <li class="left-links event-links" ng-repeat="event in evtList.events track by $index | orderBy: '-event.created_at'" ng-click="evtList.setCurrentEvent(event.event.code)">
+        <span>
           {{event.event.name}}
         </span>
       </li>

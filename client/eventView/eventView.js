@@ -13,6 +13,7 @@
     self.guests = DataService.users;
     self.currentUser = DataService.currentUser;
     self.currentEvent = DataService.currentEvent;
+    self.newEvent = DataService.newEvent;
     self.evtDate = new Date(self.currentEvent.date)
     self.evtTime = new Date(self.currentEvent.time);
     self.eventCode = $location.path().replace('/events/', '');

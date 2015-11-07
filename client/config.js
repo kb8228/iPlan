@@ -24,7 +24,7 @@
       redirectTo: '/'
     });
   })
-  .run(function($rootScope, DataService, auth, store, jwtHelper, $location){
+  .run(['$rootScope', 'DataService', 'auth', 'store', 'jwtHelper', '$location', function($rootScope, DataService, auth, store, jwtHelper, $location){
     auth.hookEvents();
 
     $rootScope.$on('$locationChangeStart', function() {
@@ -40,5 +40,5 @@
         }
       }
     });
-  });
+  }]);
 })();
