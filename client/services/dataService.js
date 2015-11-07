@@ -1,7 +1,7 @@
 (function(){
   angular.module('iplanApp')
   .factory('DataService', function(){
-    var newEvent = false;
+    var newEvent = {status: false};
     var currentEvent = {};
     var currentUser = {};
     var events = [];
@@ -16,7 +16,7 @@
     };
 
     var toggleEventForm = function() {
-      newEvent = !newEvent;
+      newEvent.status = !newEvent.status;
       console.log('newEventBtn clicked, newEvent: ', newEvent);
       // return newEvent;
     }
