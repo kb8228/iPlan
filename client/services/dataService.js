@@ -11,14 +11,11 @@
       for(var key in eventData){
         currentEvent[key] = eventData[key];
       }
-      console.log("this is the current event ", currentEvent);
       return currentEvent;
     };
 
     var toggleEventForm = function() {
       newEvent.status = !newEvent.status;
-      console.log('newEventBtn clicked, newEvent: ', newEvent);
-      // return newEvent;
     }
 
     var clearCurrentEvent = function(){
@@ -67,11 +64,6 @@
       return events;
     };
 
-    var addEvent = function(evt){
-      events.push(evt);
-      return events;
-    }
-
     var setUsers = function(evtUsers){
       console.log('evtUsers coming ing to DataService.setUsers: ', evtUsers);
       for(var i = 0; i < users.length; i++){
@@ -93,7 +85,6 @@
       events: events,
       users: users,
       setEvents: setEvents,
-      addEvent: addEvent,
       setCurrentEvent: setCurrentEvent,
       clearCurrentEvent: clearCurrentEvent,
       getCurrentEvent: getCurrentEvent,
