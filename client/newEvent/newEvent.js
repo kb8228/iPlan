@@ -10,13 +10,20 @@
       self.location; // tied to input box
       self.currentUser = DataService.currentUser;
       self.time;
+      self.newEvent = DataService.newEvent;
 
       self.postEvent = function(){
+          DataService.toggleEventForm();
+          
           HttpService.postEvent({
             name: self.eventName,
             date: self.date,
             time: self.time,
             location: self.location
+          })
+          .then(function(response){
+            DataService.setCurrentEvent(response.data);
+            return response;
           })
           .then(function(response){
             console.log('postEvent .then response data: ', response.data);
@@ -28,13 +35,10 @@
               user_role: 'host'
             })
             .then(function(response){
-              console.log('response fr postEventUser: ', response);
+              DataService.addEvent(response.data);
+              $location.path('/events/' + response.data.event_code);
+              // console.log('response fr postEventUser: ', response);
             });
-
-            DataService.setCurrentEvent(response.data);
-            $location.path('/events/' + response.data.code);
-            $window.location.reload();
-            console.log('success response: ', response.data);
           })
           .catch(function(err){
             console.log('error in posting event: ', err);

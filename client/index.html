@@ -70,15 +70,13 @@
             Hello, {{loginCtrl.currentUser.name}}!
           </div>
           <button class="nav-button" type="submit" ng-click="loginCtrl.logout()"> Log Out </button>
-          <button class="nav-button" ng-click="loginCtrl.showEvent()"> New Event </button>
+          <new-event-btn></new-event-btn>
         </div> <!-- END top-header -->
       </div> <!-- END main-container -->
 
       <div class="bottom-container">
         <!-- hide the current event if newEvent is not clicked !-->
-        <div ng-show="loginCtrl.getEvent">
-          <new-event-dir></new-event-dir>
-        </div>
+        <new-event-dir></new-event-dir>
         <user-view-dir></user-view-dir>
         <!-- display the newEvent page when newEvent is clicked !-->
         <div ng-hide="loginCtrl.getEvent">
@@ -112,6 +110,7 @@
 <script src="./services/httpService.js"></script>
 <script src="./services/dataService.js"></script>
 <script src="./newEvent/newEvent.js"></script>
+<script src="./newEvent/newEventButton.js"></script>
 <script src="./eventView/eventView.js"></script>
 <script src="./eventView/eventList.js"></script>
 <script src="./userController.js"></script>

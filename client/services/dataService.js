@@ -1,7 +1,7 @@
 (function(){
   angular.module('iplanApp')
   .factory('DataService', function(){
-
+    var newEvent = false;
     var currentEvent = {};
     var currentUser = {};
     var events = [];
@@ -14,6 +14,12 @@
       console.log("this is the current event ", currentEvent);
       return currentEvent;
     };
+
+    var toggleEventForm = function() {
+      newEvent = !newEvent;
+      console.log('newEventBtn clicked, newEvent: ', newEvent);
+      return newEvent;
+    }
 
     var clearCurrentEvent = function(){
       for(var key in currentEvent){
@@ -61,6 +67,11 @@
       return events;
     };
 
+    var addEvent = function(evt){
+      events.push(evt);
+      return events;
+    }
+
     var setUsers = function(evtUsers){
       console.log('evtUsers coming ing to DataService.setUsers: ', evtUsers);
       for(var i = 0; i < users.length; i++){
@@ -77,9 +88,12 @@
     return {
       currentEvent: currentEvent,
       currentUser: currentUser,
+      newEvent: newEvent,
+      toggleEventForm: toggleEventForm,
       events: events,
       users: users,
       setEvents: setEvents,
+      addEvent: addEvent,
       setCurrentEvent: setCurrentEvent,
       clearCurrentEvent: clearCurrentEvent,
       getCurrentEvent: getCurrentEvent,

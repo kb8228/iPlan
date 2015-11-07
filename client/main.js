@@ -6,7 +6,7 @@
       var self = this;
       // self.currentEvent = DataService.currentEvent;
       self.user;
-
+      
       var profile = store.get('profile');
 
       if(profile){
