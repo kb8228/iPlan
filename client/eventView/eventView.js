@@ -225,16 +225,12 @@
     };
 
     self.createTimer = function() {
+      var firstCut = new Date(self.timerInfo);
       HttpService.putEvent({
         cutoff: self.timerInfo,
         code: self.currentEvent.code
       })
-      .then(function(response){
-        self.refresh(response.data.code)
-        self.isThereTime = true;
-        self.timerInfo = ''
-      })
-      $window.location.reload()
+      DataService.setCurrentEvent({cutoff: firstCut})
     }
 
     self.checkDateTime = function() {
@@ -305,11 +301,7 @@
     }
 
     self.toggleLocationChange = function() {
-      if(!self.showEditingLocation) {
-        self.showEditingLocation = true;
-      } else {
-        self.showEditingLocation = false;
-      }
+      self.showEditingLocation = !self.showEditingLocation
     }
 
     self.changeEventLocation = function(inputText) {
@@ -317,62 +309,50 @@
         location: inputText,
         code: self.currentEvent.code
       })
+      DataService.setCurrentEvent({location: inputText})
       self.showEditingLocation = true;
-      $window.location.reload();
     }
 
     self.toggleDateChange = function() {
-      if(!self.showDate) {
-        self.showDate = true;
-      } else {
-        self.showDate = false;
-      }
+      self.showDate = !self.showDate;
     }
 
     self.changeEventDate = function(inputText) {
-      var date = new Date(inputText);
+      var dates = new Date(inputText);
       HttpService.putEvent({
-        date: date,
+        date: dates,
         code: self.currentEvent.code
       })
+      DataService.setCurrentEvent({date: dates});
       self.showDate = true;
-      $window.location.reload();
     }
 
     self.toggleTimeChange = function() {
-      if(!self.showTime) {
-        self.showTime = true;
-      } else {
-        self.showTime = false;
-      }
+      self.showTime = !self.showTime
     }
 
     self.changeEventTime = function(inputText) {
-      var time = new Date(inputText);
+      var timing = new Date(inputText);
       HttpService.putEvent({
-        time: time,
+        time: timing,
         code:self.currentEvent.code
       })
+      DataService.setCurrentEvent({time: timing})
       self.showTime = true;
-      $window.location.reload();
     }
 
     self.toggleCutOffChange = function() {
-      if(!self.toggleCutOff) {
-        self.toggleCutOff = true;
-      } else {
-        self.toggleCutOff = false;
-      }
+      self.toggleCutOff = !self.toggleCutOff
     }
 
     self.changeCutOff = function(inputText) {
-      var cutoff = new Date(inputText);
+      var cutoffTime = new Date(inputText);
       HttpService.putEvent({
-        cutoff: cutoff,
+        cutoff: cutoffTime,
         code:self.currentEvent.code
       })
+      DataService.setCurrentEvent({cutoff: cutoffTime})
       self.toggleCutOff = true;
-      $window.location.reload();
     }
 
     self.findHost = function(){
