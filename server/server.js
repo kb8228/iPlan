@@ -134,9 +134,9 @@ app.get('/api/eventsusers/users/:user_id', function(req, res, next){
   });
 });
 
-app.get('/api/eventsusers/events/:event_id', function(req, res, next){
-  var eventId = req.params.event_id;
-  db.collection('EventsUsers').fetchByEvent(eventId)
+app.get('/api/eventsusers/events/:event_code', function(req, res, next){
+  var eventCode = req.params.event_code;
+  db.collection('EventsUsers').fetchByEvent(eventCode)
   .then(function(eventsUsers){
     res.json(eventsUsers);
   });

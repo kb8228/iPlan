@@ -1,19 +1,21 @@
 <div class="leftbar">
-  <div class="left-title" ng-click="evtCtrl.clearEvent()">
+  <div class="left-title" ng-click="evtList.clearCurrentEvent()">
     <span class="green-i">i</span>Plan
   </div>
   <div>
     <center>
-      <img class="picture" ng-src="{{evtCtrl.currentUser.picture}}">
+      <img class="picture" ng-src="{{evtList.currentUser.picture}}">
     </center>
   </div>
   <div>
     <ul>
-      <li class="left-links event-links" ng-repeat="event in evtCtrl.events">
-        <span ng-click="evtCtrl.refresh(event.event.code)">
+      <li class="left-links event-links" ng-repeat="event in evtList.events">
+        <span ng-click="evtList.setCurrentEvent(event.event.code)">
           {{event.event.name}}
         </span>
       </li>
     </ul>
   </div>
 </div>
+
+

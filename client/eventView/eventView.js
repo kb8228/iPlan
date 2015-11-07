@@ -1,11 +1,10 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
-  .directive('eventViewDir', eventViewDir)
-  .directive('eventList', eventList)
-  .directive('eventLink', eventLink);
+  .controller('EventViewController', ['HttpService', 'DataService', '$location', '$timeout', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
+  .directive('eventViewDir', eventViewDir);
+  // .directive('eventList', eventList);
 
-  function EventViewController(HttpService, DataService, $location, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
+  function EventViewController(HttpService, DataService, $location, $timeout, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
     var self = this;
     self.toggle = {};
     self.placeName;   // tied to input box in eventView.html
@@ -49,7 +48,7 @@
       if(self.eventCode.length === 10){
         HttpService.getUsers(self.eventCode)
         .then(function(users){
-          DataService.setUsers(users.data); //// THIS IS PROBLEMATIC
+          DataService.setUsers(users.data);
         });
       }
     };
@@ -80,7 +79,6 @@
     };
 
     self.refresh = function(evtCode){
-      $location.path('/events/' + evtCode);
       self.eventCode = evtCode;
       self.setEvent();
       self.setEventsUser();
@@ -89,21 +87,19 @@
 
     self.clearEvent = function(){
       DataService.clearCurrentEvent();
-      $location.path('/');
     }
 
     self.deleteEvent = function(id){
       HttpService.deleteEvent(id)
       .then(function(response){
-        $location.path('/');
-        console.log('deleteEvent success: ', self.eventCode);
+        self.clearEvent();
         self.setEventsUser();
         self.setUsersEvent();
-        $window.location.reload();
+        $location.path('/');
       })
       .catch(function(err){
         console.log('error in deleting event: ', err);
-      });
+      }); 
     }
 
     self.searchYelp = function(placeName){
@@ -379,7 +375,7 @@
 
     self.findHost = function(){
       console.log('the current user: ', self.currentUser);
-      if (self.currentUser.eventUsers && self.currentUser.email === self.currentUser.eventsUsers[0].email){
+      if (self.currentUser.eventsUsers && self.currentUser.email === self.currentUser.eventsUsers[0].email){
         self.isHost = true;
       }
       console.log(self.isHost);
@@ -401,29 +397,4 @@
     }
   }
 
-  function eventList(){
-    return {
-      restrict: 'E',
-      scope: true,
-      templateUrl: '/eventView/eventList.html',
-      replace: true,
-      controller: 'EventViewController',
-      controllerAs: 'evtCtrl',
-      bindToController: true
-    }
-  }
-
-  function eventLink(){
-    return {
-      restrict: 'EA',
-      scope: {
-        events: '='
-      },
-      templateUrl: '/eventView/eventLink.html',
-      replace: true,
-      link: function(scope, elem, attrs){
-
-      }
-    }
-  }
 })();
