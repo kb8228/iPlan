@@ -19,6 +19,7 @@
       for(var key in currentEvent){
         delete currentEvent[key];
       }
+      return currentEvent;
     }
 
     var getCurrentEvent = function(){
@@ -50,6 +51,9 @@
     };
 
     var setEvents = function(evts){
+      for(var i = 0; i < events.length; i++){
+        delete events[i];
+      }
       evts.forEach(function(evt, index){
         events[index] = evt;
       });
@@ -58,6 +62,7 @@
     };
 
     var setUsers = function(evtUsers){
+      console.log('evtUsers coming ing to DataService.setUsers: ', evtUsers);
       for(var i = 0; i < users.length; i++){
         delete users[i];
       }

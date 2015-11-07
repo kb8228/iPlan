@@ -14,11 +14,11 @@ var EventsUsers = db.Collection.extend({
     })
     .fetch({withRelated: 'event'});
   },
-  fetchByEvent: function(eventId){
+  fetchByEvent: function(eventCode){
     return db.collection('EventsUsers')
     .forge()
     .query(function(qb){
-      qb.where('event_code', '=', eventId);
+      qb.where('event_code', '=', eventCode);
     })
     .fetch({withRelated: 'user'});
   }

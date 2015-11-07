@@ -5,15 +5,15 @@
     function MainController(HttpService, DataService, $location, $window, store){
       var self = this;
       // self.currentEvent = DataService.currentEvent;
-      self.userId;
+      self.user;
 
       var profile = store.get('profile');
 
       if(profile){
-        HttpService.getUser(profile.identities[0].user_id)
+        HttpService.getUser(profile.email)
         .then(function(response){
-          self.userId = response.data.id;
-          console.log(self.userId);
+          self.user = response.data;
+          console.log('user fr main: ', self.user);
         })
         .catch(function(err){
           console.log('error in main controller ', err);
