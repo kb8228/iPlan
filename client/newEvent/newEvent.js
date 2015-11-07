@@ -9,12 +9,12 @@
       self.date; // tied to input box
       self.location; // tied to input box
       self.currentUser = DataService.currentUser;
-      self.time;
       self.newEvent = DataService.newEvent;
+      self.time;
 
       self.postEvent = function(){
           DataService.toggleEventForm();
-          
+
           HttpService.postEvent({
             name: self.eventName,
             date: self.date,
@@ -50,7 +50,7 @@
     function newEventDir(){
       return {
         restrict: 'E',
-        // scope: {},
+        scope: true,
         templateUrl: '/newEvent/newEvent.html',
         replace: true,
         controller: 'NewEventController',

@@ -18,7 +18,7 @@
     var toggleEventForm = function() {
       newEvent = !newEvent;
       console.log('newEventBtn clicked, newEvent: ', newEvent);
-      return newEvent;
+      // return newEvent;
     }
 
     var clearCurrentEvent = function(){

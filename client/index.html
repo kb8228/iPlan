@@ -43,26 +43,7 @@
   <!-- ng-if hasToken -->
   <div ng-if="loginCtrl.hasToken" ng-cloak>
   <event-list></event-list>
-<!--     <div class="leftbar" ng-controller="EventViewController as evtCtrl">
-      <div class="left-title" ng-click="evtCtrl.clearEvent()">
-        <span class="green-i">i</span>Plan
-      </div>
-      <div>
-        <center>
-          <img class="picture" ng-src="{{evtCtrl.currentUser.picture}}">
-        <center>
-      </div>
-      <div>
-        <ul>
-          <div class="left-links" ng-repeat="event in evtCtrl.events" ng-click="evtCtrl.refresh(event.event.code)">
-            <a href="/#/events/{{event.event.code}}" class="event-links">
-              {{event.event.name}}
-            </a>
-          </div>
-        </ul>
-      </div>
-    </div> -->
-
+    
     <div class="left-padding">
       <div class="main-container">
         <div class="top-header">
@@ -76,12 +57,12 @@
 
       <div class="bottom-container">
         <!-- hide the current event if newEvent is not clicked !-->
-        <new-event-dir></new-event-dir>
-        <user-view-dir></user-view-dir>
         <!-- display the newEvent page when newEvent is clicked !-->
-        <div ng-hide="loginCtrl.getEvent">
-          <event-view-dir></event-view-dir>
-        </div>
+        <new-event-dir></new-event-dir>
+        <!-- show welcome page if no current event -->
+        <user-view-dir></user-view-dir>
+        <!-- show event view if current event and no new event form -->
+        <event-view-dir></event-view-dir>
       </div> <!-- END bottom-container -->
     </div> <!-- END left-padding -->
   </div> <!-- END ng-if hasToken -->
@@ -109,10 +90,10 @@
 <script src="./loginController.js"></script>
 <script src="./services/httpService.js"></script>
 <script src="./services/dataService.js"></script>
-<script src="./newEvent/newEvent.js"></script>
-<script src="./newEvent/newEventButton.js"></script>
 <script src="./eventView/eventView.js"></script>
 <script src="./eventView/eventList.js"></script>
+<script src="./newEvent/newEventButton.js"></script>
+<script src="./newEvent/newEvent.js"></script>
 <script src="./userController.js"></script>
 </body>
 </html>

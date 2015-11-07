@@ -8,7 +8,7 @@
     self.newEvent = DataService.newEvent;
 
     self.toggleEventForm = function(){
-      return DataService.toggleEventForm();
+      DataService.toggleEventForm();
     };
 
   }
@@ -16,7 +16,7 @@
   function newEventBtn(){
     return {
       restrict: 'E',
-      // scope: {},
+      scope: true,
       templateUrl: '/newEvent/newEventButton.html',
       replace: true,
       controller: 'NewEventButton',
