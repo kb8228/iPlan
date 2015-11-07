@@ -8,6 +8,7 @@
     self.auth = auth;
     self.currentUser = DataService.currentUser;
     self.currentEvent = DataService.currentEvent;
+    self.newEvent = DataService.newEvent;
   }
 
   function userViewDir(){
