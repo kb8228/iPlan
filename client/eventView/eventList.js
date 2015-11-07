@@ -1,9 +1,9 @@
 (function(){
   angular.module('iplanApp')
-  .controller('EventListController', ['HttpService', 'DataService', '$location', '$timeout', '$route', '$routeParams', '$window', '$filter', '$interval', EventListController])
+  .controller('EventListController', ['HttpService', 'DataService', '$location', '$q', EventListController])
   .directive('eventList', eventList);
 
-  function EventListController(HttpService, DataService, $location, $timeout){
+  function EventListController(HttpService, DataService, $location, $q){
     var self = this;
     self.currentUser = DataService.currentUser;
     self.events = DataService.events;
@@ -37,7 +37,15 @@
       DataService.clearCurrentEvent();
     }
 
-    self.setEvents();
+    function init(){
+      var promises = [self.setEvents()];
+
+      return $q.all(promises).then(function() {
+        console.log('events set in eventList: ', events);
+      });
+    }
+
+    init();
   }
 
   function eventList(){
