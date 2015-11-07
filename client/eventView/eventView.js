@@ -59,6 +59,7 @@
       .then(function(evt){
         if(evt.data.length){
           DataService.setEvents(evt.data);
+          self.findHost();
         }
       });
     };
@@ -100,7 +101,7 @@
       })
       .catch(function(err){
         console.log('error in deleting event: ', err);
-      }); 
+      });
     }
 
     self.searchYelp = function(placeName){
@@ -375,15 +376,14 @@
     }
 
     self.findHost = function(){
-      console.log('the current user: ', self.currentUser);
-      if (self.currentUser.eventsUsers && self.currentUser.email === self.currentUser.eventsUsers[0].email){
+      if (self.currentEvent.eventsUsers && self.currentUser.email === self.currentEvent.eventsUsers[0].email){
         self.isHost = true;
+      } else {
+        self.isHost = false;
       }
-      console.log(self.isHost);
     }
 
     self.refresh(self.eventCode);
-    self.findHost();
   };
 
   function eventViewDir(){

@@ -7,7 +7,7 @@
     self.currentUser = DataService.currentUser;
     self.hasToken = false;
     // self.getEvent = false;
-    
+
     self.login = function () {
       auth.signin({}, function (profile, token) {
         store.set('profile', profile);
@@ -84,4 +84,5 @@
 
     self.checkLogin();
   }
+
 })();
