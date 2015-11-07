@@ -59,9 +59,7 @@
       .then(function(evt){
         if(evt.data.length){
           DataService.setEvents(evt.data);
-          if(self.currentEvent){
-            self.findHost();
-          }
+          self.findHost();
         }
       });
     };
