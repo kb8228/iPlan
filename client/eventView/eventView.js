@@ -225,16 +225,12 @@
     };
 
     self.createTimer = function() {
+      var firstCut = new Date(self.timerInfo);
       HttpService.putEvent({
         cutoff: self.timerInfo,
         code: self.currentEvent.code
       })
-      .then(function(response){
-        self.refresh(response.data.code)
-        self.isThereTime = true;
-        self.timerInfo = ''
-      })
-      $window.location.reload()
+      DataService.setCurrentEvent({cutoff: firstCut})
     }
 
     self.checkDateTime = function() {
