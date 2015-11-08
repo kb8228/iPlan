@@ -6,11 +6,11 @@ require('../models/eventUser');
 var EventsUsers = db.Collection.extend({
   model: db.model('EventUser')
 }, {
-  fetchByUser: function(userId){
+  fetchByUser: function(userEmail){
     return db.collection('EventsUsers')
     .forge()
     .query(function(qb){
-      qb.where('email', '=', userId);
+      qb.where('email', '=', userEmail);
     })
     .fetch({withRelated: 'event'});
   },

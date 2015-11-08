@@ -21,6 +21,7 @@
     self.setCurrentEvent = function(evtCode){
       HttpService.getEvent(evtCode)
       .then(function(evt){
+        DataService.newEvent.status = false;
         DataService.setCurrentEvent(evt.data);
         HttpService.getUsers(evtCode)
         .then(function(evtUsers){
@@ -33,8 +34,9 @@
     }
 
     self.clearCurrentEvent = function(){
-      $location.path('/');
       DataService.clearCurrentEvent();
+      DataService.newEvent.status = false;
+      $location.path('/');
     }
 
     function init(){

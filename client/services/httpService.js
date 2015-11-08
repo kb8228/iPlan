@@ -57,8 +57,8 @@
       return $http.post('/api/eventsusers', options);
     };
 
-    var getEvents = function(options){
-      return $http.get('/api/eventsusers/users/' + options);
+    var getEvents = function(email){
+      return $http.get('/api/eventsusers/users/' + email);
     };
 
     var getUsers = function(evtCode){

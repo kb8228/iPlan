@@ -26,7 +26,6 @@
             return response;
           })
           .then(function(response){
-            console.log('postEvent .then response data: ', response.data);
             HttpService.postEventUser({
               event_id: response.data.id,
               event_code: response.data.code,
@@ -35,15 +34,23 @@
               user_role: 'host'
             })
             .then(function(response){
-              DataService.addEvent(response.data);
+              HttpService.getEvents(response.data.email)
+              .then(function(evts){
+                return DataService.setEvents(evts.data);
+              })
+              .catch(function(err){
+                console.log(err);
+              });
               $location.path('/events/' + response.data.event_code);
-              // console.log('response fr postEventUser: ', response);
             });
           })
           .catch(function(err){
             console.log('error in posting event: ', err);
           });
           self.eventName = '';
+          self.location = '';
+          self.date = '';
+          self.time = '';
       };
     }
 

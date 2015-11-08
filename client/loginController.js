@@ -6,14 +6,12 @@
     var self = this;
     self.currentUser = DataService.currentUser;
     self.hasToken = false;
-    // self.getEvent = false;
 
     self.login = function () {
       auth.signin({}, function (profile, token) {
         store.set('profile', profile);
         store.set('token', token);
         self.hasToken = true;
-        // success callback
         HttpService.getUser(profile.email)
         .then(function(response){
           if(!response.data){
@@ -78,11 +76,6 @@
       $window.location.reload();
     };
 
-    // self.showEvent = function() {
-    //   self.getEvent = !self.getEvent;
-    // }
-
     self.checkLogin();
   }
-
 })();
