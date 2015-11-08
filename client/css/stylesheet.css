@@ -493,6 +493,27 @@ a:visited{
   background-color: rgba(255, 0, 0, 0.5);
 }
 
+.events-x {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: right;
+  padding: 3px, 3px, 3px, 3px;
+}
+
+.delete {
+  border-style: none;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 0.8em;
+  padding: 2px 10px;
+}
+
+.delete:hover {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
 .places-choices:hover{
   cursor: pointer;
 }

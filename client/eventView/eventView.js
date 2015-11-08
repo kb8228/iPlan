@@ -2,7 +2,6 @@
   angular.module('iplanApp')
   .controller('EventViewController', ['HttpService', 'DataService', '$location', '$timeout', '$route', '$routeParams', '$window', '$filter', '$interval', EventViewController])
   .directive('eventViewDir', eventViewDir);
-  // .directive('eventList', eventList);
 
   function EventViewController(HttpService, DataService, $location, $timeout, $route, $routeParams, $window, $filter, $interval){ // inject http service, EventService factory
     var self = this;
@@ -81,6 +80,7 @@
     };
 
     self.refresh = function(evtCode){
+      $location.path('/events/' + evtCode);
       self.eventCode = evtCode;
       self.setEvent();
       self.setEventsUser();
@@ -381,5 +381,4 @@
       bindToController: true
     }
   }
-
 })();

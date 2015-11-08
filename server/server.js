@@ -70,6 +70,15 @@ app.delete('/api/places/:id', function(req, res, next){
   });
 });
 
+// app.delete('/api/eventsusers/:id', function(req, res, next){
+//   var eventId = req.params.id;
+//   db.model('EventUser').fetchById({event_id: eventId})
+//   .then(function(evt){
+//     evt.destroy();
+//     res.json({string: "cheese"});
+//   });
+// });
+
 app.put('/api/events/:code', function(req, res, next){
   var code = req.params.code;
   var saveTime = req.body;
