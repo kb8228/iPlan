@@ -174,20 +174,23 @@
     };
 
     self.sendMail = function(){
-      var newMail = {
-        name: self.currentUser.name,
-        to: self.to,
-        subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
-        message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
-      };
-
       var temp = self.to.replace(/ /g, '').split(',');
+      var tempName = self.toName.replace(/ /g, '').split(',');
+
+      var newMail = {
+          subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
+          message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
+        };
 
       temp.forEach(function(val, index){
         var found = false;
+
         var newUser = {
           email: val
-        };
+        }
+
+        newMail.name = tempName[index];
+        newMail.to = newUser.email;
 
         HttpService.sendMail(newMail);
 
@@ -220,6 +223,7 @@
           console.log('err in postUser as guest: ', err);
         });
       });
+    self.toName = '';
     self.message = '';
     self.to = '';
     };

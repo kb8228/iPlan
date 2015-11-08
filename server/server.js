@@ -147,7 +147,7 @@ app.post('/sendmail', function(req, res, next){
   var compiledTemplate = hogan.compile(template);
 
   transporter.sendMail({
-    from: 'testingiplan@gmail.com',
+    from: 'noreply@iplan.com',
     to: data.to,
     subject: data.subject,
     html: compiledTemplate.render({name: data.name})
