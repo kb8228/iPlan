@@ -204,6 +204,7 @@
         <div class="container-padding">
           <div class="email-header">Invite Friends</div>
           <form name="emailForm" ng-submit="evntCtrl.sendMail()" novalidate>
+            <input ng-model="evtCtrl.toName" class="email-to" placeholder="Name" >
             <input ng-model="evtCtrl.to" class="email-to" placeholder="Email To" >
             <textarea ng-model="evtCtrl.message" class="email-message" placeholder="Message"></textarea>
             <button class="email-button" ng-click="evtCtrl.sendMail()">Send Email</button>

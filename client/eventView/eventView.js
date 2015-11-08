@@ -175,6 +175,12 @@
 
     self.sendMail = function(){
       var temp = self.to.replace(/ /g, '').split(',');
+      var tempName = self.toName.replace(/ /g, '').split(',');
+
+      var newMail = {
+          subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
+          message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
+        };
 
       temp.forEach(function(val, index){
         var found = false;
@@ -183,12 +189,8 @@
           email: val
         }
 
-        var newMail = {
-          name: newUser.email,
-          to: self.to,
-          subject: 'iPlan: ' + self.currentUser.name + ' invited you to ' + self.currentEvent.name + '!',
-          message: self.message + '\n' + 'link to ' + self.currentEvent.name + ':\n' + $location.absUrl()
-        };
+        newMail.name = tempName[index];
+        newMail.to = newUser.email;
 
         HttpService.sendMail(newMail);
 
@@ -221,6 +223,7 @@
           console.log('err in postUser as guest: ', err);
         });
       });
+    self.toName = '';
     self.message = '';
     self.to = '';
     };
