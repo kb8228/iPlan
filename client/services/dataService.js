@@ -8,6 +8,10 @@
     var users = [];
 
     var setCurrentEvent = function(eventData){
+      for(var key in currentEvent){
+        delete currentEvent[key];
+      }
+
       for(var key in eventData){
         currentEvent[key] = eventData[key];
       }
