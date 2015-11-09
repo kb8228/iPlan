@@ -18,7 +18,7 @@
     self.eventCode = $location.path().replace('/events/', '');
     self.hidePlace = false;
     self.getTimer = false;
-    self.timerInfo = false;
+    self.timerInfo;
     self.isThereTime = false;
     self.cutVoting = true;
     self.showEditing = true;
@@ -27,6 +27,7 @@
     self.showTime = true;
     self.toggleCutOff = true;
     self.isHost = false;
+    self.changeCutoffTime; 
 
     self.showPlace = function(place) {
       if(self.lastChosen === place) {
@@ -234,7 +235,9 @@
         cutoff: self.timerInfo,
         code: self.currentEvent.code
       })
-      DataService.setCurrentEvent({cutoff: firstCut})
+      .then(function(evt){
+        DataService.setCurrentEvent(evt.data);
+      });
     }
 
     self.checkDateTime = function() {
@@ -293,15 +296,15 @@
       }
     }
 
-    self.changeEventName = function(inputText) {
+    self.changeEventName = function() {
       HttpService.putEvent({
-        name: inputText,
+        name: self.currentEvent.name,
         code: self.currentEvent.code
+      })
+      .then(function(evt){
+        DataService.setCurrentEvent(evt.data);
       });
-
-      DataService.setCurrentEvent({name: inputText});
       self.showEditing = true;
-      // $window.location.reload();
     }
 
     self.toggleLocationChange = function() {
@@ -313,8 +316,10 @@
         location: inputText,
         code: self.currentEvent.code
       })
-      DataService.setCurrentEvent({location: inputText})
-      self.showEditingLocation = true;
+      .then(function(evt){
+        DataService.setCurrentEvent(evt.data)
+        self.showEditingLocation = true;
+      });
     }
 
     self.toggleDateChange = function() {
@@ -327,8 +332,10 @@
         date: dates,
         code: self.currentEvent.code
       })
-      DataService.setCurrentEvent({date: dates});
-      self.showDate = true;
+      .then(function(evt){
+        DataService.setCurrentEvent(evt.data);
+        self.showDate = true;
+      });
     }
 
     self.toggleTimeChange = function() {
@@ -341,7 +348,9 @@
         time: timing,
         code:self.currentEvent.code
       })
-      DataService.setCurrentEvent({time: timing})
+      .then(function(evt){
+        DataService.setCurrentEvent(evt.data);
+      });
       self.showTime = true;
     }
 
@@ -349,14 +358,16 @@
       self.toggleCutOff = !self.toggleCutOff
     }
 
-    self.changeCutOff = function(inputText) {
-      var cutoffTime = new Date(inputText);
+    self.changeCutOff = function() {
+      var cutoffTime = new Date(self.changeCutoffTime);
       HttpService.putEvent({
         cutoff: cutoffTime,
         code:self.currentEvent.code
       })
-      DataService.setCurrentEvent({cutoff: cutoffTime})
-      self.toggleCutOff = true;
+      .then(function(evt){
+        DataService.setCurrentEvent(evt.data);
+      });
+      self.toggleCutOff = true; 
     }
 
     self.findHost = function(){
