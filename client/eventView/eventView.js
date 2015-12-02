@@ -58,7 +58,6 @@
       HttpService.getEvents(self.currentUser.email)
       .then(function(evt){
         if(evt.data.length){
-          DataService.setEvents(evt.data);
           self.findHost();
         }
       });

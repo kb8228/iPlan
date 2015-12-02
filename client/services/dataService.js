@@ -15,6 +15,7 @@
       for(var key in eventData){
         currentEvent[key] = eventData[key];
       }
+      
       return currentEvent;
     };
 

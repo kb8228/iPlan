@@ -39,7 +39,7 @@
                 return DataService.setEvents(evts.data);
               })
               .catch(function(err){
-                console.log(err);
+                console.log('error in getting events:', err);
               });
               $location.path('/events/' + response.data.event_code);
             });

@@ -11,26 +11,36 @@
 
     self.setEvents = function(){
       HttpService.getEvents(self.currentUser.email)
-      .then(function(evt){
-        if(evt.data.length){
-          DataService.setEvents(evt.data);
+      .catch(function(err){
+        console.error(err);
+      })
+      .then(function(evts){
+        if(evts.data.length){
+          DataService.setEvents(evts.data);
         }
       });
     }
 
     self.setCurrentEvent = function(evtCode){
       HttpService.getEvent(evtCode)
+      .catch(function(err){
+        console.error(err);
+      })
       .then(function(evt){
         DataService.newEvent.status = false;
         DataService.setCurrentEvent(evt.data);
-        HttpService.getUsers(evtCode)
-        .then(function(evtUsers){
-          DataService.setUsers(evtUsers.data);
-        })
-        .then(function(){
-          $location.path('/events/' + evtCode);
-        });
+      })
+      .then(function(){
+        $location.path('/events/' + evtCode);
       });  
+
+      HttpService.getUsers(evtCode)
+      .catch(function(err){
+        console.error(err);
+      })
+      .then(function(users){
+        DataService.setUsers(users.data);
+      });
     }
 
     self.clearCurrentEvent = function(){
@@ -39,11 +49,11 @@
       $location.path('/');
     }
 
-    function init(){
+    var init = function(){
       var promises = [self.setEvents()];
-
-      return $q.all(promises).then(function() {
-        console.log('events set in eventList: ', self.events);
+      return $q.all(promises)
+      .catch(function(err){
+        console.error(err);
       });
     }
 
